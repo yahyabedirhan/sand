@@ -63,7 +63,7 @@ each, and the boundary is enforced by the linter rather than by convention.
 18. As a consumer, I want a Shadow page, so that I know which elevation each shadow step represents.
 19. As a consumer, I want a Motion page with durations, easings, and the reduced-motion rule, so that animation is consistent and respects user preference.
 20. As a consumer, I want an Icons page that shows the icon set, its sizing rules, and how icons pair with text, so that icons look consistent across the product.
-21. As a consumer, I want a Modules page listing what libraries Sand is built from, so that I know what is under the hood.
+21. As a consumer, I want a Modules section with a page per library Sand is built from, so that I know what is under the hood.
 22. As a consumer, I want a page for every component in the registry, so that no component is undocumented.
 23. As a consumer, I want every component page to follow the same skeleton, so that I know where to look on any page.
 24. As a consumer, I want every component page to have a "when not to use this, use X instead" section, so that I pick the right component.
@@ -77,11 +77,11 @@ each, and the boundary is enforced by the linter rather than by convention.
 ### Maintainer of the design system
 
 31. As a maintainer, I want a decision note per foundation and module recording the options considered and the pick, so that reasoning survives beyond the person who made it.
-32. As a maintainer, I want the typography decision note to compare fixed handpicked sizes, ratio-based scales, raw-only utilities, and semantic-only tokens before stating the pick, so that the brainstorm is the deliverable, not just the outcome.
+32. As a maintainer, I want the typography decision note to compare fixed handpicked sizes, ratio-based scales, raw-only utilities, and semantic-only tokens before stating the pick, so that the comparison is itself a deliverable.
 33. As a maintainer, I want the consumer pages to stay free of reasoning, so that consumer and maintainer documentation do not blur.
 34. As a maintainer, I want each third-party library imported from exactly one module entry point, so that swapping a library touches one folder.
 35. As a maintainer, I want the linter to fail when a component imports a third-party library directly, so that the module boundary is a fact rather than a diagram.
-36. As a maintainer, I want the Modules page to list, for each module, its role, current choice, dependents, alternatives considered, and how to swap it, so that a swap is a documented procedure.
+36. As a maintainer, I want each module page to list its role, current choice, dependents, alternatives considered, and how to swap it, so that a swap is a documented procedure.
 37. As a maintainer, I want a single page registry that drives both the sidebar and the routes, so that adding a page is one entry.
 38. As a maintainer, I want the page registry to carry a status per page, so that `TODO` pages render automatically in the sidebar and on the Overview.
 39. As a maintainer, I want a journal with one section per working session, so that the next session knows what changed and why.
@@ -132,14 +132,14 @@ each, and the boundary is enforced by the linter rather than by convention.
 
 ### Documentation structure
 
-- Sidebar order: Overview, Foundations, Components, Guidelines.
-- Overview holds the Overview page (principles, start-here list, status list derived from the registry) and the Modules page.
+- Sidebar order: Overview, Foundations, Components, Guidelines, Modules.
+- Overview holds the Overview page (principles, start-here list, status list derived from the registry).
 - Foundations: Colors, Typography, Fonts, Spacing, Radius, Shadow, Motion, Icons.
 - Components: one page per registry component.
 - Guidelines: cross-cutting rules (color pairing, opacity usage, and whatever else does not belong to one token or component).
 - Foundation page skeleton: What it is, The tokens (rendered live), Rules (do/don't pairs with a rendered example each), Examples.
 - Component page skeleton: Purpose, Anatomy (named parts), When to use / when not to use (with the alternative named, required), Variants (rendered live), Rules (do/don't), Accessibility notes. No prop tables.
-- Modules page card per module: Role in the system, Current choice, What depends on it, Alternatives considered, How to swap (the one folder to change).
+- Modules: one page per module (Primitives, Icons, Charts, Fonts, Animation), each carrying Role in the system, Current choice, What depends on it, Alternatives considered, How to swap (the one folder to change).
 
 ### Maintainer notes
 
@@ -173,4 +173,4 @@ each, and the boundary is enforced by the linter rather than by convention.
 
 - Bootstrap follows the standard new-project workflow in my workstation repository; that document is the procedure, this spec is the product.
 - Every session ends with a journal entry and, when a decision was made, a decision note.
-- The Overview status list and the `TODO` pages are the honesty mechanism: the site must never look more finished than it is.
+- The Overview status list and the `TODO` pages keep the site from looking more finished than it is.
