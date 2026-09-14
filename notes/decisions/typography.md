@@ -6,7 +6,7 @@ Status: decided, 2026-09-14
 
 Consumers should pick a text role, not a pixel size. The spec asks for semantic text tokens (`heading-1`, `body`, `caption`, and so on) defined in the theme as real utilities, on top of the standard size scale, and for this note to compare the models before stating the pick. Past work used fixed handpicked sizes behind semantic names; ratio-based scales were unfamiliar, so the comparison teaches as it goes.
 
-Tailwind v4 makes any `--text-<name>` variable in `@theme` a `text-<name>` utility, and lets the same token carry line height, letter spacing, and weight through `--text-<name>--line-height` and friends. So a semantic token is not a class alias; it is a first-class size with its own metrics.
+Tailwind v4 makes any `--text-<name>` variable in `@theme` a `text-<name>` utility, and lets the same token carry line height, letter spacing, and weight through `--text-<name>--line-height` and friends. So a semantic token is a first-class size with its own metrics rather than an alias for an existing class.
 
 ## Options
 
@@ -38,7 +38,7 @@ The ratio is the only design decision; the sizes fall out. Smaller ratios (1.125
 Same as option 2, but the numeric `text-*` scale is removed from the theme so consumers cannot reach for it.
 
 - For: the two-layer rule becomes enforced, not advisory.
-- Against: removing `--text-*` from the theme breaks every registry component, which use `text-sm` and `text-xs` throughout. Exceptions do exist (a stat number, a hero title) and need a sanctioned escape. Hiding the scale trades a rule for a wall.
+- Against: removing `--text-*` from the theme breaks every registry component, which use `text-sm` and `text-xs` throughout. Exceptions do exist (a stat number, a hero title) and need a sanctioned escape.
 
 ## Decision
 

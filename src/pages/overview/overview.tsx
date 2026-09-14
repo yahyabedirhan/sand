@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
-import { PageHeader, Prose, Section } from "@/docs/page";
+import { PageHeader, Section } from "@/docs/page";
 import {
   pagePath,
   pages,
@@ -16,27 +16,8 @@ export function OverviewPage() {
     <>
       <PageHeader
         title="Sand"
-        lead="Semantic tokens first, raw values for exceptions, one entry point per third-party library."
+        lead="Design system for React, with foundations for color, type, spacing, and motion, a component library built on the shadcn, and the usage rules."
       />
-
-      <Section title="Principles">
-        <Prose>
-          <p>
-            Reach for the semantic layer. Colors, text styles, and spacing have
-            named roles; the raw scales beneath them exist for exceptions and
-            are documented as such.
-          </p>
-          <p>
-            Every rule comes with a rendered example. A do/don't pair shows the
-            rule holding and breaking, in both themes.
-          </p>
-          <p>
-            Libraries are modules. Primitives, icons, charts, fonts, and
-            animation each enter the system through one folder, and the linter
-            keeps it that way.
-          </p>
-        </Prose>
-      </Section>
 
       <Section title="Start here">
         <ol className="list-decimal flex flex-col gap-xs pl-lg text-body">

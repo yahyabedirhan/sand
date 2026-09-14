@@ -15,7 +15,7 @@ Grilled the idea into [.specs/00-sand-design-system.md](../.specs/00-sand-design
 Built the whole bootstrap scope from the spec and the first real page.
 
 - Vite 8 `react-ts` template, which now ships Oxlint by default. TypeScript 6 makes `strict` the default; it is set explicitly anyway. `baseUrl` is deprecated in TS 6, so `paths` works without it.
-- `shadcn add --all` wrote into a literal `@/` folder because the root `tsconfig.json` is a references-only file with no `paths`; moved the output into `src/`. Worth remembering for the next `shadcn add`.
+- `shadcn add --all` wrote into a literal `@/` folder because the root `tsconfig.json` is a references-only file with no `paths`; moved the output into `src/`.
 - The generated registry imports Base UI, Tabler, and Recharts directly. Repointed every import at `src/modules/*` so the boundary holds inside the registry too; see [decisions/module-boundary.md](decisions/module-boundary.md). The lint rule was proven against a deliberate bad import before anything relied on it.
 - Fonts and animation are CSS-only modules (`index.css`) because Tailwind needs their imports inside the stylesheet it compiles.
 - Code review after the work: element-to-role defaults were missing and are now in `@layer base`; page status is derived from the presence of a component instead of a second field.
@@ -30,3 +30,9 @@ Revisit:
 - The type-role sizes were chosen against the docs site alone; see the TODO in [decisions/typography.md](decisions/typography.md).
 - The Icons page can be generated from the icons module's export list.
 - No test runner yet. The registry and the lint boundary are the first candidates.
+
+## 2026-09-14, session 4: overview copy and the modules section
+
+- Modules moved out of Overview into its own sidebar section, last in the order, with one page per module. The old card list became a shared `ModulePage` layout in `src/pages/modules/module-page.tsx`; each module file holds only its data. Spec and `src/pages/index.md` updated to match.
+- Overview trimmed. The lead now says what Sand is and what it contains; the Principles section was removed because its three paragraphs read as slogans. The lead sentence is still being edited by hand and is mid-edit at session end.
+- Slop pass over every prose file. Four small edits (typography note, journal, spec); the rest was already tight.
