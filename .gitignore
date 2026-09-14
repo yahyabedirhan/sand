@@ -13,3 +13,7 @@ secrets/
 # os and editor
 .DS_Store
 *.swp
+
+# vite
+*.local
+*.log

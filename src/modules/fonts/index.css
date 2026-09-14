@@ -1,0 +1,14 @@
+/*
+ * Fonts module. The only place font files are imported.
+ * Three faces, self-hosted through fontsource: Geist (sans), Fraunces (serif),
+ * Geist Mono (mono). The family names are mapped to utilities in styles.css.
+ * To swap the hosting method, change the imports here; the names stay.
+ */
+@import "@fontsource/geist/400.css";
+@import "@fontsource/geist/500.css";
+@import "@fontsource/geist/600.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
