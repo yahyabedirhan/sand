@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { ModulesPage } from "@/pages/overview/modules";
+import { TypographyPage } from "@/pages/foundations/typography";
 import { OverviewPage } from "@/pages/overview/overview";
 
 // One registry drives the sidebar, the routes, and the Overview status list.
@@ -128,7 +129,13 @@ export const pages: Page[] = [
     component: ModulesPage,
   },
   todo("Foundations", "colors"),
-  todo("Foundations", "typography"),
+  {
+    section: "Foundations",
+    slug: "typography",
+    title: "Typography",
+    status: "done",
+    component: TypographyPage,
+  },
   todo("Foundations", "fonts"),
   todo("Foundations", "spacing"),
   todo("Foundations", "radius"),
