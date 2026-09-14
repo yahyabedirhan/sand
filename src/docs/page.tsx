@@ -30,30 +30,32 @@ export function Prose({ children }: { children: ReactNode }) {
   return <div className="flex flex-col gap-sm text-body">{children}</div>;
 }
 
+export function InlineCode({ children }: { children: ReactNode }) {
+  return <code className="font-mono text-code">{children}</code>;
+}
+
 // A rule as a pair of rendered examples. Every rule on a foundation or
 // component page uses this so the rule is concrete, not prose.
+type RuleExample = { example: ReactNode; text: string };
+
 export function DoDont({
   rule,
-  doExample,
-  dontExample,
-  doText,
-  dontText,
+  do: good,
+  dont: bad,
 }: {
   rule: string;
-  doExample: ReactNode;
-  dontExample: ReactNode;
-  doText: string;
-  dontText: string;
+  do: RuleExample;
+  dont: RuleExample;
 }) {
   return (
     <div className="flex flex-col gap-sm">
       <h3 className="text-heading-4">{rule}</h3>
       <div className="grid gap-md sm:grid-cols-2">
-        <Example label="Do" tone="do" text={doText}>
-          {doExample}
+        <Example label="Do" tone="do" text={good.text}>
+          {good.example}
         </Example>
-        <Example label="Don't" tone="dont" text={dontText}>
-          {dontExample}
+        <Example label="Don't" tone="dont" text={bad.text}>
+          {bad.example}
         </Example>
       </div>
     </div>

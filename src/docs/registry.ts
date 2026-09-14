@@ -18,11 +18,11 @@ export type Section = (typeof sections)[number];
 
 export type PageStatus = "done" | "todo";
 
+// A page is written when it has a component; the status is derived from that.
 export type Page = {
   section: Section;
   slug: string;
   title: string;
-  status: PageStatus;
   component?: ComponentType;
 };
 
@@ -110,7 +110,11 @@ function todo(
   slug: string,
   title = titleFromSlug(slug),
 ): Page {
-  return { section, slug, title, status: "todo" };
+  return { section, slug, title };
+}
+
+export function pageStatus(page: Page): PageStatus {
+  return page.component ? "done" : "todo";
 }
 
 export const pages: Page[] = [
@@ -118,14 +122,12 @@ export const pages: Page[] = [
     section: "Overview",
     slug: "",
     title: "Overview",
-    status: "done",
     component: OverviewPage,
   },
   {
     section: "Overview",
     slug: "modules",
     title: "Modules",
-    status: "done",
     component: ModulesPage,
   },
   todo("Foundations", "colors"),
@@ -133,7 +135,6 @@ export const pages: Page[] = [
     section: "Foundations",
     slug: "typography",
     title: "Typography",
-    status: "done",
     component: TypographyPage,
   },
   todo("Foundations", "fonts"),

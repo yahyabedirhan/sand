@@ -2,10 +2,16 @@ import { Link } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
 import { PageHeader, Prose, Section } from "@/docs/page";
-import { pagePath, pages, pagesIn, sections } from "@/docs/registry";
+import {
+  pagePath,
+  pages,
+  pagesIn,
+  pageStatus,
+  sections,
+} from "@/docs/registry";
 
 export function OverviewPage() {
-  const done = pages.filter((page) => page.status === "done").length;
+  const done = pages.filter((page) => pageStatus(page) === "done").length;
   return (
     <>
       <PageHeader
@@ -66,11 +72,13 @@ export function OverviewPage() {
               {pagesIn(section).map((page) => (
                 <li key={pagePath(page)}>
                   <Badge
-                    variant={page.status === "done" ? "default" : "outline"}
+                    variant={
+                      pageStatus(page) === "done" ? "default" : "outline"
+                    }
                     render={<Link to={pagePath(page)} />}
                   >
                     {page.title}
-                    {page.status === "todo" && " · TODO"}
+                    {pageStatus(page) === "todo" && " · TODO"}
                   </Badge>
                 </li>
               ))}

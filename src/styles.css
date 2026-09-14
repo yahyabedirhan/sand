@@ -253,6 +253,30 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* Elements map to text roles by default. Base-layer rules lose to any
+     utility, so a component's own text-sm still wins. Face is not set here;
+     the serif on the top two title levels is applied by the page layout. */
+  h1 {
+    @apply text-heading-1;
+  }
+  h2 {
+    @apply text-heading-2;
+  }
+  h3 {
+    @apply text-heading-3;
+  }
+  h4 {
+    @apply text-heading-4;
+  }
+  p {
+    @apply text-body;
+  }
+  code,
+  kbd,
+  samp {
+    @apply font-mono text-code;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

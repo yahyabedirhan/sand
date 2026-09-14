@@ -4,7 +4,7 @@ One section per working session, newest last. What changed, why, and what to rev
 
 ## 2026-09-14, session 1: scoping
 
-Grilled the idea into [.specs/00-sand-design-system.md](../.specs/00-sand-design-system.md). Every recommendation in the final round was accepted. Decisions the spec states without explaining were written into the first handoff: Tailwind over plain CSS was a call for shadcn compatibility; Base UI, Tabler, and Recharts were inherited from a previous project so its components could be copied; Oxlint is an exploration.
+Grilled the idea into [.specs/00-sand-design-system.md](../.specs/00-sand-design-system.md). Every recommendation in the final round was accepted. Decisions the spec states without explaining were written into the first handoff. Tailwind over plain CSS was a call for shadcn compatibility. Base UI, Tabler, and Recharts were inherited from a previous project so its components could be copied. Oxlint is an exploration.
 
 ## 2026-09-14, session 2: repository setup
 
@@ -18,6 +18,7 @@ Built the whole bootstrap scope from the spec and the first real page.
 - `shadcn add --all` wrote into a literal `@/` folder because the root `tsconfig.json` is a references-only file with no `paths`; moved the output into `src/`. Worth remembering for the next `shadcn add`.
 - The generated registry imports Base UI, Tabler, and Recharts directly. Repointed every import at `src/modules/*` so the boundary holds inside the registry too; see [decisions/module-boundary.md](decisions/module-boundary.md). The lint rule was proven against a deliberate bad import before anything relied on it.
 - Fonts and animation are CSS-only modules (`index.css`) because Tailwind needs their imports inside the stylesheet it compiles.
+- Code review after the work: element-to-role defaults were missing and are now in `@layer base`; page status is derived from the presence of a component instead of a second field.
 - The docs shell, registry, and theme toggle are the first consumer. 73 pages in the registry, 3 written (Overview, Modules, Typography), the rest TODO stubs.
 - Gitleaks guard copied from the workstation repo; history scanned clean.
 - Typography: the decision note compares raw-only, fixed handpicked, ratio-based, and semantic-only, and picks fixed handpicked roles with the raw scale kept for exceptions. The roles live in `styles.css` as `--text-<role>` tokens with their own line height, weight, and tracking.

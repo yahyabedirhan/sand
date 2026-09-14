@@ -13,7 +13,7 @@ type Module = {
 const modules: Module[] = [
   {
     name: "Primitives",
-    role: "Unstyled, accessible building blocks: dialogs, menus, selects, and the behavior behind them.",
+    role: "Unstyled, accessible building blocks such as dialogs, menus, and selects, and the behavior behind them.",
     choice: "Base UI (@base-ui/react)",
     dependents:
       "Every component in components/ui that has behavior beyond markup.",
@@ -39,7 +39,7 @@ const modules: Module[] = [
   },
   {
     name: "Fonts",
-    role: "Loads the three faces: Geist, Fraunces, Geist Mono.",
+    role: "Loads the three faces, Geist, Fraunces, and Geist Mono.",
     choice: "Self-hosted through fontsource packages",
     dependents:
       "styles.css maps the family names to font-sans, font-serif, font-mono.",
@@ -51,7 +51,7 @@ const modules: Module[] = [
     role: "Enter and exit utilities used by overlays and menus.",
     choice: "tw-animate-css",
     dependents:
-      "Components that open and close: dialog, sheet, popover, menus, tooltip, toast.",
+      "Components that open and close, such as dialog, sheet, popover, menus, tooltip, and toast.",
     alternatives: "A motion library such as Motion.",
     swap: "src/modules/animation/index.css, plus the animate-in and animate-out class names in components.",
   },

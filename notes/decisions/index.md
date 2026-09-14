@@ -1,6 +1,6 @@
 # decisions
 
-One note per foundation and module, ADR style: context, options, decision, consequences. A note records why, so the consumer page does not have to.
+One note per foundation and module, in ADR style with context, options, decision, and consequences. A note records why, so the consumer page does not have to.
 
 - [tooling.md](tooling.md) - Vite, Tailwind over plain CSS, Oxlint over ESLint
 - [module-boundary.md](module-boundary.md) - one entry point per library, enforced by lint

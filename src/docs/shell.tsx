@@ -16,7 +16,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { pagePath, pagesIn, sections } from "@/docs/registry";
+import { pagePath, pagesIn, pageStatus, sections } from "@/docs/registry";
 import { ThemeToggle } from "@/docs/theme-toggle";
 
 // The docs shell is Sand's first consumer: sidebar, layout, and toggle are
@@ -47,7 +47,7 @@ export function Shell() {
                         >
                           {page.title}
                         </SidebarMenuButton>
-                        {page.status === "todo" && (
+                        {pageStatus(page) === "todo" && (
                           <SidebarMenuBadge>TODO</SidebarMenuBadge>
                         )}
                       </SidebarMenuItem>

@@ -13,7 +13,7 @@ Sand is named after its palette. The spec limits the token set to the standard s
 
 ## Decision
 
-The warm sand palette, copied with two changes: the app-specific palette layered on top of it in the previous project is left out, and `--primary-foreground` stays dark rather than tweakcn's white because the tan primary needs dark text to stay legible.
+The warm sand palette, copied with two changes. The app-specific palette layered on top of it in the previous project is left out, and `--primary-foreground` stays dark rather than tweakcn's white because the tan primary needs dark text to stay legible.
 
 ## Consequences
 

@@ -1,10 +1,11 @@
-import { DoDont, PageHeader, Prose, Section } from "@/docs/page";
+import { DoDont, InlineCode, PageHeader, Prose, Section } from "@/docs/page";
 
 type Role = {
   name: string;
   utility: string;
   use: string;
   serif?: boolean;
+  mono?: boolean;
 };
 
 const roles: Role[] = [
@@ -48,7 +49,8 @@ const roles: Role[] = [
   },
   {
     name: "code",
-    utility: "text-code font-mono",
+    utility: "text-code",
+    mono: true,
     use: "Inline code, keyboard keys, tabular numbers.",
   },
 ];
@@ -67,12 +69,12 @@ export function TypographyPage() {
         <Prose>
           <p>
             Text in Sand has two layers. The semantic layer is a short list of
-            roles, from <code className="font-mono text-code">heading-1</code>{" "}
-            down to <code className="font-mono text-code">caption</code>, each a
-            single utility class. The raw layer is the numeric size scale (
-            <code className="font-mono text-code">text-xs</code> through{" "}
-            <code className="font-mono text-code">text-4xl</code>) and the
-            separate weight, leading, and tracking utilities.
+            roles, from <InlineCode>heading-1</InlineCode> down to{" "}
+            <InlineCode>caption</InlineCode>, each a single utility class. The
+            raw layer is the numeric size scale (
+            <InlineCode>text-xs</InlineCode> through{" "}
+            <InlineCode>text-4xl</InlineCode>) and the separate weight, leading,
+            and tracking utilities.
           </p>
           <p>
             Reach for a role. The raw scale is for exceptions only: a number
@@ -91,13 +93,19 @@ export function TypographyPage() {
               className="grid gap-sm py-md sm:grid-cols-[10rem_1fr]"
             >
               <div className="flex flex-col gap-xs">
-                <code className="font-mono text-code">{role.utility}</code>
+                <InlineCode>{role.utility}</InlineCode>
                 <span className="text-caption text-muted-foreground">
                   {role.use}
                 </span>
               </div>
               <p
-                className={`${role.utility} ${role.serif ? "font-serif" : ""}`}
+                className={[
+                  role.utility,
+                  role.serif && "font-serif",
+                  role.mono && "font-mono",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
               >
                 {sample}
               </p>
@@ -105,77 +113,92 @@ export function TypographyPage() {
           ))}
         </div>
         <p className="text-body-sm text-muted-foreground">
-          The serif face on{" "}
-          <code className="font-mono text-code">heading-1</code> and{" "}
-          <code className="font-mono text-code">heading-2</code> comes from the
-          page layout, not from the role. See Fonts.
+          The serif face on <InlineCode>heading-1</InlineCode> and{" "}
+          <InlineCode>heading-2</InlineCode> comes from the page layout, not
+          from the role. See Fonts.
         </p>
       </Section>
 
       <Section title="Rules">
         <DoDont
           rule="Use a role, not a size"
-          doText="One class, and the heading matches every other heading-3 in the product."
-          dontText="Four classes that approximate a heading and drift from the others over time."
-          doExample={<h3 className="text-heading-3">Order summary</h3>}
-          dontExample={
-            <h3 className="text-xl font-semibold leading-tight tracking-tight">
-              Order summary
-            </h3>
-          }
+          do={{
+            text: "One class, and the heading matches every other heading-3 in the product.",
+            example: <h3 className="text-heading-3">Order summary</h3>,
+          }}
+          dont={{
+            text: "Four classes that approximate a heading and drift from the others over time.",
+            example: (
+              <h3 className="text-xl font-semibold leading-tight tracking-tight">
+                Order summary
+              </h3>
+            ),
+          }}
         />
         <DoDont
           rule="Keep one heading-1 per page"
-          doText="The page title is heading-1; sections step down to heading-2."
-          dontText="Two heading-1 titles compete and the page has no clear top."
-          doExample={
-            <div className="flex flex-col gap-xs">
-              <p className="font-serif text-heading-1">Invoices</p>
-              <p className="font-serif text-heading-2">Unpaid</p>
-            </div>
-          }
-          dontExample={
-            <div className="flex flex-col gap-xs">
-              <p className="font-serif text-heading-1">Invoices</p>
-              <p className="font-serif text-heading-1">Unpaid</p>
-            </div>
-          }
+          do={{
+            text: "The page title is heading-1; sections step down to heading-2.",
+            example: (
+              <div className="flex flex-col gap-xs">
+                <p className="font-serif text-heading-1">Invoices</p>
+                <p className="font-serif text-heading-2">Unpaid</p>
+              </div>
+            ),
+          }}
+          dont={{
+            text: "Two heading-1 titles compete and the page has no clear top.",
+            example: (
+              <div className="flex flex-col gap-xs">
+                <p className="font-serif text-heading-1">Invoices</p>
+                <p className="font-serif text-heading-1">Unpaid</p>
+              </div>
+            ),
+          }}
         />
         <DoDont
           rule="Do not shrink body text below body-sm for reading"
-          doText="Secondary text is body-sm and still comfortable to read."
-          dontText="Caption is for labels and hints, not for a paragraph."
-          doExample={
-            <p className="text-body-sm">
-              Refunds are issued to the original payment method within five
-              business days.
-            </p>
-          }
-          dontExample={
-            <p className="text-caption">
-              Refunds are issued to the original payment method within five
-              business days.
-            </p>
-          }
+          do={{
+            text: "Secondary text is body-sm and still comfortable to read.",
+            example: (
+              <p className="text-body-sm">
+                Refunds are issued to the original payment method within five
+                business days.
+              </p>
+            ),
+          }}
+          dont={{
+            text: "Caption is for labels and hints, not for a paragraph.",
+            example: (
+              <p className="text-caption">
+                Refunds are issued to the original payment method within five
+                business days.
+              </p>
+            ),
+          }}
         />
         <DoDont
           rule="Use the code role for code, keys, and numbers that align"
-          doText="Mono with tabular figures keeps the columns straight."
-          dontText="Proportional digits wobble in a column."
-          doExample={
-            <div className="flex flex-col font-mono text-code tabular-nums">
-              <span>1,204.50</span>
-              <span>987.00</span>
-              <span>12.25</span>
-            </div>
-          }
-          dontExample={
-            <div className="flex flex-col text-body">
-              <span>1,204.50</span>
-              <span>987.00</span>
-              <span>12.25</span>
-            </div>
-          }
+          do={{
+            text: "Mono with tabular figures keeps the columns straight.",
+            example: (
+              <div className="flex flex-col font-mono text-code tabular-nums">
+                <span>1,204.50</span>
+                <span>987.00</span>
+                <span>12.25</span>
+              </div>
+            ),
+          }}
+          dont={{
+            text: "Proportional digits wobble in a column.",
+            example: (
+              <div className="flex flex-col text-body">
+                <span>1,204.50</span>
+                <span>987.00</span>
+                <span>12.25</span>
+              </div>
+            ),
+          }}
         />
       </Section>
 
@@ -188,8 +211,8 @@ export function TypographyPage() {
           </p>
           <h3 className="text-heading-3">Email</h3>
           <p className="text-body-sm text-muted-foreground">
-            Sent to <code className="font-mono text-code">you@example.com</code>
-            . Change it in Profile.
+            Sent to <InlineCode>you@example.com</InlineCode>. Change it in
+            Profile.
           </p>
         </div>
       </Section>
