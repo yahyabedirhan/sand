@@ -3,7 +3,7 @@
 Status: planned
 Last updated: 2026-09-14
 
-Sand is an example design system and its consumer-facing documentation site,
+Sand is a design system and its consumer-facing documentation site,
 built as one React + Vite application. The repository exists to learn what a
 design system is made of, to write the usage rules that most systems leave
 implicit, and to show the result publicly.
@@ -24,7 +24,7 @@ that question is answered by grep.
 
 ## Solution
 
-Build Sand: an opinionated example design system on top of the shadcn
+Build Sand: an opinionated, production-ready design system on top of the shadcn
 conventions, and a documentation site whose pages are React components that
 render the real tokens and components live. The site is written for consumers
 of the system, not maintainers. Every foundation and component page follows a

@@ -1,6 +1,6 @@
 # Sand
 
-An example design system and its documentation site, built as one React + Vite
+A design system and its documentation site, built as one React + Vite
 app. Written for consumers of the system; the reasoning lives in `notes/`.
 
 ## Setup

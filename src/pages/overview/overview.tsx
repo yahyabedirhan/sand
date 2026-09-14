@@ -10,7 +10,7 @@ export function OverviewPage() {
     <>
       <PageHeader
         title="Sand"
-        lead="An example design system. Semantic tokens first, raw values for exceptions, one entry point per third-party library."
+        lead="Semantic tokens first, raw values for exceptions, one entry point per third-party library."
       />
 
       <Section title="Principles">

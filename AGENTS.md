@@ -1,6 +1,6 @@
 # Sand
 
-Sand is an example design system and its documentation site, one React + Vite
+Sand is a design system and its documentation site, one React + Vite
 app. The product is specified in `.specs/00-sand-design-system.md`. Read it
 before touching code; this file carries only what the spec does not.
 
