@@ -1,0 +1,15 @@
+# dependencies and build output
+node_modules/
+dist/
+
+# secrets and local env
+.env
+.env.*
+secrets/
+
+# claude code local overrides
+.claude/settings.local.json
+
+# os and editor
+.DS_Store
+*.swp
