@@ -1,0 +1,56 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "ignorePatterns": ["dist"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@base-ui/react", "@base-ui/react/*"],
+            "message": "Import primitives from @/modules/primitives."
+          },
+          {
+            "group": ["@tabler/icons-react", "@tabler/icons-react/*"],
+            "message": "Import icons from @/modules/icons."
+          },
+          {
+            "group": ["recharts", "recharts/*"],
+            "message": "Import chart parts from @/modules/charts."
+          },
+          {
+            "group": ["@fontsource/*"],
+            "message": "Fonts are imported once, in src/modules/fonts."
+          },
+          {
+            "group": ["tw-animate-css"],
+            "message": "Animation is imported once, in src/modules/animation."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/modules/**"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    },
+    {
+      "files": ["src/components/ui/**", "src/hooks/use-mobile.ts"],
+      "rules": {
+        "react/only-export-components": "off",
+        "react/set-state-in-effect": "off"
+      }
+    }
+  ]
+}
