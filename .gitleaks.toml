@@ -1,0 +1,28 @@
+# Pattern-only rules. No personal values live here; the patterns match any
+# home path, any email, any IPv4, on top of gitleaks' default token rules.
+title = "sand"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "home-path"
+description = "absolute home directory path (use $HOME)"
+regex = '''(/Users/|/home/)[A-Za-z0-9._-]+/'''
+
+[[rules]]
+id = "email-address"
+description = "email address"
+regex = '''[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'''
+[rules.allowlist]
+regexes = ['''noreply@''', '''example\.com''', '''git@github\.com''']
+
+[[rules]]
+id = "ipv4"
+description = "IPv4 address"
+regex = '''\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b'''
+[rules.allowlist]
+regexes = ['''127\.0\.0\.1''', '''0\.0\.0\.0''']
+
+[allowlist]
+paths = ['''\.gitleaks\.toml$''', '''skills-lock\.json$''', '''pnpm-lock\.yaml$''']
