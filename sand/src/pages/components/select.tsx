@@ -21,7 +21,7 @@ const code = `import {
   SelectValue,
 } from "sand/ui/select";
 
-const plans = { starter: "Starter", pro: "Pro" };
+const plans = { starter: "Starter", pro: "Pro", team: "Team" };
 
 <Select defaultValue="pro" items={plans}>
   <SelectTrigger aria-label="Plan">
@@ -30,6 +30,7 @@ const plans = { starter: "Starter", pro: "Pro" };
   <SelectContent>
     <SelectItem value="starter">Starter</SelectItem>
     <SelectItem value="pro">Pro</SelectItem>
+    <SelectItem value="team">Team</SelectItem>
   </SelectContent>
 </Select>`;
 

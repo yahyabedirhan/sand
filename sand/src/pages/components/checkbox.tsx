@@ -3,8 +3,12 @@ import { Label } from "@/components/ui/label";
 import { ComponentPage } from "@/docs/component-page";
 
 const code = `import { Checkbox } from "sand/ui/checkbox";
+import { Label } from "sand/ui/label";
 
-<Checkbox defaultChecked aria-label="Email me a receipt" />`;
+<Label>
+  <Checkbox defaultChecked />
+  Email me a receipt
+</Label>`;
 
 export function CheckboxPage() {
   return (

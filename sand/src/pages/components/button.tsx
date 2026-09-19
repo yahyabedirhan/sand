@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ComponentPage } from "@/docs/component-page";
+import { InlineCode } from "@/docs/page";
 import { PreviewContainer } from "@/docs/preview-container";
 
 const demoCode = `import { Button } from "sand/ui/button";
@@ -11,7 +12,22 @@ const variantsCode = `<Button>Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="destructive">Delete</Button>`;
+<Button variant="destructive">Delete</Button>
+<Button disabled>Disabled</Button>
+
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
+<Button>Default</Button>
+<Button size="lg">Large</Button>`;
+
+function ButtonDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-sm">
+      <Button>Publish</Button>
+      <Button variant="ghost">Save draft</Button>
+    </div>
+  );
+}
 
 function VariantSet() {
   return (
@@ -31,7 +47,7 @@ export function ButtonPage() {
     <ComponentPage
       title="Button"
       lead="Triggers an action."
-      demo={<VariantSet />}
+      demo={<ButtonDemo />}
       code={demoCode}
       sections={[
         {
@@ -63,7 +79,8 @@ export function ButtonPage() {
           children: (
             <p className="text-body text-muted-foreground">
               Use visible action text whenever space allows. Give every
-              icon-only button an accessible name with <code>aria-label</code>.
+              icon-only button an accessible name with{" "}
+              <InlineCode>aria-label</InlineCode>.
             </p>
           ),
         },

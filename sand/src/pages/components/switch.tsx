@@ -2,9 +2,13 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { ComponentPage } from "@/docs/component-page";
 
-const code = `import { Switch } from "sand/ui/switch";
+const code = `import { Label } from "sand/ui/label";
+import { Switch } from "sand/ui/switch";
 
-<Switch defaultChecked aria-label="Weekly digest" />`;
+<Label>
+  <Switch defaultChecked />
+  Weekly digest
+</Label>`;
 
 export function SwitchPage() {
   return (

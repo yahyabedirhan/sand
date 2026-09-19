@@ -7,6 +7,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { ComponentPage } from "@/docs/component-page";
+import { InlineCode } from "@/docs/page";
 
 const code = `import {
   InputOTP,
@@ -29,7 +30,7 @@ const code = `import {
   </InputOTPGroup>
 </InputOTP>`;
 
-function OTPExample() {
+function OTPDemo() {
   const [value, setValue] = useState("731842");
   return (
     <InputOTP
@@ -58,7 +59,7 @@ export function InputOTPPage() {
     <ComponentPage
       title="Input OTP"
       lead="Collects a one-time code in separate visual slots."
-      demo={<OTPExample />}
+      demo={<OTPDemo />}
       code={code}
       sections={[
         {
@@ -66,8 +67,8 @@ export function InputOTPPage() {
           title: "Mechanic",
           children: (
             <p className="text-body text-muted-foreground">
-              Input OTP uses the <code>input-otp</code> library for its
-              one-time-code behavior and slot state.
+              Input OTP uses the <InlineCode>input-otp</InlineCode> library for
+              its one-time-code behavior and slot state.
             </p>
           ),
         },

@@ -12,6 +12,7 @@ const code = `import {
 <NativeSelect aria-label="Timezone" defaultValue="utc">
   <NativeSelectOption value="utc">UTC</NativeSelectOption>
   <NativeSelectOption value="cet">Central European Time</NativeSelectOption>
+  <NativeSelectOption value="est">Eastern Time</NativeSelectOption>
 </NativeSelect>`;
 
 export function NativeSelectPage() {
