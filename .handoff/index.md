@@ -7,3 +7,4 @@ Session handoffs, newest last. Read the newest first; it says which earlier ones
 - [2026-09-19-sand-build-orchestration-session-extension.md](2026-09-19-sand-build-orchestration-session-extension.md) - 02 on main, 04 and 11 unmerged; superseded by wave 2
 - [2026-09-19-sand-build-orchestration-wave-2.md](2026-09-19-sand-build-orchestration-wave-2.md) - most build tickets on main; remaining 03, 15, then 16–20
 - [2026-09-19-sand-build-orchestration-wave-3.md](2026-09-19-sand-build-orchestration-wave-3.md) - 16/17/19 decided; 03, 15, 16 in flight; 19 deferred
+- [2026-09-19-sand-build-session-end.md](2026-09-19-sand-build-session-end.md) - in-scope tickets on main; remaining is tag v0.0.1 and deferred 19
