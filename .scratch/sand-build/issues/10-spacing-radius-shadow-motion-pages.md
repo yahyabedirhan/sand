@@ -6,6 +6,8 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 Ticket 22 may rename the named spacing tokens; read its answer before writing the Spacing page.
 
+Ticket 22 settled the names as `--space-xs` `--space-sm` `--space-md` `--space-lg` `--space-xl` `--space-2xl`. Matching utilities keep `gap-md` and the other named spacing classes. They do not live under `--spacing-*`.
+
 **Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
 
 **Status:** ready-for-agent

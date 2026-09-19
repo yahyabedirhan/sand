@@ -4,10 +4,10 @@
 
 **Blocked by:** 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] `max-w-xs` and the other container sizes compute to Tailwind's defaults
-- [ ] the named spacing utilities used across pages and components still work (grep for `-xs`, `-sm`, `-md`, `-lg`, `-xl`, `-2xl` spacing utilities and confirm nothing changed visually)
-- [ ] Dialog, Sheet, Toast, and the container tooltip render at their intended widths, checked in the browser
-- [ ] the decision and the final token names are recorded for ticket 10 (a comment in `styles.css` and a line on ticket 10)
-- [ ] `check` and `build` pass
+- [x] `max-w-xs` and the other container sizes compute to Tailwind's defaults
+- [x] the named spacing utilities used across pages and components still work (grep for `-xs`, `-sm`, `-md`, `-lg`, `-xl`, `-2xl` spacing utilities and confirm nothing changed visually)
+- [x] Dialog, Sheet, Toast, and the container tooltip render at their intended widths, checked in the browser
+- [x] the decision and the final token names are recorded for ticket 10 (a comment in `styles.css` and a line on ticket 10)
+- [x] `check` and `build` pass
