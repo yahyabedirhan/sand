@@ -1,8 +1,8 @@
 # 2026-09-14: Sand foundation bootstrap
 
 This record consolidates the four handoffs from 2026-09-14. It records the
-state reached that day and the commits that produced it. The source handoffs
-remain the detailed session trail until they are deliberately removed.
+state reached that day and the commits that produced it. The four source
+handoffs were retired after this record was created.
 
 ## Outcome
 
@@ -109,7 +109,7 @@ implementation order.
 17. `85f58c5` `docs: add the fourth bootstrap handoff`
 18. `48a660e` `refactor: move modules into their own sidebar section`
 
-The four source handoffs consolidated here are:
+The four source handoffs consolidated here were:
 
 - `2026-09-14-sand-bootstrap.md`
 - `2026-09-14-sand-bootstrap-2.md`
