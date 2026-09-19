@@ -20,6 +20,7 @@ import { FontsPage } from "@/pages/mechanics/fonts";
 import { IconsPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
+import { ApplicationPreviewPage } from "@/pages/previews/application/application-preview";
 import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
 import { PreviewPlaceholderPage } from "@/pages/previews/preview-placeholder";
 
@@ -220,7 +221,7 @@ export const pages: Page[] = [
     section: "Previews",
     slug: "application",
     title: "Application",
-    component: PreviewPlaceholderPage,
+    component: ApplicationPreviewPage,
     layout: "full",
   },
   {
