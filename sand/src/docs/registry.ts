@@ -1,6 +1,19 @@
 import type { ComponentType } from "react";
 
 import { TypographyPage } from "@/pages/foundations/typography";
+import { ButtonPage } from "@/pages/components/button";
+import { CheckboxPage } from "@/pages/components/checkbox";
+import { FieldPage } from "@/pages/components/field";
+import { InputPage } from "@/pages/components/input";
+import { InputGroupPage } from "@/pages/components/input-group";
+import { InputOTPPage } from "@/pages/components/input-otp";
+import { LabelPage } from "@/pages/components/label";
+import { NativeSelectPage } from "@/pages/components/native-select";
+import { RadioGroupPage } from "@/pages/components/radio-group";
+import { SelectPage } from "@/pages/components/select";
+import { SliderPage } from "@/pages/components/slider";
+import { SwitchPage } from "@/pages/components/switch";
+import { TextareaPage } from "@/pages/components/textarea";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
 import { FontsPage } from "@/pages/mechanics/fonts";
@@ -101,7 +114,8 @@ const componentSlugs = [
   "toggle",
   "toggle-group",
   "tooltip",
-];
+] as const;
+type ComponentSlug = (typeof componentSlugs)[number];
 
 const titleOverrides: Record<string, string> = {
   "input-otp": "Input OTP",
@@ -124,6 +138,28 @@ function todo(
   title = titleFromSlug(slug),
 ): Page {
   return { section, slug, title };
+}
+
+const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
+  button: ButtonPage,
+  checkbox: CheckboxPage,
+  field: FieldPage,
+  input: InputPage,
+  "input-group": InputGroupPage,
+  "input-otp": InputOTPPage,
+  label: LabelPage,
+  "native-select": NativeSelectPage,
+  "radio-group": RadioGroupPage,
+  select: SelectPage,
+  slider: SliderPage,
+  switch: SwitchPage,
+  textarea: TextareaPage,
+};
+
+function componentPage(slug: ComponentSlug): Page {
+  const page = todo("Components", slug);
+  const component = writtenComponentPages[slug];
+  return component ? { ...page, component } : page;
 }
 
 export function pageStatus(page: Page): PageStatus {
@@ -151,7 +187,7 @@ export const pages: Page[] = [
   todo("Foundations", "shadow"),
   todo("Foundations", "motion"),
   todo("Foundations", "icons"),
-  ...componentSlugs.map((slug) => todo("Components", slug)),
+  ...componentSlugs.map(componentPage),
   {
     section: "Mechanics",
     slug: "primitives",
