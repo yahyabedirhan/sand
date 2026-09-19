@@ -17,9 +17,7 @@ sentence. Examples are optional. Put constraints that span topics in
 
 ## Keep pages in sync
 
-After changing a rule file, run `pnpm dev` from the repository root and open
-the matching docs page. Compare the page's Rules section with the markdown
-file. Every title, sentence, and rule must appear in the same order, with no
-extra rules on either side. Then run `pnpm check` and `pnpm build`.
-
-TODO: Ticket 03 replaces this manual comparison with an automated sync check.
+After changing a rule file or a topic page, run `pnpm check` from the
+repository root. The rules sync test fails when a rule title in a topic's
+rule file is missing from that topic's page, or a title on the page is
+missing from the file.

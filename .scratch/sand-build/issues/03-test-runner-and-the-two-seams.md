@@ -4,10 +4,10 @@
 
 **Blocked by:** 02 Rules as markdown
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Vitest (or the runner the maintainer prefers, ask if unsure) installed in the package
-- [ ] a registry test covering order, routes, and the TODO stub
-- [ ] a rules sync check that reads the rule files and the pages and reports mismatches
-- [ ] `pnpm check` runs the tests and passes
-- [ ] the sync-check procedure from ticket 02 points at the script
+- [x] Vitest (or the runner the maintainer prefers, ask if unsure) installed in the package
+- [x] a registry test covering order, routes, and the TODO stub
+- [x] a rules sync check that reads the rule files and the pages and reports mismatches
+- [x] `pnpm check` runs the tests and passes
+- [x] the sync-check procedure from ticket 02 points at the script
