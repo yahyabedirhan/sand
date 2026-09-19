@@ -302,20 +302,19 @@ function TokenSwatch({ name, sample }: Pick<ColorToken, "name" | "sample">) {
   }
 
   return (
-    <div
-      ref={ref}
-      className="flex aspect-[1/0.9] min-w-0 flex-col justify-between rounded-md border p-sm"
-      style={{
-        backgroundColor: `var(--${name})`,
-        color: `var(--${sample})`,
-      }}
-    >
-      <span className="text-body-sm font-medium leading-none">Aa</span>
-      <div className="min-w-0">
-        <div className="truncate font-mono text-caption">{name}</div>
+    <div className="flex min-w-0 flex-col gap-xs">
+      <div
+        ref={ref}
+        className="flex aspect-[1/0.9] min-w-0 flex-col justify-between rounded-md border p-sm"
+        style={{
+          backgroundColor: `var(--${name})`,
+          color: `var(--${sample})`,
+        }}
+      >
+        <span className="text-body-sm font-medium leading-none">Aa</span>
         <button
           type="button"
-          className="font-mono text-caption underline decoration-dotted underline-offset-2 opacity-80"
+          className="self-start font-mono text-caption underline decoration-dotted underline-offset-2 opacity-80"
           onClick={copyHex}
           disabled={!hex}
           aria-label={hex ? `Copy ${hex}` : `Copy hex for ${name}`}
@@ -323,6 +322,7 @@ function TokenSwatch({ name, sample }: Pick<ColorToken, "name" | "sample">) {
           {copied ? "copied" : hex || "#"}
         </button>
       </div>
+      <div className="truncate font-mono text-caption">{name}</div>
     </div>
   );
 }
