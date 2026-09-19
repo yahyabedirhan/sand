@@ -12,3 +12,4 @@ One note per foundation and mechanic, in ADR style with context, options, decisi
 - [animation.md](animation.md) - tw-animate-css
 - [colors.md](colors.md) - the warm sand palette, semantic only
 - [typography.md](typography.md) - semantic text roles over the size scale
+- [mechanics-pages.md](mechanics-pages.md) - nine Mechanics pages, including React, Vite, Tailwind, and shadcn

@@ -4,7 +4,10 @@
 
 **Blocked by:** 18 Installation guide, update script, consumer AGENTS.md
 
-**Status:** ready-for-agent
+**Status:** blocked-on-human
+
+Deferred by the maintainer on 2026-09-19. Do not run an outside consumer
+test in this wave. Leave 0.1.0 untagged until that test is scheduled.
 
 - [ ] a fresh repository adopts Sand through the guide; the run is agent-driven with the maintainer watching
 - [ ] friction log written to the maintainer notes

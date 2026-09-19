@@ -266,10 +266,9 @@ later.
   disclosure). Pages never show where the rule file lives.
 - Mechanics are one page per thing Sand is built on: role, what it owns, a
   rich showcase in the container, the parts used with links to the library,
-  external links, alternatives considered with links. Which of React, Vite,
-  Tailwind, and shadcn get a page of their own, beyond the five that exist
-  (primitives, icons, charts, fonts, animation), is decided when the section
-  is filled in. TODO: settle the Mechanics page list.
+  external links, alternatives considered with links. The pages are
+  Primitives, Icons, Charts, Fonts, Animation, React, Vite, Tailwind, and
+  shadcn.
 - Previews are the four pages above, a pill row to switch between them, the
   container full width.
 - The agreed format was prototyped on 2026-09-19; the prototype and the

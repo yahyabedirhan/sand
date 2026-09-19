@@ -6,14 +6,16 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
-**Status:** blocked-on-human
+**Status:** ready-for-agent
 
-The maintainer must choose whether React, Vite, Tailwind, and shadcn get
-Mechanics pages beside the five that already exist (primitives, icons, charts,
-fonts, animation). That choice is not recorded. The spec TODO stays until the
-maintainer records it. Do not invent pages for those four.
+Maintainer decision, 2026-09-19, recorded in
+`.notes/decisions/mechanics-pages.md`. The nine pages are Primitives, Icons,
+Charts, Fonts, Animation, React, Vite, Tailwind, and shadcn. The spec TODO
+for this list is already closed. Write the four new pages and bring every
+Mechanics page up to `.scratch/sand-build/page-format.md` (Primitives is the
+reference). No setup guides.
 
-- [ ] decision recorded and the spec's TODO line removed
+- [x] decision recorded and the spec's TODO line removed
 - [ ] every mechanic decided on has a page with role, choice, dependents
 - [ ] each page has the showcase in the container, the parts chip row with the expandable linked list, external links, and alternatives with links
 - [ ] no setup guides on the pages
