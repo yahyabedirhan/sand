@@ -1,6 +1,7 @@
 # Map: the Sand spec
 
 Label: wayfinder:map
+Status: complete 2026-09-19, all tickets resolved
 Tracker: local markdown (`.scratch/sand-spec/issues/`)
 
 ## Destination
@@ -61,21 +62,22 @@ foundation and component pages are written.
 - [What a module is](issues/07-module-terminology.md): Sand is Design (raw material and rules) realised by Mechanics (React, Vite, Tailwind, shadcn, Base UI, Tabler, Recharts, fontsource, tw-animate-css); the code-level module boundary is a misunderstanding to remove (ticket 08); Modules docs become Mechanics, no swap field.
 - [Remove the module boundary from the code](issues/08-remove-module-boundary.md): `src/modules` and the lint rule are gone, components import Base UI, Tabler, and Recharts directly, fonts and animation are imported in `styles.css`, the Modules pages are the Mechanics section (role, choice, dependents); the per-library decision notes still need a rewrite with the maintainer.
 
+- [Write the spec](issues/06-write-the-spec.md): `.specs/00-sand-design-system.md` rewritten in place from the map; two seams (page registry, rules sync check); Design and Mechanics confirmed; adoption, deployment, the example project contents, the README visuals, and `design.md` listed as deferred inside it. The destination is reached; only ticket 04 stays open, for a later effort.
+- [How a consumer project adopts Sand](issues/04-adoption-mechanism.md): git snapshot of `sand/` at a tag into the consumer's pnpm workspace, imported as a workspace package, consumer owns the files; this repo becomes a workspace with `sand/` and `examples/`; agent-first `installation.md`; semver tags 0.0.1 / 0.1.0 / 1.0.0; update is overwrite for now.
+
 ## Not yet specified
 
 - The aesthetic itself: what Sand looks like beyond the inherited warm-sand
   theme. Discovered by iterating on the previews once they exist, not decided
   in a spec. May graduate into prototype tickets after the previews ticket.
-- The example project's contents and scope (to-do vs kanban vs other). Depends
-  on the adoption ticket for where it lives; its own shape comes after.
+- The example project's contents and scope (to-do vs kanban vs other). Lives
+  in `examples/`; its own shape comes after the pages.
 - A reusable block layer on top of components (blocks a consumer can adopt).
   Not v1; revisit once the four previews exist.
 - A mail preview and any further previews beyond the four in v1.
 - A single `design.md` holding the whole design layer (fonts, colors,
   spacing, roles, rules) as one document. Raised in ticket 07 as a
   possibility; relates to `rules/` from ticket 03.
-- How a consumer agent reads the rules (markdown as is, a digest, other).
-  Part of ticket 04 when it is worked.
 - The README's final form (beginner-friendly, with visuals). Comes last; may
   need a ticket on which visuals and how they are produced.
 - Whether and when the docs site is deployed. Deferred until pages exist.

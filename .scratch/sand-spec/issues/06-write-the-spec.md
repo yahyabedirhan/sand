@@ -1,7 +1,7 @@
 # 06 - Write the spec
 
 Type: grilling
-Status: open
+Status: resolved
 Blocked by: 02, 03, 05, 07, 08
 
 ## Question
@@ -25,3 +25,23 @@ changed, and `notes/journal.md`.
 - 2026-09-19: ticket 08 is resolved; the module boundary is out of the code
   and the docs section is Mechanics. The spec can drop stories 34, 35, 36 and
   describe the Mechanics page skeleton as role, choice, dependents.
+
+## Answer
+
+Resolved 2026-09-19 with `to-spec`, from the map and the full grilling
+transcript of the charting session.
+
+- `.specs/00-sand-design-system.md` overwritten in place. Sections follow the
+  `to-spec` template. Kept from the old text where still true: tokens,
+  tooling, application shape, notes structure. Replaced: purpose, consumers,
+  page skeletons, modules (now Design and Mechanics), rules (markdown under
+  `rules/`, manual sync), previews and blocks, adoption as deferred, out of
+  scope, plus a "Deferred, not out" section.
+- Seams confirmed by the maintainer: the page registry and the rules sync
+  check. Names Design and Mechanics confirmed.
+- `no-ai-slop` pass applied; `pnpm format:check` passes.
+- `.specs/index.md` updated. `AGENTS.md` needed no rule change (ticket 08
+  already removed the import rule).
+- One `TODO:` left inside the spec: which of React, Vite, Tailwind, shadcn
+  get their own Mechanics page. Settled when that section is filled in.
+- The journal section is written by `/human-notes` at session end.

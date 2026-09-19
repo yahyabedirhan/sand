@@ -1,0 +1,1951 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sand docs prototype</title>
+    <!-- PROTOTYPE, throwaway. Ticket 00. Three variants of the docs page format on
+     five page kinds (Overview, Colors, Button, Primitives, Cards preview).
+     ?variant=A|B|C  ?page=overview|colors|button|mechanic|preview  ?theme=dark -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --background: oklch(0.9755 0.0067 97.351);
+        --foreground: oklch(0.2178 0 0);
+        --card: oklch(1 0 0);
+        --card-foreground: oklch(0.2178 0 0);
+        --popover: oklch(1 0 0);
+        --primary: oklch(0.7414 0.0738 84.5946);
+        --primary-foreground: oklch(0.2178 0 0);
+        --secondary: oklch(0.9096 0.0167 91.5611);
+        --secondary-foreground: oklch(0.2178 0 0);
+        --muted: oklch(0.9459 0.0165 91.5544);
+        --muted-foreground: oklch(0.5022 0.0278 85.7741);
+        --accent: oklch(0.7414 0.0738 84.5946);
+        --accent-foreground: oklch(0.2178 0 0);
+        --destructive: oklch(0.568 0.2002 26.4057);
+        --destructive-foreground: oklch(1 0 0);
+        --border: oklch(0.8986 0.0258 97.1423);
+        --input: oklch(0.8986 0.0258 97.1423);
+        --ring: oklch(0.7414 0.0738 84.5946);
+        --chart-1: oklch(0.7414 0.0738 84.5946);
+        --chart-2: oklch(0.3738 0.0116 258.366);
+        --chart-3: oklch(0.9096 0.0167 91.5611);
+        --chart-4: oklch(0.5933 0.0472 87.9063);
+        --chart-5: oklch(0.2958 0.0084 255.5667);
+        --sidebar: oklch(0.9459 0.0165 91.5544);
+        --sidebar-accent: oklch(0.8986 0.0258 97.1423);
+        --sidebar-border: oklch(0.8986 0.0258 97.1423);
+        --radius: 0.75rem;
+        --shadow-sm:
+          0 8px 15px 0 hsl(0 0% 0%/0.05), 0 1px 2px -1px hsl(0 0% 0%/0.05);
+        --shadow-lg:
+          0 8px 15px 0 hsl(0 0% 0%/0.05), 0 4px 6px -1px hsl(0 0% 0%/0.05);
+        --xs: 0.25rem;
+        --sm: 0.5rem;
+        --md: 1rem;
+        --lg: 1.5rem;
+        --xl: 2rem;
+        --x2: 3rem;
+      }
+      .light {
+        color-scheme: light;
+        --background: oklch(0.9755 0.0067 97.351);
+        --foreground: oklch(0.2178 0 0);
+        --card: oklch(1 0 0);
+        --card-foreground: oklch(0.2178 0 0);
+        --popover: oklch(1 0 0);
+        --primary: oklch(0.7414 0.0738 84.5946);
+        --primary-foreground: oklch(0.2178 0 0);
+        --secondary: oklch(0.9096 0.0167 91.5611);
+        --secondary-foreground: oklch(0.2178 0 0);
+        --muted: oklch(0.9459 0.0165 91.5544);
+        --muted-foreground: oklch(0.5022 0.0278 85.7741);
+        --accent: oklch(0.7414 0.0738 84.5946);
+        --accent-foreground: oklch(0.2178 0 0);
+        --destructive: oklch(0.568 0.2002 26.4057);
+        --destructive-foreground: oklch(1 0 0);
+        --border: oklch(0.8986 0.0258 97.1423);
+        --input: oklch(0.8986 0.0258 97.1423);
+        --ring: oklch(0.7414 0.0738 84.5946);
+        --chart-1: oklch(0.7414 0.0738 84.5946);
+        --chart-2: oklch(0.3738 0.0116 258.366);
+        --chart-3: oklch(0.9096 0.0167 91.5611);
+        --chart-4: oklch(0.5933 0.0472 87.9063);
+        --chart-5: oklch(0.2958 0.0084 255.5667);
+        --sidebar: oklch(0.9459 0.0165 91.5544);
+        --sidebar-accent: oklch(0.8986 0.0258 97.1423);
+        --sidebar-border: oklch(0.8986 0.0258 97.1423);
+        --radius: 0.75rem;
+        --shadow-sm:
+          0 8px 15px 0 hsl(0 0% 0%/0.05), 0 1px 2px -1px hsl(0 0% 0%/0.05);
+        --shadow-lg:
+          0 8px 15px 0 hsl(0 0% 0%/0.05), 0 4px 6px -1px hsl(0 0% 0%/0.05);
+        --xs: 0.25rem;
+        --sm: 0.5rem;
+        --md: 1rem;
+        --lg: 1.5rem;
+        --xl: 2rem;
+        --x2: 3rem;
+      }
+      .dark {
+        color-scheme: dark;
+        --background: oklch(0.1904 0.004 106.7692);
+        --foreground: oklch(0.9755 0.0067 97.351);
+        --card: oklch(0.2343 0.0038 106.6863);
+        --card-foreground: oklch(0.9755 0.0067 97.351);
+        --popover: oklch(0.2343 0.0038 106.6863);
+        --primary: oklch(0.8039 0.0702 84.7579);
+        --primary-foreground: oklch(0.1904 0.004 106.7692);
+        --secondary: oklch(0.2901 0.0061 78.232);
+        --secondary-foreground: oklch(0.9755 0.0067 97.351);
+        --muted: oklch(0.2596 0.0037 106.6523);
+        --muted-foreground: oklch(0.7006 0.0154 84.5911);
+        --accent: oklch(0.8039 0.0702 84.7579);
+        --accent-foreground: oklch(0.1904 0.004 106.7692);
+        --destructive: oklch(0.6368 0.2078 25.3313);
+        --destructive-foreground: oklch(0.9755 0.0067 97.351);
+        --border: oklch(0.2901 0.0061 78.232);
+        --input: oklch(0.2901 0.0061 78.232);
+        --ring: oklch(0.8039 0.0702 84.7579);
+        --chart-1: oklch(0.8039 0.0702 84.7579);
+        --chart-2: oklch(0.5498 0.0111 252.878);
+        --chart-3: oklch(0.3142 0.006 78.2414);
+        --chart-4: oklch(0.6926 0.0459 87.9527);
+        --chart-5: oklch(0.217 0.0038 106.7146);
+        --sidebar: oklch(0.1904 0.004 106.7692);
+        --sidebar-accent: oklch(0.2901 0.0061 78.232);
+        --sidebar-border: oklch(0.2901 0.0061 78.232);
+        --shadow-sm:
+          0 10px 25px 0 hsl(0 0% 0%/0.4), 0 1px 2px -1px hsl(0 0% 0%/0.4);
+        --shadow-lg:
+          0 10px 25px 0 hsl(0 0% 0%/0.4), 0 4px 6px -1px hsl(0 0% 0%/0.4);
+      }
+      * {
+        box-sizing: border-box;
+        border-color: var(--border);
+      }
+      body {
+        margin: 0;
+        font-family: Geist, system-ui, sans-serif;
+        background: var(--background);
+        color: var(--foreground);
+        letter-spacing: -0.02em;
+        font-size: 1rem;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+      .serif {
+        font-family: Fraunces, Georgia, serif;
+      }
+      .mono,
+      code,
+      kbd {
+        font-family: "Geist Mono", ui-monospace, monospace;
+        font-size: 0.875rem;
+      }
+      .h1 {
+        font-size: 2.25rem;
+        line-height: 1.15;
+        font-weight: 600;
+        letter-spacing: -0.045em;
+      }
+      .h2 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        font-weight: 600;
+        letter-spacing: -0.045em;
+      }
+      .h3 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+        font-weight: 600;
+      }
+      .h4 {
+        font-size: 1rem;
+        line-height: 1.4;
+        font-weight: 600;
+      }
+      .lg {
+        font-size: 1.125rem;
+      }
+      .sm {
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+      .cap {
+        font-size: 0.75rem;
+        line-height: 1.4;
+      }
+      .muted {
+        color: var(--muted-foreground);
+      }
+      .app {
+        display: flex;
+        min-height: 100vh;
+      }
+      .sidebar {
+        width: 15rem;
+        flex: none;
+        background: var(--sidebar);
+        border-right: 1px solid var(--sidebar-border);
+        padding: var(--md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--md);
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: auto;
+      }
+      .sidebar .brand {
+        padding: var(--xs) var(--sm);
+      }
+      .group label {
+        display: block;
+        padding: 0 var(--sm);
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        font-weight: 500;
+        margin-bottom: var(--xs);
+      }
+      .group a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.35rem var(--sm);
+        border-radius: calc(var(--radius) - 4px);
+        color: inherit;
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+      .group a.active {
+        background: var(--sidebar-accent);
+        font-weight: 500;
+      }
+      .badge {
+        font-size: 0.7rem;
+        padding: 0.05rem 0.4rem;
+        border-radius: 999px;
+        background: var(--muted);
+        color: var(--muted-foreground);
+      }
+      .main {
+        flex: 1;
+        min-width: 0;
+      }
+      .topbar {
+        height: 3rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--md);
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+      .content {
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: var(--xl) var(--md);
+      }
+      .content.wide {
+        max-width: 64rem;
+      }
+      .content.full {
+        max-width: none;
+        padding: 0;
+      }
+      .card {
+        background: var(--card);
+        color: var(--card-foreground);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 2.25rem;
+        padding: 0 var(--md);
+        border-radius: calc(var(--radius) - 2px);
+        border: 1px solid transparent;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .btn.secondary {
+        background: var(--secondary);
+        color: var(--secondary-foreground);
+      }
+      .btn.outline {
+        background: transparent;
+        border-color: var(--border);
+        color: var(--foreground);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--foreground);
+      }
+      .btn.destructive {
+        background: var(--destructive);
+        color: var(--destructive-foreground);
+      }
+      .btn.sm {
+        height: 1.9rem;
+        padding: 0 0.75rem;
+        font-size: 0.8rem;
+      }
+      .btn.lg {
+        height: 2.6rem;
+        padding: 0 1.25rem;
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .input {
+        height: 2.25rem;
+        border: 1px solid var(--input);
+        border-radius: calc(var(--radius) - 2px);
+        background: transparent;
+        padding: 0 0.75rem;
+        font: inherit;
+        font-size: 0.875rem;
+        color: inherit;
+        width: 100%;
+      }
+      .row {
+        display: flex;
+        gap: var(--sm);
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sm);
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--md);
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--md);
+      }
+      .section {
+        margin-bottom: var(--xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--md);
+      }
+      .swatch {
+        height: 3.5rem;
+        border-radius: calc(var(--radius) - 2px);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: flex-end;
+        padding: var(--sm);
+        font-size: 0.75rem;
+      }
+      .demo {
+        background: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 9rem;
+        position: relative;
+      }
+      .sandbox {
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+        position: relative;
+        background: var(--background);
+      }
+      .sandbox > .tag {
+        position: absolute;
+        top: -0.6rem;
+        left: var(--md);
+        background: var(--background);
+        padding: 0 0.4rem;
+        font-size: 0.7rem;
+        color: var(--muted-foreground);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .sandbox .inner {
+        padding: var(--lg);
+      }
+      .frame {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .frame .head {
+        display: flex;
+        gap: var(--xs);
+        padding: var(--xs) var(--sm);
+        border-bottom: 1px solid var(--border);
+        background: var(--muted);
+        font-size: 0.75rem;
+      }
+      .frame .head span {
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        color: var(--muted-foreground);
+      }
+      .frame .head span.on {
+        background: var(--card);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+      }
+      .frame .body {
+        padding: var(--xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 8rem;
+        background: var(--card);
+      }
+      .split2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .split2 > div {
+        padding: var(--lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .split2 > div + div {
+        border-left: 1px solid var(--border);
+      }
+      .layers {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: var(--md);
+        align-items: stretch;
+      }
+      .layers .card {
+        padding: var(--md);
+      }
+      .layers .arrow {
+        display: flex;
+        align-items: center;
+        color: var(--muted-foreground);
+      }
+      .meta {
+        display: flex;
+        gap: var(--lg);
+        flex-wrap: wrap;
+        font-size: 0.875rem;
+        padding: var(--sm) 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .meta dt {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+      }
+      .meta dd {
+        margin: 0;
+      }
+      .anchors {
+        position: sticky;
+        top: 0;
+        background: var(--background);
+        z-index: 5;
+        display: flex;
+        gap: var(--xs);
+        border-bottom: 1px solid var(--border);
+        padding: var(--xs) 0;
+        margin-bottom: var(--lg);
+      }
+      .anchors a {
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        color: var(--muted-foreground);
+        text-decoration: none;
+      }
+      .anchors a:hover {
+        background: var(--muted);
+        color: var(--foreground);
+      }
+      .toc a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .toc a:hover {
+        color: var(--foreground);
+      }
+      .linkrow a {
+        color: inherit;
+        font-size: 0.875rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .alt {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--md);
+      }
+      .alt .card {
+        padding: var(--md);
+      }
+      .mini {
+        width: 100%;
+        max-width: 38rem;
+        display: grid;
+        grid-template-columns: 10rem 1fr;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--card);
+        text-align: left;
+      }
+      .mini .side {
+        background: var(--sidebar);
+        border-right: 1px solid var(--sidebar-border);
+        padding: var(--md);
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .mini .side b {
+        font-family: Fraunces, serif;
+        font-size: 1rem;
+      }
+      .mini .side span.on {
+        background: var(--sidebar-accent);
+        border-radius: 6px;
+        padding: 0.15rem 0.4rem;
+        margin: 0 -0.4rem;
+      }
+      .mini .body {
+        padding: var(--md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--sm);
+      }
+      .switch {
+        width: 2.2rem;
+        height: 1.25rem;
+        border-radius: 999px;
+        background: var(--primary);
+        position: relative;
+        display: inline-block;
+      }
+      .switch::after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: var(--background);
+      }
+      .check {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 4px;
+        background: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        color: var(--primary-foreground);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .demo .tag {
+        position: absolute;
+        top: var(--sm);
+        left: var(--sm);
+        font-size: 0.7rem;
+        color: var(--muted-foreground);
+      }
+      .tabs {
+        display: flex;
+        gap: var(--xs);
+        border-bottom: 1px solid var(--border);
+      }
+      .tabs span {
+        padding: var(--sm) var(--md);
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+      }
+      .tabs span.on {
+        color: var(--foreground);
+        border-color: var(--foreground);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: var(--sm);
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted-foreground);
+        font-weight: 500;
+      }
+      .rule {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sm);
+      }
+      .rule .src {
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+      .ex {
+        display: flex;
+        flex-direction: column;
+        gap: var(--xs);
+      }
+      .ex .box {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--md);
+      }
+      .ex .capn {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+      .ex .do {
+        color: var(--foreground);
+        font-weight: 500;
+      }
+      .ex .dont {
+        color: var(--destructive);
+        font-weight: 500;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.75rem;
+        padding: 0.1rem 0.5rem;
+        border-radius: 999px;
+        background: var(--muted);
+        color: var(--muted-foreground);
+      }
+      .toc {
+        position: sticky;
+        top: var(--xl);
+        font-size: 0.8rem;
+        color: var(--muted-foreground);
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .toc b {
+        color: var(--foreground);
+        font-weight: 500;
+      }
+      .layout-toc {
+        display: grid;
+        grid-template-columns: 1fr 10rem;
+        gap: var(--x2);
+      }
+      .layout-rail {
+        display: grid;
+        grid-template-columns: 1fr 16rem;
+        gap: var(--xl);
+      }
+      .rail {
+        position: sticky;
+        top: var(--xl);
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: var(--md);
+      }
+      .rail .card {
+        padding: var(--md);
+      }
+      .kv {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+      }
+      .kv dt {
+        color: var(--muted-foreground);
+      }
+      .kv dd {
+        margin: 0;
+      }
+      .checklist {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sm);
+      }
+      .checklist .item {
+        display: grid;
+        grid-template-columns: 1.25rem 1fr;
+        gap: var(--sm);
+        align-items: start;
+      }
+      .checklist .tick {
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        margin-top: 0.2rem;
+      }
+      details {
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) - 2px);
+        padding: var(--sm) var(--md);
+      }
+      summary {
+        cursor: pointer;
+        font-size: 0.875rem;
+      }
+      .bar {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.4rem 0.6rem;
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        font-size: 0.8rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        z-index: 50;
+        font-family: Geist, system-ui;
+      }
+      .bar button {
+        background: transparent;
+        border: 1px solid #444;
+        color: #fff;
+        border-radius: 999px;
+        width: 1.7rem;
+        height: 1.7rem;
+        cursor: pointer;
+      }
+      .bar select {
+        background: #222;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 6px;
+        padding: 0.15rem 0.3rem;
+        font: inherit;
+      }
+      .preview-shell {
+        padding: var(--md) var(--lg);
+      }
+      .preview-tabs {
+        display: flex;
+        gap: var(--xs);
+        margin-bottom: var(--md);
+      }
+      .preview-tabs span {
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        border: 1px solid var(--border);
+      }
+      .preview-tabs span.on {
+        background: var(--foreground);
+        color: var(--background);
+        border-color: var(--foreground);
+      }
+      .masonry {
+        columns: 3;
+        column-gap: var(--md);
+      }
+      .masonry .card {
+        break-inside: avoid;
+        margin-bottom: var(--md);
+        padding: var(--md);
+      }
+      .bars {
+        display: flex;
+        gap: 4px;
+        align-items: flex-end;
+        height: 4rem;
+      }
+      .bars i {
+        flex: 1;
+        background: var(--chart-1);
+        border-radius: 3px 3px 0 0;
+      }
+      .status {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--md);
+      }
+      .status .card {
+        padding: var(--md);
+      }
+      .big {
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      .progress {
+        height: 0.4rem;
+        background: var(--muted);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .progress i {
+        display: block;
+        height: 100%;
+        background: var(--primary);
+      }
+      hr {
+        border: 0;
+        border-top: 1px solid var(--border);
+        margin: 0;
+      }
+      .hidden {
+        display: none;
+      }
+      .hero {
+        padding: var(--x2) 0 var(--xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--md);
+        max-width: 40rem;
+      }
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--md);
+      }
+      .tiles .card {
+        padding: var(--md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--xs);
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--xl);
+        align-items: start;
+      }
+      .anatomy {
+        position: relative;
+        display: inline-flex;
+        padding: var(--lg);
+      }
+      .anatomy .lbl {
+        position: absolute;
+        font-size: 0.7rem;
+        color: var(--muted-foreground);
+      }
+
+      .tokbox {
+        aspect-ratio: 1;
+        border-radius: calc(var(--radius) - 2px);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: var(--sm);
+        font-size: 0.75rem;
+        min-width: 0;
+      }
+      .tokbox .aa {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1;
+      }
+      .tokbox .nm {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.72rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .tokbox .hx {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.7rem;
+        opacity: 0.8;
+        cursor: pointer;
+        text-decoration: underline dotted;
+        text-underline-offset: 2px;
+      }
+      .tokgrid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--sm);
+      }
+      .tokbox {
+        aspect-ratio: 1/0.9;
+        padding: var(--sm) var(--sm) var(--xs);
+      }
+      .tokbox.pairhl {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+      }
+      .ctr {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.62rem;
+        padding: 0 0.3rem;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.08);
+      }
+      .dark .ctr {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .panel {
+        padding: var(--md);
+        background: var(--background);
+        color: var(--foreground);
+      }
+      .panel .cap {
+        margin-bottom: var(--sm);
+        display: block;
+      }
+      .frame .body.left {
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .frame .body.tight {
+        padding: var(--md);
+      }
+      .frame .body.none {
+        padding: 0;
+        display: block;
+      }
+      .frame .head .sp {
+        margin-left: auto;
+      }
+      .frame .head .ic {
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--card);
+        color: var(--muted-foreground);
+        cursor: pointer;
+        font-size: 0.75rem;
+      }
+      .frame .code {
+        border-top: 1px solid var(--border);
+        background: var(--muted);
+      }
+      .frame .code pre {
+        margin: 0;
+        padding: var(--md);
+        font-size: 0.8rem;
+        line-height: 1.5;
+        overflow: auto;
+      }
+      .strata {
+        display: flex;
+        flex-direction: column;
+        gap: var(--xs);
+      }
+      .strata .layer {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--md) var(--lg);
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        gap: var(--lg);
+        align-items: center;
+        background: var(--card);
+      }
+      .strata .layer.design {
+        background: var(--secondary);
+      }
+      .strata .layer .items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--xs);
+      }
+      .strata .joint {
+        text-align: center;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+      }
+      .pipe {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        position: relative;
+      }
+      .pipe::before {
+        content: "";
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 1.1rem;
+        border-top: 1px dashed var(--border);
+      }
+      .pipe .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--xs);
+        padding: 0 var(--sm);
+        position: relative;
+      }
+      .pipe .dot {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .pipe .dot.on {
+        background: var(--primary);
+        color: var(--primary-foreground);
+        border-color: transparent;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--xl);
+        align-items: stretch;
+      }
+      .sidebyside {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: var(--md);
+        align-items: stretch;
+      }
+      .sidebyside .frame {
+        height: 100%;
+      }
+      .bleed {
+        margin-left: calc(50% - 50vw + 7.5rem);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+      .big-h {
+        font-size: 3.25rem;
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+        font-weight: 600;
+      }
+      .secmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--md);
+      }
+      .secmap .card {
+        padding: var(--md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--sm);
+        min-height: 9rem;
+      }
+      .secmap .ico {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 8px;
+        background: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+      }
+      .secmap .n {
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        margin-top: auto;
+      }
+      .rolecard {
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        gap: var(--md);
+        align-items: center;
+        padding: var(--sm) 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .rolecard .pair {
+        height: 3rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+      }
+
+      .frame .head.tools-only {
+        justify-content: flex-end;
+      }
+      .frame .props {
+        display: flex;
+        gap: var(--md);
+        flex-wrap: wrap;
+        padding: var(--sm) var(--md);
+        border-top: 1px solid var(--border);
+        background: var(--muted);
+        font-size: 0.75rem;
+        align-items: center;
+      }
+      .frame .props label {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+        color: var(--muted-foreground);
+      }
+      .frame .props select,
+      .frame .props input {
+        font: inherit;
+        font-size: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--card);
+        color: inherit;
+        padding: 0.15rem 0.3rem;
+      }
+      .frame .body.rtl {
+        direction: rtl;
+      }
+      .frame .body.w-s > * {
+        max-width: 22rem;
+        width: 100%;
+      }
+      .frame .body.w-m > * {
+        max-width: 40rem;
+        width: 100%;
+      }
+      .widget {
+        width: 100%;
+        max-width: 44rem;
+        display: grid;
+        grid-template-columns: 11rem 1fr;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--card);
+        text-align: left;
+        font-size: 0.85rem;
+        box-shadow: var(--shadow-sm);
+      }
+      .widget .nav {
+        background: var(--sidebar);
+        border-right: 1px solid var(--sidebar-border);
+        padding: var(--md);
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .widget .nav b {
+        font-family: Fraunces, serif;
+        font-size: 1.05rem;
+        margin-bottom: var(--sm);
+      }
+      .widget .nav span {
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .widget .nav span.on {
+        background: var(--sidebar-accent);
+        font-weight: 500;
+      }
+      .widget .main {
+        padding: var(--md) var(--lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--md);
+      }
+      .widget .avatar {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.75rem;
+      }
+      .widget table td,
+      .widget table th {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+      }
+      .widget .fld {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .widget .fld label {
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+      .dot-ok {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--chart-4);
+        display: inline-block;
+        margin-right: 0.3rem;
+      }
+      .morelist {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.3rem var(--md);
+        margin-top: var(--sm);
+        padding: var(--md);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+      }
+      .morelist a {
+        font-size: 0.8rem;
+        color: inherit;
+        text-decoration: none;
+      }
+      .morelist a:hover {
+        text-decoration: underline;
+      }
+      .chip.link {
+        cursor: pointer;
+        border: 1px solid var(--border);
+      }
+      .tokbox.wide {
+        aspect-ratio: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand serif h3">Sand</div>
+        <div class="group">
+          <label>Overview</label
+          ><a data-page="overview" href="?page=overview">Overview</a>
+        </div>
+        <div class="group">
+          <label>Foundations</label>
+          <a data-page="colors" href="?page=colors">Colors</a><a>Typography</a
+          ><a>Fonts<span class="badge">TODO</span></a
+          ><a>Spacing<span class="badge">TODO</span></a
+          ><a>Radius<span class="badge">TODO</span></a
+          ><a>Shadow<span class="badge">TODO</span></a
+          ><a>Motion<span class="badge">TODO</span></a
+          ><a>Icons<span class="badge">TODO</span></a>
+        </div>
+        <div class="group">
+          <label>Components</label
+          ><a>Accordion<span class="badge">TODO</span></a
+          ><a>Alert<span class="badge">TODO</span></a
+          ><a>Badge<span class="badge">TODO</span></a
+          ><a data-page="button" href="?page=button">Button</a
+          ><a>Card<span class="badge">TODO</span></a
+          ><a class="muted sm" style="padding-left: 0.5rem">… 55 more</a>
+        </div>
+        <div class="group">
+          <label>Mechanics</label
+          ><a data-page="mechanic" href="?page=mechanic">Primitives</a
+          ><a>Icons</a><a>Charts</a><a>Fonts</a><a>Animation</a>
+        </div>
+        <div class="group">
+          <label>Previews</label
+          ><a data-page="preview" href="?page=preview">Cards</a
+          ><a>Application<span class="badge">TODO</span></a
+          ><a>Marketing<span class="badge">TODO</span></a
+          ><a>Dashboard<span class="badge">TODO</span></a>
+        </div>
+        <div style="margin-top: auto">
+          <button class="btn outline sm" id="theme">Toggle theme</button>
+        </div>
+      </aside>
+      <div class="main">
+        <div class="topbar">
+          <span id="crumb">Overview</span
+          ><span class="mono cap" id="vname"></span>
+        </div>
+        <div id="root"></div>
+      </div>
+    </div>
+
+    <div class="bar">
+      <button id="prev">←</button>
+      <span id="label">A</span>
+      <button id="next">→</button>
+      <select id="pagesel">
+        <option value="overview">Overview</option>
+        <option value="colors">Colors (foundation)</option>
+        <option value="button">Button (component)</option>
+        <option value="mechanic">Primitives (mechanic)</option>
+        <option value="preview">Cards (preview)</option>
+      </select>
+    </div>
+
+    <script>
+      const V = {
+        A: "Final. The agreed page format",
+        B: "Playground. Prop controls on demos, token hover shows the pair, filterable parts list",
+        C: "Conditions. Width presets and RTL in the toolbar, contrast badges on tokens",
+      };
+      const q = new URLSearchParams(location.search);
+      let variant = q.get("variant") || "A";
+      let page = q.get("page") || "overview";
+      if (q.get("theme") === "dark")
+        document.documentElement.classList.add("dark");
+
+      // ---- color helpers ----
+      const cv = document.createElement("canvas");
+      cv.width = cv.height = 1;
+      const cx = cv.getContext("2d");
+      function hexFromCss(c) {
+        cx.clearRect(0, 0, 1, 1);
+        cx.fillStyle = c;
+        cx.fillRect(0, 0, 1, 1);
+        const d = cx.getImageData(0, 0, 1, 1).data;
+        return (
+          "#" +
+          [d[0], d[1], d[2]]
+            .map((n) => n.toString(16).padStart(2, "0"))
+            .join("")
+        );
+      }
+      const hexOf = (el, prop) =>
+        hexFromCss(getComputedStyle(el).getPropertyValue(prop).trim());
+      function lum(hex) {
+        const c = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) =>
+            v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4),
+          );
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+      }
+      function contrast(a, b) {
+        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+        return ((x + 0.05) / (y + 0.05)).toFixed(1);
+      }
+      function fillHex() {
+        document.querySelectorAll(".tokbox").forEach((b) => {
+          const hx = b.querySelector(".hx");
+          if (!hx) return;
+          const bg = hexOf(b, "--_bg");
+          hx.textContent = bg;
+          hx.onclick = (e) => {
+            e.stopPropagation();
+            navigator.clipboard?.writeText(bg);
+            hx.textContent = "copied";
+            setTimeout(() => (hx.textContent = bg), 800);
+          };
+          const ct = b.querySelector(".ctr");
+          if (ct) {
+            const fg = hexOf(b, "--_fg");
+            const r = contrast(bg, fg);
+            ct.textContent = r + ":1";
+            ct.title = "contrast against its foreground";
+            ct.style.opacity = r >= 4.5 ? 1 : 0.6;
+          }
+        });
+      }
+
+      // ---- the preview container ----
+      let fid = 0;
+      function frame(panes, opts = {}) {
+        const id = "f" + fid++;
+        const names = Object.keys(panes);
+        const showTabs = opts.tabs !== false && names.length > 1;
+        const tabs = showTabs
+          ? names
+              .map(
+                (n, i) =>
+                  `<span class="${i ? "" : "on"}" data-f="${id}" data-p="${i}">${n}</span>`,
+              )
+              .join("")
+          : "";
+        const bodies = names
+          .map((n, i) => {
+            const p = panes[n];
+            const isCode = typeof p === "string" && p.startsWith("CODE:");
+            return isCode
+              ? `<div class="code" data-fb="${id}" data-p="${i}" ${i ? 'style="display:none"' : ""}><pre class="mono">${p.slice(5)}</pre></div>`
+              : `<div class="body ${opts.body || ""}" data-fb="${id}" data-p="${i}" ${i ? 'style="display:none"' : ""}>${p}</div>`;
+          })
+          .join("");
+        let tools = "";
+        if (opts.tools)
+          tools +=
+            `<span class="sp"></span>` +
+            (opts.widths
+              ? `<span class="ic" data-fw="${id}" data-w="w-s" title="narrow">S</span><span class="ic" data-fw="${id}" data-w="w-m" title="medium">M</span><span class="ic" data-fw="${id}" data-w="" title="full">L</span><span class="ic" data-frtl="${id}" title="right to left">RTL</span>`
+              : "") +
+            `<span class="ic" title="toggle theme inside the frame" data-ft="${id}">◐</span><span class="ic" title="split light and dark" data-fs="${id}">▯▯</span>`;
+        const head =
+          tabs || tools
+            ? `<div class="head ${tabs ? "" : "tools-only"}">${tabs}${tools}</div>`
+            : "";
+        const props = opts.props
+          ? `<div class="props">${opts.props}</div>`
+          : "";
+        return `<div class="frame" id="${id}">${head}${bodies}${props}</div>`;
+      }
+      function splitHtml(inner) {
+        return `<div class="split2"><div class="light" style="background:var(--background);color:var(--foreground)">${inner}</div><div class="dark" style="background:var(--background);color:var(--foreground)">${inner}</div></div>`;
+      }
+      function wireFrames() {
+        document.querySelectorAll(".frame .head span[data-f]").forEach(
+          (t) =>
+            (t.onclick = () => {
+              const id = t.dataset.f,
+                p = t.dataset.p;
+              document
+                .querySelectorAll(`#${id} .head span[data-f]`)
+                .forEach((x) => x.classList.toggle("on", x === t));
+              document
+                .querySelectorAll(`[data-fb="${id}"]`)
+                .forEach(
+                  (b) => (b.style.display = b.dataset.p === p ? "" : "none"),
+                );
+            }),
+        );
+        document.querySelectorAll("[data-ft]").forEach(
+          (t) =>
+            (t.onclick = () => {
+              const f = document.getElementById(t.dataset.ft);
+              f.classList.toggle("dark");
+              f.classList.toggle("light", !f.classList.contains("dark"));
+              fillHex();
+            }),
+        );
+        document.querySelectorAll("[data-fs]").forEach(
+          (t) =>
+            (t.onclick = () => {
+              const f = document.getElementById(t.dataset.fs);
+              f.querySelectorAll(".body").forEach((b) => {
+                if (b.dataset.split) {
+                  b.innerHTML = b.dataset.split;
+                  delete b.dataset.split;
+                  b.classList.remove("none");
+                } else {
+                  b.dataset.split = b.innerHTML;
+                  b.classList.add("none");
+                  b.innerHTML = splitHtml(b.dataset.split);
+                }
+              });
+              fillHex();
+            }),
+        );
+        document.querySelectorAll("[data-fw]").forEach(
+          (t) =>
+            (t.onclick = () => {
+              document
+                .getElementById(t.dataset.fw)
+                .querySelectorAll(".body")
+                .forEach((b) => {
+                  b.classList.remove("w-s", "w-m");
+                  if (t.dataset.w) b.classList.add(t.dataset.w);
+                });
+            }),
+        );
+        document.querySelectorAll("[data-frtl]").forEach(
+          (t) =>
+            (t.onclick = () =>
+              document
+                .getElementById(t.dataset.frtl)
+                .querySelectorAll(".body")
+                .forEach((b) => b.classList.toggle("rtl"))),
+        );
+        // B: button props
+        const pf = document.getElementById("propsFrame");
+        if (pf) {
+          const upd = () => {
+            const v = document.getElementById("pv").value,
+              sz = document.getElementById("ps").value,
+              dis = document.getElementById("pd").checked,
+              txt = document.getElementById("pt").value;
+            document
+              .querySelectorAll("#propsFrame .body")
+              .forEach(
+                (b) =>
+                  (b.innerHTML = `<button class="btn ${v} ${sz}" ${dis ? "disabled" : ""}>${txt}</button>`),
+              );
+            document.querySelector("#propsFrame .code pre").innerHTML =
+              `&lt;Button${v !== "default" ? ` variant="${v}"` : ""}${sz !== "default" ? ` size="${sz}"` : ""}${dis ? " disabled" : ""}&gt;${txt}&lt;/Button&gt;`;
+          };
+          ["pv", "ps", "pd", "pt"].forEach(
+            (i) => (document.getElementById(i).oninput = upd),
+          );
+          upd();
+        }
+        // B: token hover highlights its pair
+        document.querySelectorAll(".tokbox[data-pair]").forEach((b) => {
+          b.onmouseenter = () =>
+            document
+              .querySelectorAll(`.tokbox[data-name="${b.dataset.pair}"]`)
+              .forEach((x) => x.classList.add("pairhl"));
+          b.onmouseleave = () =>
+            document
+              .querySelectorAll(".pairhl")
+              .forEach((x) => x.classList.remove("pairhl"));
+        });
+        // more list
+        document.querySelectorAll("[data-more]").forEach(
+          (c) =>
+            (c.onclick = () => {
+              const l = document.getElementById(c.dataset.more);
+              l.style.display = l.style.display === "none" ? "" : "none";
+            }),
+        );
+        // B: filter
+        const fi = document.getElementById("partFilter");
+        if (fi)
+          fi.oninput = () =>
+            document
+              .querySelectorAll("#partList a")
+              .forEach(
+                (a) =>
+                  (a.style.display = a.textContent
+                    .toLowerCase()
+                    .includes(fi.value.toLowerCase())
+                    ? ""
+                    : "none"),
+              );
+      }
+      const codeBlock = (t) =>
+        `<pre class="card mono" style="padding:var(--md);overflow:auto;font-size:.8rem;line-height:1.5;margin:0">${t}</pre>`;
+
+      // ---- shared fragments ----
+      const btnRow = `<div class="row"><button class="btn">Primary</button><button class="btn secondary">Secondary</button><button class="btn outline">Outline</button><button class="btn ghost">Ghost</button><button class="btn destructive">Delete</button><button class="btn" disabled>Disabled</button></div>`;
+      const sizes = `<div class="row"><button class="btn sm">Small</button><button class="btn">Default</button><button class="btn lg">Large</button></div>`;
+      const btnCode = `import { Button } from "sand/ui/button";
+
+&lt;Button&gt;Publish&lt;/Button&gt;
+&lt;Button variant="ghost"&gt;Save draft&lt;/Button&gt;`;
+      const varCode = `&lt;Button variant="secondary"&gt;Secondary&lt;/Button&gt;
+&lt;Button variant="outline"&gt;Outline&lt;/Button&gt;
+&lt;Button size="sm"&gt;Small&lt;/Button&gt;`;
+
+      // all color tokens, grouped
+      const tokens = [
+        ["background", "foreground"],
+        ["foreground", "background"],
+        ["card", "card-foreground"],
+        ["card-foreground", "card"],
+        ["popover", "popover-foreground"],
+        ["primary", "primary-foreground"],
+        ["primary-foreground", "primary"],
+        ["secondary", "secondary-foreground"],
+        ["secondary-foreground", "secondary"],
+        ["muted", "muted-foreground"],
+        ["muted-foreground", "muted"],
+        ["accent", "accent-foreground"],
+        ["accent-foreground", "accent"],
+        ["destructive", "destructive-foreground"],
+        ["destructive-foreground", "destructive"],
+        ["border", "foreground"],
+        ["input", "foreground"],
+        ["ring", "foreground"],
+        ["chart-1", "foreground"],
+        ["chart-2", "background"],
+        ["chart-3", "foreground"],
+        ["chart-4", "foreground"],
+        ["chart-5", "background"],
+        ["sidebar", "sidebar-foreground"],
+        ["sidebar-primary", "sidebar-primary-foreground"],
+        ["sidebar-accent", "sidebar-accent-foreground"],
+        ["sidebar-border", "foreground"],
+        ["sidebar-ring", "foreground"],
+      ];
+      const roleRows = [
+        ["background", "foreground", "Page canvas and default text"],
+        ["card", "card-foreground", "Raised surface on the page"],
+        ["popover", "popover-foreground", "Floating surface above cards"],
+        ["primary", "primary-foreground", "The one action that matters"],
+        ["secondary", "secondary-foreground", "Supporting actions"],
+        ["muted", "muted-foreground", "Quiet backgrounds, secondary text"],
+        ["accent", "accent-foreground", "Hover and selected states"],
+        ["destructive", "destructive-foreground", "Irreversible actions"],
+        ["border, input, ring", "", "Lines, field edges, focus"],
+        ["chart-1 … chart-5", "", "Data series, in order"],
+        ["sidebar-*", "", "The navigation surface and its states"],
+      ];
+      const tokbox = (b, f, extra = "") =>
+        `<div class="tokbox" data-name="${b}" data-pair="${f}" style="--_bg:var(--${b});--_fg:var(--${f});background:var(--${b});color:var(--${f})"><span class="aa">Aa</span><div><div class="nm">${b}</div><div class="row" style="gap:.3rem;justify-content:space-between"><span class="hx">#</span>${extra}</div></div></div>`;
+      const tokGrid = (extra = false) =>
+        `<div class="tokgrid">${tokens.map(([b, f]) => tokbox(b, f, extra ? `<span class="ctr"></span>` : "")).join("")}</div>`;
+      const tokensStacked = (extra = false, tools = true) =>
+        frame(
+          {
+            Tokens: `<div style="width:100%"><div class="light panel">${tokGrid(extra)}</div><div class="dark panel" style="border-top:1px solid var(--border)">${tokGrid(extra)}</div></div>`,
+          },
+          { body: "none", tools, tabs: false },
+        );
+      const sw = (n) =>
+        `<i style="width:1rem;height:1rem;border-radius:4px;background:var(--${n});border:1px solid var(--border);display:inline-block;vertical-align:-3px;margin-right:.4rem"></i>`;
+      const colorTable = `<table><tr><th>Token</th><th>Foreground</th><th>Use</th></tr>${roleRows.map(([b, f, u]) => `<tr><td>${b.includes(",") || b.includes("…") || b.endsWith("*") ? "" : sw(b)}<code>${b}</code></td><td>${f ? sw(f) + `<code>${f}</code>` : '<span class="muted">-</span>'}</td><td class="muted">${u}</td></tr>`).join("")}</table>`;
+
+      const ruleItem = (title, body, ex = "") =>
+        `<div class="item"><span class="tick">✓</span><div><b class="sm">${title}</b> <span class="sm muted">${body}</span>${ex ? `<details style="margin-top:.4rem"><summary>Example</summary><div style="margin-top:.5rem">${ex}</div></details>` : ""}</div></div>`;
+      const pairEx = `<div class="grid2"><div class="ex"><div class="box" style="background:var(--primary);color:var(--primary-foreground)">Save changes</div><div class="capn"><span class="do">Do.</span> primary with primary-foreground.</div></div><div class="ex"><div class="box" style="background:var(--primary);color:var(--muted-foreground)">Save changes</div><div class="capn"><span class="dont">Don't.</span> a foreground from another role.</div></div></div>`;
+      const colorRules = `<div class="checklist">${ruleItem("Pair a surface with its foreground.", "Text on <code>card</code> is <code>card-foreground</code>.", pairEx)}${ruleItem("Stack surfaces in order.", "<code>background</code> under <code>card</code> under <code>popover</code>.")}${ruleItem("Opacity is for overlays only.", "Scrims and disabled states, never a new tint.")}</div>`;
+      const primaryEx = `<div class="grid2"><div class="ex"><div class="box row"><button class="btn">Publish</button><button class="btn ghost">Save draft</button></div><div class="capn"><span class="do">Do.</span> one primary, the rest quiet.</div></div><div class="ex"><div class="box row"><button class="btn">Publish</button><button class="btn">Save draft</button></div><div class="capn"><span class="dont">Don't.</span> two primaries, no hierarchy.</div></div></div>`;
+      const buttonRules = `<div class="checklist">${ruleItem("One primary per view.", "Everything else is secondary, outline, or ghost.", primaryEx)}${ruleItem("Destructive asks first.", "A destructive button opens an alert dialog. It never acts on the first click.")}${ruleItem("Icon-only buttons carry a label.", "<code>aria-label</code> on every button without text.")}</div>`;
+      const a11y = `<p class="sm">Focus ring uses <code>ring</code>. Space and Enter activate. Disabled buttons stay in the tab order with <code>aria-disabled</code>. Icon-only buttons need <code>aria-label</code>.</p>`;
+
+      // the overview sample: a real-looking settings screen built from Sand parts
+      const widget = `<div class="widget">
+ <div class="nav"><b>Dune</b><span class="on">Workspace</span><span>Members <span class="chip">12</span></span><span>Billing</span><span>Integrations</span><span>Security</span><span style="margin-top:auto" class="muted cap">v0.0.1</span></div>
+ <div class="main">
+  <div class="row" style="justify-content:space-between"><div class="row"><span class="avatar">SD</span><div><b class="h4">Workspace settings</b><div class="cap muted">Owned by Sofia Davis</div></div></div><div class="row"><button class="btn ghost sm">Discard</button><button class="btn sm">Save changes</button></div></div>
+  <div class="tabs"><span class="on">General</span><span>Domains</span><span>Notifications</span></div>
+  <div class="grid2"><div class="fld"><label>Workspace name</label><input class="input" value="Dune Studio" /></div><div class="fld"><label>Plan</label><div class="input" style="display:flex;align-items:center;justify-content:space-between">Pro, monthly <span class="muted">⌄</span></div></div></div>
+  <div class="row" style="justify-content:space-between"><div><div class="sm">Allow members to invite</div><div class="cap muted">Anyone in the workspace can send invites.</div></div><span class="switch"></span></div>
+  <div class="row" style="justify-content:space-between"><div><div class="sm">Weekly digest</div><div class="cap muted">A summary every Monday morning.</div></div><span class="switch" style="background:var(--muted)"></span></div>
+  <table><tr><th>Invoice</th><th>Date</th><th>Amount</th><th>Status</th></tr><tr><td class="mono">INV-0421</td><td>Sep 1</td><td class="mono">$48.00</td><td><span class="chip"><span class="dot-ok"></span>Paid</span></td></tr><tr><td class="mono">INV-0397</td><td>Aug 1</td><td class="mono">$48.00</td><td><span class="chip"><span class="dot-ok"></span>Paid</span></td></tr></table>
+ </div></div>`;
+      const sampleFrame = (extraOpts = {}) =>
+        frame(
+          {
+            Sample: `<div style="display:flex;justify-content:center;width:100%">${widget}</div>`,
+          },
+          { tools: true, tabs: false, body: "tight", ...extraOpts },
+        );
+
+      // mechanics
+      const primShowcase = `<div class="grid3" style="width:100%;gap:var(--lg)">
+ <div class="stack"><span class="cap muted">Dialog</span><div class="card" style="padding:var(--md);box-shadow:var(--shadow-lg)"><b class="h4">Delete project?</b><p class="sm muted">This cannot be undone.</p><div class="row" style="margin-top:.5rem;justify-content:flex-end"><button class="btn ghost sm">Cancel</button><button class="btn destructive sm">Delete</button></div></div></div>
+ <div class="stack"><span class="cap muted">Select</span><div class="input" style="display:flex;align-items:center;justify-content:space-between">Pro plan <span class="muted">⌄</span></div><div class="card" style="padding:var(--xs)"><div class="sm" style="padding:.3rem .5rem;background:var(--accent);color:var(--accent-foreground);border-radius:6px">Pro plan</div><div class="sm" style="padding:.3rem .5rem">Starter</div><div class="sm" style="padding:.3rem .5rem">Team</div></div></div>
+ <div class="stack"><span class="cap muted">Menu</span><div class="card" style="padding:var(--xs)"><div class="sm" style="padding:.3rem .5rem">Rename</div><div class="sm" style="padding:.3rem .5rem">Duplicate</div><hr /><div class="sm" style="padding:.3rem .5rem;color:var(--destructive)">Delete</div></div></div>
+ <div class="stack"><span class="cap muted">Input, Button</span><input class="input" placeholder="Email address" /><button class="btn">Subscribe</button></div>
+ <div class="stack"><span class="cap muted">Switch, Checkbox, Radio</span><div class="row"><span class="switch"></span><span class="sm">Notifications</span></div><div class="row"><span class="check">✓</span><span class="sm">Remember me</span></div><div class="row"><span style="width:1rem;height:1rem;border-radius:50%;border:5px solid var(--primary);display:inline-block"></span><span class="sm">Monthly</span></div></div>
+ <div class="stack"><span class="cap muted">Tabs, Slider, Tooltip</span><div class="tabs"><span class="on">Account</span><span>Billing</span></div><div class="progress" style="position:relative"><i style="width:40%"></i><span style="position:absolute;left:40%;top:-.3rem;width:1rem;height:1rem;border-radius:50%;background:var(--background);border:2px solid var(--primary);transform:translateX(-50%)"></span></div><span class="chip" style="background:var(--foreground);color:var(--background)">Saved 2 min ago</span></div>
+</div>`;
+      const primOwns = `<p>Base UI owns behavior, not looks. Focus management, keyboard navigation, open and close state, ARIA wiring, portal positioning. Sand styles the result with its tokens. Every component in Sand with behavior beyond markup is a Base UI part underneath.</p>`;
+      const primLinks = `<div class="linkrow row" style="gap:var(--md)"><a href="https://base-ui.com/react/overview/quick-start">Base UI docs</a><a href="https://base-ui.com/react/components/dialog">Dialog reference</a><a href="https://github.com/mui/base-ui">Source on GitHub</a><a href="https://base-ui.com/react/overview/releases">Releases</a></div>`;
+      const primAlt = `<div class="alt"><div class="card"><b class="h4">Radix UI</b><p class="sm muted">The other headless library shadcn supports. Same idea, older API, wider ecosystem. Sand picked Base UI for the render prop model and the newer components.</p><div class="linkrow" style="margin-top:.5rem"><a href="https://www.radix-ui.com/primitives">radix-ui.com</a></div></div><div class="card"><b class="h4">React Aria</b><p class="sm muted">Adobe's hooks and components. Stronger on internationalisation, heavier to style. Not used.</p><div class="linkrow" style="margin-top:.5rem"><a href="https://react-spectrum.adobe.com/react-aria/">react-aria</a></div></div></div>`;
+      const allParts = [
+        "Accordion",
+        "Alert Dialog",
+        "Avatar",
+        "Button",
+        "Checkbox",
+        "Collapsible",
+        "Combobox",
+        "Context Menu",
+        "Dialog",
+        "Direction Provider",
+        "Drawer",
+        "Input",
+        "Menu",
+        "Menubar",
+        "Navigation Menu",
+        "Popover",
+        "Preview Card",
+        "Progress",
+        "Radio",
+        "Radio Group",
+        "Scroll Area",
+        "Select",
+        "Separator",
+        "Slider",
+        "Switch",
+        "Tabs",
+        "Toast",
+        "Toggle",
+        "Toggle Group",
+        "Tooltip",
+        "useRender",
+        "mergeProps",
+      ];
+      const partLink = (n) =>
+        `<a href="https://base-ui.com/react/components/${n.toLowerCase().replace(/ /g, "-")}" target="_blank">${n}</a>`;
+      const primUsed = (filter = false) =>
+        `<div class="row">${allParts
+          .slice(0, 13)
+          .map((x) => `<span class="chip">${x}</span>`)
+          .join(
+            "",
+          )}<span class="chip link" data-more="moreParts">+ ${allParts.length - 13} more</span></div><div id="moreParts" style="display:none">${filter ? `<input class="input" id="partFilter" placeholder="Filter parts" style="margin-top:var(--sm)" />` : ""}<div class="morelist" id="partList">${allParts.map(partLink).join("")}</div></div>`;
+      const primCode = `import { Dialog } from "@base-ui/react/dialog";
+// sand/ui/dialog.tsx wraps it and applies the tokens`;
+
+      // previews
+      const cardsMasonry = `<div class="masonry" style="width:100%">
+  <div class="card stack"><b class="h4">Total revenue</b><span class="big">$15,231</span><span class="cap muted">+20.1% from last month</span><div class="bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:75%"></i></div></div>
+  <div class="card stack"><b class="h4">Upgrade your subscription</b><span class="sm muted">You are on the free plan. Upgrade to unlock previews.</span><input class="input" placeholder="Name" /><input class="input" placeholder="Email" /><input class="input" placeholder="Card number" /><div class="row"><button class="btn secondary sm">Starter</button><button class="btn sm">Pro</button></div><button class="btn">Upgrade plan</button></div>
+  <div class="card stack"><b class="h4">Team members</b><div class="row" style="justify-content:space-between"><span class="sm">Sofia Davis</span><span class="chip">Owner</span></div><div class="row" style="justify-content:space-between"><span class="sm">Jackson Lee</span><span class="chip">Member</span></div><div class="row" style="justify-content:space-between"><span class="sm">Isabella Nguyen</span><span class="chip">Member</span></div></div>
+  <div class="card stack"><b class="h4">Chat</b><div class="sm" style="background:var(--muted);padding:.5rem .75rem;border-radius:12px;align-self:flex-start">Hi, how can I help you today?</div><div class="sm" style="background:var(--primary);color:var(--primary-foreground);padding:.5rem .75rem;border-radius:12px;align-self:flex-end">I can't log in.</div><input class="input" placeholder="Type your message" /></div>
+  <div class="card stack"><b class="h4">Exercise minutes</b><div class="progress"><i style="width:62%"></i></div><span class="cap muted">62% of weekly goal</span></div>
+  <div class="card stack"><b class="h4">Cookie settings</b><div class="row" style="justify-content:space-between"><span class="sm">Strictly necessary</span><span class="chip">On</span></div><div class="row" style="justify-content:space-between"><span class="sm">Functional</span><span class="chip">On</span></div><div class="row" style="justify-content:space-between"><span class="sm">Performance</span><span class="chip">Off</span></div><button class="btn outline">Save preferences</button></div>
+ </div>`;
+      const previewTabs = `<div class="preview-tabs"><span class="on">Cards</span><span>Application</span><span>Marketing</span><span>Dashboard</span></div>`;
+
+      // overview pieces
+      const chips = (a) =>
+        a.map((x) => `<span class="chip">${x}</span>`).join("");
+      const designItems = [
+        "Colors",
+        "Text roles",
+        "Fonts",
+        "Spacing",
+        "Radius",
+        "Shadow",
+        "Motion",
+        "Icons",
+        "Rules",
+      ];
+      const mechItems = [
+        "React",
+        "Vite",
+        "Tailwind",
+        "shadcn",
+        "Base UI",
+        "Tabler",
+        "Recharts",
+        "fontsource",
+        "tw-animate-css",
+      ];
+      const layerCard = (n, t, d, items, link, bg) =>
+        `<div class="card" style="padding:var(--lg);${bg ? "background:var(--secondary);" : ""}display:flex;flex-direction:column;gap:var(--sm);height:100%"><span class="cap muted">${n}</span><b class="serif h2">${t}</b><span class="sm">${d}</span><div class="row" style="margin-top:var(--sm)">${chips(items)}</div><span class="cap muted" style="margin-top:auto;padding-top:var(--sm)">→ ${link}</span></div>`;
+      const layersA = `<div class="two">${layerCard("Layer 1", "Design", "The raw material and the few rules that bind it. Independent of any library.", designItems, "Foundations", true)}${layerCard("Layer 2", "Mechanics", "How this repository realises the design. Documented, not swappable.", mechItems, "Mechanics", false)}</div>`;
+      const secMap = `<div class="secmap"><div class="card"><span class="ico">◧</span><b class="h4">Foundations</b><span class="sm muted">Tokens rendered live, rules beside them.</span><span class="n">8 pages</span></div><div class="card"><span class="ico">▣</span><b class="h4">Components</b><span class="sm muted">A live demo first, then usage and rules.</span><span class="n">60 pages</span></div><div class="card"><span class="ico">⚙</span><b class="h4">Mechanics</b><span class="sm muted">What Sand is built on, with links out.</span><span class="n">5 pages</span></div><div class="card"><span class="ico">▦</span><b class="h4">Previews</b><span class="sm muted">Whole screens, to see a change everywhere.</span><span class="n">4 pages</span></div></div>`;
+
+      // builders
+      const header = (t, l) =>
+        `<header class="section" style="gap:var(--sm)"><h1 class="serif h1">${t}</h1><p class="lg muted">${l}</p></header>`;
+      const sec = (id, t, inner, h = "h2") =>
+        `<div class="section" id="${id}">${t ? `<h2 class="${h}">${t}</h2>` : ""}${inner}</div>`;
+      const toc = (items) =>
+        `<nav class="toc"><b>On this page</b>${items.map(([id, t]) => `<a href="#${id}">${t}</a>`).join("")}</nav>`;
+      const rail = (inner, side) =>
+        `<div class="layout-rail"><div>${inner}</div><aside class="rail">${side}</aside></div>`;
+      const colorsToc = [
+        ["tokens", "Tokens"],
+        ["roles", "Roles"],
+        ["rules", "Rules"],
+      ];
+      const buttonToc = [
+        ["demo", "Demo"],
+        ["variants", "Variants"],
+        ["rules", "Rules"],
+        ["a11y", "Accessibility"],
+      ];
+      const primToc = [
+        ["owns", "What it owns"],
+        ["preview", "Preview"],
+        ["links", "Links"],
+        ["alt", "Alternatives"],
+      ];
+
+      const overviewPage = (sample) =>
+        `<div class="content wide"><div class="hero"><h1 class="serif h1">Sand</h1><p class="lg muted">A design system for the projects I build. This is what it looks like put together.</p></div>${sec("sample", "", sample)}${sec("layers", "Two layers", layersA)}${sec("map", "Where to go", secMap)}</div>`;
+      const colorsPage = (tokensBlock) =>
+        `<div class="content wide">${rail(header("Colors", "Semantic tokens only. Pick a role and its foreground comes with it.") + sec("tokens", "Tokens", tokensBlock) + sec("roles", "Roles", colorTable) + sec("rules", "Rules", colorRules), toc(colorsToc))}</div>`;
+      const buttonPage = (demo, variants) =>
+        `<div class="content wide">${rail(header("Button", "Triggers an action.") + sec("demo", "Demo", demo) + sec("variants", "Variants", variants) + sec("rules", "Rules", buttonRules) + sec("a11y", "Accessibility", a11y), toc(buttonToc))}</div>`;
+      const primPage = (preview, used) =>
+        `<div class="content wide">${rail(header("Primitives", "Base UI owns the behavior of Sand's interactive components.") + sec("owns", "What it owns", primOwns) + sec("preview", "Preview", preview + `<div style="margin-top:var(--md)">${used}</div>`) + sec("links", "Links", primLinks) + sec("alt", "Alternatives considered", primAlt), toc(primToc))}</div>`;
+      const previewPage = (opts) =>
+        `<div class="content full"><div class="preview-shell">${previewTabs}${frame({ Preview: cardsMasonry }, { body: "left tight", tabs: false, ...opts })}</div></div>`;
+
+      const propsPanel = `<label>variant <select id="pv"><option value="default">default</option><option value="secondary">secondary</option><option value="outline">outline</option><option value="ghost">ghost</option><option value="destructive">destructive</option></select></label><label>size <select id="ps"><option value="default">default</option><option value="sm">sm</option><option value="lg">lg</option></select></label><label><input type="checkbox" id="pd" /> disabled</label><label>text <input id="pt" value="Publish" size="10" /></label>`;
+
+      const pages = {
+        A: {
+          overview: () => overviewPage(sampleFrame()),
+          colors: () => colorsPage(tokensStacked(false, true)),
+          button: () =>
+            buttonPage(
+              frame(
+                { Preview: btnRow, Code: "CODE:" + btnCode },
+                { tools: true },
+              ),
+              frame(
+                { Variants: btnRow, Sizes: sizes, Code: "CODE:" + varCode },
+                { tools: true },
+              ),
+            ),
+          mechanic: () =>
+            primPage(
+              frame(
+                { Preview: primShowcase, Code: "CODE:" + primCode },
+                { body: "left", tools: true },
+              ),
+              primUsed(false),
+            ),
+          preview: () => previewPage({ tools: true }),
+        },
+        B: {
+          overview: () => overviewPage(sampleFrame()),
+          colors: () =>
+            colorsPage(
+              `<p class="sm muted" style="margin-bottom:var(--sm)">Hover a token to see its pair light up. Click a hex to copy it.</p>` +
+                tokensStacked(false, true),
+            ),
+          button: () =>
+            buttonPage(
+              frame(
+                {
+                  Preview: `<button class="btn">Publish</button>`,
+                  Code: "CODE:&lt;Button&gt;Publish&lt;/Button&gt;",
+                },
+                { tools: true, props: propsPanel },
+              ).replace(
+                'class="frame" id=',
+                'class="frame" id="propsFrame" data-id=',
+              ),
+              frame(
+                { Variants: btnRow, Sizes: sizes, Code: "CODE:" + varCode },
+                { tools: true },
+              ),
+            ),
+          mechanic: () =>
+            primPage(
+              frame(
+                { Preview: primShowcase, Code: "CODE:" + primCode },
+                { body: "left", tools: true },
+              ),
+              primUsed(true),
+            ),
+          preview: () => previewPage({ tools: true }),
+        },
+        C: {
+          overview: () => overviewPage(sampleFrame({ widths: true })),
+          colors: () =>
+            colorsPage(
+              `<p class="sm muted" style="margin-bottom:var(--sm)">Each box shows the contrast ratio against its foreground. 4.5:1 or better is full opacity.</p>` +
+                tokensStacked(true, true),
+            ),
+          button: () =>
+            buttonPage(
+              frame(
+                { Preview: btnRow, Code: "CODE:" + btnCode },
+                { tools: true, widths: true },
+              ),
+              frame(
+                { Variants: btnRow, Sizes: sizes, Code: "CODE:" + varCode },
+                { tools: true, widths: true },
+              ),
+            ),
+          mechanic: () =>
+            primPage(
+              frame(
+                { Preview: primShowcase, Code: "CODE:" + primCode },
+                { body: "left", tools: true, widths: true },
+              ),
+              primUsed(false),
+            ),
+          preview: () => previewPage({ tools: true, widths: true }),
+        },
+      };
+
+      function render() {
+        fid = 0;
+        document.getElementById("root").innerHTML = pages[variant][page]();
+        document.getElementById("label").textContent = variant;
+        document.getElementById("vname").textContent =
+          "Variant " + variant + ": " + V[variant];
+        document.getElementById("crumb").textContent = {
+          overview: "Overview",
+          colors: "Foundations / Colors",
+          button: "Components / Button",
+          mechanic: "Mechanics / Primitives",
+          preview: "Previews / Cards",
+        }[page];
+        document
+          .querySelectorAll("[data-page]")
+          .forEach((a) =>
+            a.classList.toggle("active", a.dataset.page === page),
+          );
+        document.getElementById("pagesel").value = page;
+        const u = new URL(location);
+        u.searchParams.set("variant", variant);
+        u.searchParams.set("page", page);
+        history.replaceState(null, "", u);
+        wireFrames();
+        fillHex();
+        scrollTo(0, 0);
+      }
+      const keys = Object.keys(V);
+      const step = (d) => {
+        variant = keys[(keys.indexOf(variant) + d + keys.length) % keys.length];
+        render();
+      };
+      document.getElementById("prev").onclick = () => step(-1);
+      document.getElementById("next").onclick = () => step(1);
+      document.getElementById("pagesel").onchange = (e) => {
+        page = e.target.value;
+        render();
+      };
+      document.querySelectorAll("[data-page]").forEach(
+        (a) =>
+          (a.onclick = (e) => {
+            e.preventDefault();
+            page = a.dataset.page;
+            render();
+          }),
+      );
+      document.getElementById("theme").onclick = () => {
+        document.documentElement.classList.toggle("dark");
+        fillHex();
+      };
+      addEventListener("keydown", (e) => {
+        if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))
+          return;
+        if (e.key === "ArrowLeft") step(-1);
+        if (e.key === "ArrowRight") step(1);
+      });
+      render();
+    </script>
+  </body>
+</html>

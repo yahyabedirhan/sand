@@ -1,0 +1,14 @@
+# 10: Spacing, Radius, Shadow, Motion pages
+
+**What to build:** Four foundation pages render their scales live (the named spacing steps over the numeric scale, the radius steps, the shadow steps, the duration and easing tokens with a reduced-motion demonstration) with a short rule file each where a rule exists.
+
+Follow `.scratch/sand-build/page-format.md` for the page layout, the preview container, and the rules block; open the prototype there if anything is unclear.
+
+**Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
+
+**Status:** ready-for-agent
+
+- [ ] each page renders its tokens from the real theme values, not hard-coded copies
+- [ ] Motion page demonstrates enter and exit and respects reduced motion
+- [ ] rule files exist for any page that has a rule; the sync check passes
+- [ ] all four registered as written

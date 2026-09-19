@@ -1,0 +1,6 @@
+# scratch
+
+Agent-facing tracker files. Not human notes; those live in `.notes/`.
+
+- [sand-spec/](sand-spec/index.md) - wayfinder map for the spec, complete
+- [sand-build/](sand-build/index.md) - implementation tickets for the spec
