@@ -4,8 +4,8 @@
 
 **Blocked by:** 11 Component page pattern and form controls
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] twelve pages registered as written with a live demo each
-- [ ] carousel and date picker libraries noted on their pages
-- [ ] chart demo uses the chart color tokens
+- [x] twelve pages registered as written with a live demo each
+- [x] carousel and date picker libraries noted on their pages
+- [x] chart demo uses the chart color tokens

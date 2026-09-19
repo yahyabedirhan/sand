@@ -4,7 +4,14 @@ import { ColorsPage } from "@/pages/foundations/colors";
 import { FontsPage } from "@/pages/foundations/fonts";
 import { IconsPage } from "@/pages/foundations/icons";
 import { TypographyPage } from "@/pages/foundations/typography";
+import { AlertPage } from "@/pages/components/alert";
+import { AvatarPage } from "@/pages/components/avatar";
+import { BadgePage } from "@/pages/components/badge";
 import { ButtonPage } from "@/pages/components/button";
+import { ButtonGroupPage } from "@/pages/components/button-group";
+import { CalendarPage } from "@/pages/components/calendar";
+import { CarouselPage } from "@/pages/components/carousel";
+import { ChartPage } from "@/pages/components/chart";
 import { CheckboxPage } from "@/pages/components/checkbox";
 import { FieldPage } from "@/pages/components/field";
 import { InputPage } from "@/pages/components/input";
@@ -12,11 +19,16 @@ import { InputGroupPage } from "@/pages/components/input-group";
 import { InputOTPPage } from "@/pages/components/input-otp";
 import { LabelPage } from "@/pages/components/label";
 import { NativeSelectPage } from "@/pages/components/native-select";
+import { ProgressPage } from "@/pages/components/progress";
 import { RadioGroupPage } from "@/pages/components/radio-group";
 import { SelectPage } from "@/pages/components/select";
 import { SliderPage } from "@/pages/components/slider";
+import { SpinnerPage } from "@/pages/components/spinner";
 import { SwitchPage } from "@/pages/components/switch";
 import { TextareaPage } from "@/pages/components/textarea";
+import { ToastPage } from "@/pages/components/toast";
+import { TogglePage } from "@/pages/components/toggle";
+import { ToggleGroupPage } from "@/pages/components/toggle-group";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
 import { FontsPage as FontsMechanicPage } from "@/pages/mechanics/fonts";
@@ -146,7 +158,14 @@ function todo(
 }
 
 const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
+  alert: AlertPage,
+  avatar: AvatarPage,
+  badge: BadgePage,
   button: ButtonPage,
+  "button-group": ButtonGroupPage,
+  calendar: CalendarPage,
+  carousel: CarouselPage,
+  chart: ChartPage,
   checkbox: CheckboxPage,
   field: FieldPage,
   input: InputPage,
@@ -154,11 +173,16 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   "input-otp": InputOTPPage,
   label: LabelPage,
   "native-select": NativeSelectPage,
+  progress: ProgressPage,
   "radio-group": RadioGroupPage,
   select: SelectPage,
   slider: SliderPage,
+  spinner: SpinnerPage,
   switch: SwitchPage,
   textarea: TextareaPage,
+  toast: ToastPage,
+  toggle: TogglePage,
+  "toggle-group": ToggleGroupPage,
 };
 
 function componentPage(slug: ComponentSlug): Page {
