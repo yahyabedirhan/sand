@@ -19,6 +19,16 @@ Supersedes [2026-09-19-sand-spec-wayfinding.md](2026-09-19-sand-spec-wayfinding.
 - Ticket 22 added from a 21 finding: the named spacing tokens shadow Tailwind's container sizes (`max-w-xs` is 4px), so overlays render narrow. It blocks 12 and informs 10.
 - Frontier now: 02, 04, 11, 16, 22 (all `ready-for-agent`). Then 03, 08, 09, 10 (after 02), 05, 06, 07 (after 04), 12 to 15 (after 11, 12 also after 22). Then 17 to 20, which need the maintainer (tags, review of the example project, the outside consumer test).
 
+## First actions for the next session
+
+1. `git status` must be clean and `git log -1` should be at or after `ec758d2`. No sub-agent was left running.
+2. Load the tracker table, confirm 02, 04, 11, 16, 22 are `ready-for-agent`.
+3. Launch five sub-agents at once, one per ticket, each with `isolation: "worktree"` and `run_in_background: true`. Each worktree needs `pnpm install` before `pnpm check` works; say so in the prompt. Each agent commits on its own branch; do not let it push or merge.
+4. As each reports, merge its branch into `main` (`git merge --no-ff <branch>`), resolve conflicts (registry pages array, `index.md` status cells, `sand/src/docs/index.md`), run `pnpm check` and `pnpm build` on `main`, then launch whatever the merge unblocked (03, 08, 09, 10 after 02; 05, 06, 07 after 04; 12 after 11 and 22; 13, 14, 15 after 11).
+5. Stop before 17. Tickets 17 to 20 need the maintainer for the example project choice (to-do or kanban), tags, and the outside consumer test.
+
+The prompt that worked for 01 and 21 (reuse its shape): read `AGENTS.md`, `CONTEXT.md`, `.claude/skills/implement/SKILL.md` and follow it, the ticket file, `page-format.md`, the relevant spec section, and `sand/src/docs/index.md` for the shared pieces; open the prototype in the browser for the visual reference when the ticket is a page; claim the ticket; build; verify in the browser with `preview_start` (config `sand`, root `pnpm dev`); run the `code-review` skill through the Skill tool and apply real findings; tick criteria, set `done` in ticket and table; one commit, conventional prefix, co-author line; report back with check and build tails, commit hash, TODOs. State the repo rules in the prompt (no `git stash`, no employer names, no em-dash overuse, no colon-introduced lists in prose, `TODO:` for unfinished work, `writing-for-agents` before `AGENTS.md` or `index.md` edits).
+
 ## How the delegation has been run
 
 - One sub-agent per ticket, launched with the Agent tool (general purpose), `run_in_background: true`. The prompt tells it to read `AGENTS.md`, `CONTEXT.md`, `.claude/skills/implement/SKILL.md` and follow it, the ticket file, `page-format.md`, and the relevant spec sections; to claim the ticket first (status in file and table); to run `pnpm check` and `pnpm build` from the root; to verify pages with the browser preview tool using the `sand` config in `.claude/launch.json`; to run the `code-review` skill via the Skill tool and apply real findings; to tick the criteria, set `done` in both places, and commit once with a conventional prefix and the co-author line. `implement` and `to-tickets` are `disable-model-invocation`, so a sub-agent cannot call them through the Skill tool; it reads the skill file and follows it instead. `code-review` works through the Skill tool.
@@ -41,4 +51,4 @@ Supersedes [2026-09-19-sand-spec-wayfinding.md](2026-09-19-sand-spec-wayfinding.
 - `code-review` inside each sub-agent, as above.
 - `writing-for-agents` for any `AGENTS.md` or `index.md` edit you make yourself.
 - `grilling` and `domain-modeling` only if a sub-agent surfaces a decision the spec and `page-format.md` do not cover; park it on the ticket and ask the maintainer when they return.
-- `human-notes` then `handoff` at session end. No journal section has been written for 2026-09-19 yet; the next `/human-notes` run should cover the whole day (wayfinding, spec, adoption grilling, prototyping, tickets 01 and 21).
+- `human-notes` then `handoff` at session end. No journal section has been written for 2026-09-19 yet; the next `/human-notes` run should cover the whole day (wayfinding, spec, adoption grilling, four prototype rounds, tickets 01 and 21). The maintainer ended this session without running it.
