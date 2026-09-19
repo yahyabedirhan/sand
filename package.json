@@ -10,7 +10,8 @@
     "lint": "pnpm --filter sand lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm typecheck && pnpm lint && pnpm format:check"
+    "test": "pnpm --filter sand test",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test"
   },
   "devDependencies": {
     "prettier": "^3.9.6"

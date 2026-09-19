@@ -17,7 +17,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 00 | [Docs page prototypes](issues/00-docs-page-prototypes.md) | - | done |
 | 01 | [Workspace restructure](issues/01-workspace-restructure.md) | - | done |
 | 02 | [Rules as markdown](issues/02-rules-as-markdown.md) | 01, 21 | done |
-| 03 | [Test runner and the two seams](issues/03-test-runner-and-the-two-seams.md) | 02 | ready-for-agent |
+| 03 | [Test runner and the two seams](issues/03-test-runner-and-the-two-seams.md) | 02 | done |
 | 04 | [Previews section and the Cards preview](issues/04-previews-section-and-the-cards-preview.md) | 01, 21 | done |
 | 05 | [Application preview](issues/05-application-preview.md) | 04 | done |
 | 06 | [Marketing preview](issues/06-marketing-preview.md) | 04 | done |

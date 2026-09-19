@@ -3,10 +3,13 @@
 The documentation shell, Sand's first consumer.
 
 - [registry.ts](registry.ts) - the page list; drives routes, sidebar, the Overview section cards, and each page's layout (`docs`, `wide`, `full`)
+- [registry.test.tsx](registry.test.tsx) - registry seam: sidebar order, routes, the TODO stub, preview layout
 - [shell.tsx](shell.tsx) - sidebar, header, and the layout switch per page
 - [page.tsx](page.tsx) - page skeleton pieces: PageHeader, PageLayout (content column and the "On this page" rail), Section (registers itself in the rail), Prose, InlineCode, RuleList, Rule
 - [component-page.tsx](component-page.tsx) - the demo-first component page pattern; header and live Demo are required, later sections are optional
 - [parse-rules.ts](parse-rules.ts) - splits a topic rule file into title-and-sentence rules for the checklist
+- [rules-sync.test.tsx](rules-sync.test.tsx) - rules sync seam: every topic file title appears on that topic's page, and vice versa
+- [vitest.setup.ts](vitest.setup.ts) - jsdom shims so the docs tests can render pages
 - [preview-container.tsx](preview-container.tsx) - PreviewContainer, the box around every rendered example: named panes, Code pane, container-only theme toggle, light/dark split
 - [theme.tsx](theme.tsx) - ThemeProvider, system default, local-storage persistence
 - [use-theme.ts](use-theme.ts) - the theme context and hook
