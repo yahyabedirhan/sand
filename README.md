@@ -1,7 +1,8 @@
 # Sand
 
 A design system and its documentation site, built as one React + Vite
-app. Written for consumers of the system; the reasoning lives in `.notes/`.
+app inside a pnpm workspace. Written for consumers of the system; the
+reasoning lives in `.notes/`.
 
 ## Setup
 
@@ -15,13 +16,14 @@ pnpm dev
 ```bash
 pnpm dev          # documentation site with hot reload
 pnpm check        # typecheck, lint, and format check
-pnpm build        # production build into dist/
+pnpm build        # production build into sand/dist/
 ```
 
 ## Layout
 
-- `src/` - the app: tokens in `styles.css`, components in `components/ui`,
-  documentation pages in `pages/`
+- `sand/` - the package a consumer copies. Tokens live in `src/styles.css`,
+  components in `src/components/ui`, documentation pages in `src/pages`
+- `examples/` - example projects importing `sand` as a workspace package
 - `.specs/` - product specs, numbered
 - `.notes/` - maintainer notes: journal, decision notes, concept notes
 - `.handoff/` - session handoffs

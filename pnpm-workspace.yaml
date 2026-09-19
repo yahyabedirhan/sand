@@ -1,3 +1,14 @@
+packages:
+  - sand
+  - "examples/*"
+
+# Libraries that take react as a peer without naming @types/react (input-otp)
+# resolve React's types by walking up from node_modules/.pnpm. Hoisting the
+# types to the workspace root keeps that lookup working in every package.
+publicHoistPattern:
+  - "@types/react"
+  - "@types/react-dom"
+
 minimumReleaseAgeExclude:
   - "@oxlint/binding-android-arm-eabi@1.83.0"
   - "@oxlint/binding-android-arm64@1.83.0"

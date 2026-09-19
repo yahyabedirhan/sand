@@ -1,11 +1,15 @@
 # Sand
 
 Sand is a design system and its documentation site, one React + Vite
-app. The product is specified in `.specs/00-sand-design-system.md`. Read it
-before touching code; this file carries only what the spec does not.
+app in a pnpm workspace. The product is specified in
+`.specs/00-sand-design-system.md`. Read it before touching code; this file
+carries only what the spec does not.
 
 ## Layout
 
+- `sand/` - the package a consumer copies. Everything under `sand/` travels
+  to a consumer, nothing else does. Run shadcn and oxlint from inside it.
+- `examples/` - example projects importing `sand` as a workspace package.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.

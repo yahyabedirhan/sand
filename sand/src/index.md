@@ -1,6 +1,6 @@
 # src
 
-The app. Entry is `main.tsx`, which loads `styles.css` and mounts `app.tsx`.
+The app. Entry is `main.tsx`, which loads `styles.css` and mounts `app.tsx`. `@/` resolves here (Vite alias and TypeScript paths, set in `../vite.config.ts` and `../tsconfig.app.json`).
 
 - [styles.css](styles.css) - the token layer: semantic variables, light and dark, mapped to utilities
 - [app.tsx](app.tsx) - providers and the router, routes generated from the registry

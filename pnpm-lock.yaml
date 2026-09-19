@@ -7,6 +7,12 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      prettier:
+        specifier: ^3.9.6
+        version: 3.9.6
+
+  sand:
     dependencies:
       '@base-ui/react':
         specifier: ^1.8.0
@@ -90,9 +96,6 @@ importers:
       oxlint:
         specifier: ^1.83.0
         version: 1.83.0
-      prettier:
-        specifier: ^3.9.6
-        version: 3.9.6
       typescript:
         specifier: ~6.0.2
         version: 6.0.3
@@ -3020,7 +3023,7 @@ snapshots:
       immer: 11.1.18
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
-      reselect: 5.1.1
+      reselect: 5.3.0
     optionalDependencies:
       react: 19.3.0
       react-redux: 9.3.0(@types/react@19.3.0)(react@19.3.0)(redux@5.0.1)
