@@ -1,7 +1,7 @@
 # Sand
 
 A design system and its documentation site, built as one React + Vite
-app. Written for consumers of the system; the reasoning lives in `notes/`.
+app. Written for consumers of the system; the reasoning lives in `.notes/`.
 
 ## Setup
 
@@ -23,7 +23,7 @@ pnpm build        # production build into dist/
 - `src/` - the app: tokens in `styles.css`, components in `components/ui`,
   documentation pages in `pages/`
 - `.specs/` - product specs, numbered
-- `notes/` - maintainer notes: journal, decision notes, concept notes
+- `.notes/` - maintainer notes: journal, decision notes, concept notes
 - `.handoff/` - session handoffs
 
 ## Agents

@@ -1,6 +1,8 @@
 # Module boundary
 
-Status: decided, 2026-09-14
+Status: superseded, 2026-09-19
+
+Superseded by ticket 07 of the sand-spec map (`.scratch/sand-spec/issues/07-module-terminology.md`); components import their libraries directly.
 
 ## Context
 

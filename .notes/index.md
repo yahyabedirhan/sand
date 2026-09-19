@@ -1,4 +1,4 @@
-# notes
+# .notes
 
 Maintainer notes. Consumer pages carry no reasoning; it lives here.
 

@@ -9,10 +9,11 @@ before touching code; this file carries only what the spec does not.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.
-- `notes/` - maintainer notes: `index.md`, `journal.md` (one section per
-  session, written at session end), `decisions/` (one per foundation and
-  mechanic), `concepts/` (learning notes). Consumer pages carry no reasoning;
-  it lives here.
+- `.notes/` - the human's notes, in their words: `index.md`, `journal.md`
+  (one section per session), `decisions/` (one per foundation and mechanic),
+  `concepts/` (learning notes). The `human-notes` skill writes the journal and
+  concepts at session end. Consumer pages carry no reasoning; it lives here.
+- `.scratch/` - agent-facing tracker files (wayfinder maps and tickets).
 - Every folder gets a lowercase `index.md` pointing at its files.
 
 ## Hard rules
@@ -67,6 +68,7 @@ Stage the symlink itself, not the file inside it.
 
 Reach for `writing-for-agents` when editing this file or any `index.md`,
 `show-me` for a mechanics or token-layer picture, `grilling` only when a
-decision surfaces that the spec does not cover, `handoff` at session end.
+decision surfaces that the spec does not cover, `human-notes` then `handoff`
+at session end.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`.

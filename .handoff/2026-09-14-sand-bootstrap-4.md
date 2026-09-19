@@ -5,7 +5,7 @@ Supersedes the "remaining" list of [2026-09-14-sand-bootstrap-3.md](2026-09-14-s
 
 ## Where things stand
 
-- Everything from this session is committed on `main`; `git log` since `95816de` is the record. `pnpm check` passes. Session journal is in [notes/journal.md](../notes/journal.md), session 4.
+- Everything from this session is committed on `main`; `git log` since `95816de` is the record. `pnpm check` passes. Session journal is in [.notes/journal.md](../.notes/journal.md), session 4.
 - Sidebar order is now Overview, Foundations, Components, Guidelines, Modules. Modules has five done pages (Primitives, Icons, Charts, Fonts, Animation) sharing `src/pages/modules/module-page.tsx`; each `src/pages/modules/<slug>.tsx` holds only the data.
 - The Overview page is header, Start here, Status. The Principles section was removed on request.
 - The GitHub repository still does not exist. Ask before creating it.
@@ -22,7 +22,7 @@ Supersedes the "remaining" list of [2026-09-14-sand-bootstrap-3.md](2026-09-14-s
 2. Foundations pages, decision note first where missing: Colors (note exists), Fonts (exists), Spacing, Radius, Shadow, Motion, Icons (note exists; render the set from `src/modules/icons/index.ts`). Pattern is the Typography page.
 3. Guidelines pages: color pairing, opacity usage.
 4. Component pages, Button first.
-5. Concept notes in `notes/concepts/` as they come up.
+5. Concept notes in `.notes/concepts/` as they come up.
 6. Vault-side follow-ups from the first handoff, in the vault.
 
 ## Suggested skills

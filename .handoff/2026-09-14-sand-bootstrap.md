@@ -17,7 +17,7 @@ Next session: bootstrap the repository per the spec, then write the Typography p
 
 ## Reference material to copy from
 
-- Bootstrap procedure: `$HOME/Developer/yahyabedirhan/workstation/workflows/new-project-setup.md`, with `template/` in the same repo holding the baseline `AGENTS.md`, `README.md`, and `.gitignore`. Read `template/index.md` before using them. That repo's `notes/` layout (`index.md`, `journal.md`, `concepts/`) is the model for this repo's `notes/`.
+- Bootstrap procedure: `$HOME/Developer/yahyabedirhan/workstation/workflows/new-project-setup.md`, with `template/` in the same repo holding the baseline `AGENTS.md`, `README.md`, and `.gitignore`. Read `template/index.md` before using them. That repo's `.notes/` layout (`index.md`, `journal.md`, `concepts/`) is the model for this repo's `.notes/`.
 - Theme source: the schedule dashboard in the user's job-search vault at `interview-prep/dashboard/app/styles.css`. It has the complete light and dark oklch variable sets, the `@theme inline` mapping to Tailwind utilities, radius/shadow/tracking scales, and the fontsource imports. Its `components.json` (style `base-mira`, icon library `tabler`, Base UI) is the shadcn config to mirror. Its `package.json` lives two levels up at the vault root and pins the versions: `@base-ui/react`, `@shadcn/react`, `shadcn`, `tailwindcss` 4, `@tailwindcss/vite`, `@tabler/icons-react`, `recharts`, `@fontsource/geist`, `@fontsource/fraunces`, `tw-animate-css`, React 19.
 - Leave out of the copy: everything under the "interview-prep track palette" comment (success/failure/revisit/track-* variables and their `--color-*` mappings). Those are app-specific.
 - Sibling repo for conventions already proven: `$HOME/Developer/yahyabedirhan/steal` (spec numbering `NN-topic.md`, `.handoff/` naming, `AGENTS.md` shape, skill install pattern).
@@ -44,7 +44,7 @@ Next session: bootstrap the repository per the spec, then write the Typography p
 3. `shadcn init` mirroring the dashboard's `components.json`, then add all registry components.
 4. Create the five module entry points and the Oxlint restricted-imports rule; prove it fails on a direct import before moving on.
 5. Page registry, router, sidebar with all sections and `TODO` pages, theme toggle.
-6. `notes/` scaffold with a first journal entry. First commit. Ask before `gh repo create`.
+6. `.notes/` scaffold with a first journal entry. First commit. Ask before `gh repo create`.
 7. Then Typography: decision note first, page second.
 
 ## Vault-side follow-ups (do in the vault, not here)
@@ -54,7 +54,7 @@ Next session: bootstrap the repository per the spec, then write the Typography p
 
 ## Suggested skills
 
-- `writing-for-agents` when writing `AGENTS.md` and the `notes/` index files.
+- `writing-for-agents` when writing `AGENTS.md` and the `.notes/` index files.
 - `schedule-planner` for the vault-side catalog and slot updates.
 - `show-me` if the user wants the module-boundary or token-layer picture drawn.
 - `grilling` only if a new decision surfaces that the spec does not cover.

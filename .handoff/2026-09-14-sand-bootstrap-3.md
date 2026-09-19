@@ -5,9 +5,9 @@ Supersedes the "remaining" lists of both earlier handoffs. [2026-09-14-sand-boot
 
 ## Where things stand
 
-- The whole bootstrap scope from the spec is built and committed on `main`, plus Typography (decision note and page), the `notes/` scaffold, the gitleaks guard, and a code-review pass. Twelve commits since the previous handoff; `git log` is the record.
+- The whole bootstrap scope from the spec is built and committed on `main`, plus Typography (decision note and page), the `.notes/` scaffold, the gitleaks guard, and a code-review pass. Twelve commits since the previous handoff; `git log` is the record.
 - `pnpm check` (typecheck, lint, format) and `pnpm build` pass. Tree is clean.
-- Session journal for all three sessions of 2026-09-14 is in [notes/journal.md](../notes/journal.md); decision notes in [notes/decisions/](../notes/decisions/index.md). Do not re-derive what they record.
+- Session journal for all three sessions of 2026-09-14 is in [.notes/journal.md](../.notes/journal.md); decision notes in [.notes/decisions/](../.notes/decisions/index.md). Do not re-derive what they record.
 - The folder is now `$HOME/Developer/yahyabedirhan/sand`. Nothing in the repo depended on the old name. The GitHub repository does not exist yet and is to be named `yahyabedirhan/sand`; the user has not yet said yes to creating it. Ask, do not assume.
 - Sand is presented as a production design system, not an example. The "example" wording was removed everywhere; do not reintroduce it. The spec's "learning vehicle first" positioning line was left untouched on purpose; the user has not asked to change it.
 
@@ -17,7 +17,7 @@ Supersedes the "remaining" lists of both earlier handoffs. [2026-09-14-sand-boot
 2. Foundations pages, each with a decision note first where one is missing: Colors (note exists), Fonts (exists), Spacing, Radius, Shadow, Motion, Icons. Follow the foundation skeleton and the Typography page as the pattern. The Icons page can render the whole set from the exports of `src/modules/icons/index.ts`.
 3. Guidelines pages: color pairing, opacity usage.
 4. Component pages, one per registry entry, following the component skeleton in the spec. Start with Button (the Overview "start here" list links to it).
-5. Concept notes in `notes/concepts/` as things are learned (oklch, Tailwind v4 theme model, token formats).
+5. Concept notes in `.notes/concepts/` as things are learned (oklch, Tailwind v4 theme model, token formats).
 6. Vault-side follow-ups from the first handoff (catalog item, `LOGS.md` entry) are still untouched and belong in the vault.
 
 ## Things to know that the code does not say

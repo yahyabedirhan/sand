@@ -9,7 +9,7 @@ Supersedes the repo-setup portion of [2026-09-14-sand-bootstrap.md](2026-09-14-s
 - Default skill set installed per `workstation/workflows/new-project-setup.md`: `.agents/skills/`, `.claude/skills/` symlinks, `skills-lock.json`. Workflow checklist passes (`grill-me`, `i-have-adhd`, `show-me` present).
 - `AGENTS.md` written, `CLAUDE.md -> AGENTS.md`. It states the layout, the generic no-names rule, writing style, git rules (no commits unless asked, no `gh repo create` without a yes), and the skill convention.
 
-No `package.json`, no app code, no `notes/`, no `README.md` yet. No GitHub repository.
+No `package.json`, no app code, no `.notes/`, no `README.md` yet. No GitHub repository.
 
 ## Remaining, in order (steps 2 to 7 of the original handoff)
 
@@ -18,7 +18,7 @@ No `package.json`, no app code, no `notes/`, no `README.md` yet. No GitHub repos
 3. `shadcn init` mirroring the dashboard's `components.json` (style `base-mira`, Tabler, Base UI), then add the whole registry.
 4. Five module entry points and the Oxlint `eslint/no-restricted-imports` rule. Oxlint is not installed globally; add it as a dev dependency. Prove the rule fails on a direct import before moving on.
 5. Page registry, router, sidebar with every section and `TODO` pages, theme toggle in the sidebar footer.
-6. `notes/` scaffold (`index.md`, `journal.md`, `decisions/`, `concepts/`) with a first journal entry covering both bootstrap sessions. Ask before committing; ask again before `gh repo create`.
+6. `.notes/` scaffold (`index.md`, `journal.md`, `decisions/`, `concepts/`) with a first journal entry covering both bootstrap sessions. Ask before committing; ask again before `gh repo create`.
 7. Typography: decision note first, page second.
 
 ## Things to know that the environment does not say
@@ -30,7 +30,7 @@ No `package.json`, no app code, no `notes/`, no `README.md` yet. No GitHub repos
 
 ## Suggested skills
 
-- `writing-for-agents` for `README.md`, `notes/index.md`, and any edit to `AGENTS.md`.
+- `writing-for-agents` for `README.md`, `.notes/index.md`, and any edit to `AGENTS.md`.
 - `show-me` if the user wants the module-boundary picture before writing the entry points.
 - `grilling` only for a decision the spec does not cover.
 - `handoff` at session end, writing to `.handoff/`.
