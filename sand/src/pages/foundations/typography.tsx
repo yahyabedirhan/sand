@@ -14,6 +14,7 @@ import {
   Section,
   type RuleExample,
 } from "@/docs/page";
+import { parseRules, ruleKey } from "@/docs/parse-rules";
 import { PreviewContainer } from "@/docs/preview-container";
 import typographyRulesMarkdown from "../../../rules/typography.md?raw";
 
@@ -74,42 +75,12 @@ const roles: Role[] = [
 
 const sample = "The quick brown fox jumps over the lazy dog";
 
-type TypographyRule = {
-  title: string;
-  body: string;
-};
-
 type TypographyRuleExamples = {
   do: RuleExample;
   dont: RuleExample;
 };
 
-function parseRules(markdown: string): TypographyRule[] {
-  const rules: TypographyRule[] = [];
-  const sections = markdown.split(/^## /m).slice(1);
-
-  for (const section of sections) {
-    const [title, ...bodyLines] = section.trim().split("\n");
-    const body = bodyLines.join(" ").trim();
-
-    if (!title || !body) {
-      throw new Error("Every typography rule needs a title and a sentence.");
-    }
-
-    rules.push({ title, body });
-  }
-
-  return rules;
-}
-
 const typographyRules = parseRules(typographyRulesMarkdown);
-
-function ruleKey(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
 
 const typographyRuleExamples: Record<string, TypographyRuleExamples> = {
   "use-a-role-not-a-size": {

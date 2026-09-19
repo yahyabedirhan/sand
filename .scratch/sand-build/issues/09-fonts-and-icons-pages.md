@@ -6,8 +6,8 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Fonts page renders each face with its role; `rules/fonts.md` holds the serif-top-levels-only and mono-usage rules
-- [ ] Icons page renders the icons currently used across the components and the docs shell, with size and text-pairing guidance
-- [ ] both pages registered as written; sync check passes
+- [x] Fonts page renders each face with its role; `rules/fonts.md` holds the serif-top-levels-only and mono-usage rules
+- [x] Icons page renders the icons currently used across the components and the docs shell, with size and text-pairing guidance
+- [x] both pages registered as written; sync check passes

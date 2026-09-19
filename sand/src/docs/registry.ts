@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
 
+import { FontsPage } from "@/pages/foundations/fonts";
+import { IconsPage } from "@/pages/foundations/icons";
 import { TypographyPage } from "@/pages/foundations/typography";
 import { ButtonPage } from "@/pages/components/button";
 import { CheckboxPage } from "@/pages/components/checkbox";
@@ -16,8 +18,8 @@ import { SwitchPage } from "@/pages/components/switch";
 import { TextareaPage } from "@/pages/components/textarea";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
-import { FontsPage } from "@/pages/mechanics/fonts";
-import { IconsPage } from "@/pages/mechanics/icons";
+import { FontsPage as FontsMechanicPage } from "@/pages/mechanics/fonts";
+import { IconsPage as IconsMechanicPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
 import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
@@ -182,12 +184,22 @@ export const pages: Page[] = [
     title: "Typography",
     component: TypographyPage,
   },
-  todo("Foundations", "fonts"),
+  {
+    section: "Foundations",
+    slug: "fonts",
+    title: "Fonts",
+    component: FontsPage,
+  },
   todo("Foundations", "spacing"),
   todo("Foundations", "radius"),
   todo("Foundations", "shadow"),
   todo("Foundations", "motion"),
-  todo("Foundations", "icons"),
+  {
+    section: "Foundations",
+    slug: "icons",
+    title: "Icons",
+    component: IconsPage,
+  },
   ...componentSlugs.map(componentPage),
   {
     section: "Mechanics",
@@ -195,14 +207,24 @@ export const pages: Page[] = [
     title: "Primitives",
     component: PrimitivesPage,
   },
-  { section: "Mechanics", slug: "icons", title: "Icons", component: IconsPage },
+  {
+    section: "Mechanics",
+    slug: "icons",
+    title: "Icons",
+    component: IconsMechanicPage,
+  },
   {
     section: "Mechanics",
     slug: "charts",
     title: "Charts",
     component: ChartsPage,
   },
-  { section: "Mechanics", slug: "fonts", title: "Fonts", component: FontsPage },
+  {
+    section: "Mechanics",
+    slug: "fonts",
+    title: "Fonts",
+    component: FontsMechanicPage,
+  },
   {
     section: "Mechanics",
     slug: "animation",
