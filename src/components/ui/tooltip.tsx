@@ -1,6 +1,6 @@
 "use client";
 
-import { Tooltip as TooltipPrimitive } from "@/modules/primitives";
+import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 import { cn } from "cn";
 
 function TooltipProvider({

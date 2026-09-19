@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Menu as MenuPrimitive } from "@/modules/primitives";
-import { Menubar as MenubarPrimitive } from "@/modules/primitives";
+import { Menu as MenuPrimitive } from "@base-ui/react/menu";
+import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar";
 import { cn } from "cn";
 
 import {
@@ -20,7 +20,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { IconCheck } from "@/modules/icons";
+import { IconCheck } from "@tabler/icons-react";
 
 function Menubar({ className, ...props }: MenubarPrimitive.Props) {
   return (

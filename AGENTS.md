@@ -11,7 +11,7 @@ before touching code; this file carries only what the spec does not.
   skill writes here. Keep them committed. Read the newest one at session start.
 - `notes/` - maintainer notes: `index.md`, `journal.md` (one section per
   session, written at session end), `decisions/` (one per foundation and
-  module), `concepts/` (learning notes). Consumer pages carry no reasoning;
+  mechanic), `concepts/` (learning notes). Consumer pages carry no reasoning;
   it lives here.
 - Every folder gets a lowercase `index.md` pointing at its files.
 
@@ -20,8 +20,6 @@ before touching code; this file carries only what the spec does not.
 - Name no employer, company, or hiring process anywhere in this repository:
   code, notes, specs, handoffs, this file, commit messages. Describe such
   context generically ("a previous project", "a dashboard in my vault").
-- Third-party libraries are imported only through their module entry point.
-  The lint rule enforces it; keep the rule passing rather than disabling it.
 
 ## Communication and writing style
 
@@ -68,7 +66,7 @@ ln -s ../../.agents/skills/<name> .claude/skills/<name>
 Stage the symlink itself, not the file inside it.
 
 Reach for `writing-for-agents` when editing this file or any `index.md`,
-`show-me` for a module-boundary or token-layer picture, `grilling` only when a
+`show-me` for a mechanics or token-layer picture, `grilling` only when a
 decision surfaces that the spec does not cover, `handoff` at session end.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`.

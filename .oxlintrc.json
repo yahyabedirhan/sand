@@ -9,42 +9,9 @@
       {
         "allowConstantExport": true
       }
-    ],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": [
-          {
-            "group": ["@base-ui/react", "@base-ui/react/*"],
-            "message": "Import primitives from @/modules/primitives."
-          },
-          {
-            "group": ["@tabler/icons-react", "@tabler/icons-react/*"],
-            "message": "Import icons from @/modules/icons."
-          },
-          {
-            "group": ["recharts", "recharts/*"],
-            "message": "Import chart parts from @/modules/charts."
-          },
-          {
-            "group": ["@fontsource/*"],
-            "message": "Fonts are imported once, in src/modules/fonts."
-          },
-          {
-            "group": ["tw-animate-css"],
-            "message": "Animation is imported once, in src/modules/animation."
-          }
-        ]
-      }
     ]
   },
   "overrides": [
-    {
-      "files": ["src/modules/**"],
-      "rules": {
-        "no-restricted-imports": "off"
-      }
-    },
     {
       "files": ["src/components/ui/**", "src/hooks/use-mobile.ts"],
       "rules": {

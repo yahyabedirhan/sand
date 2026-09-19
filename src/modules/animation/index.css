@@ -1,7 +1,0 @@
-/*
- * Animation module. The only place the animation library is imported.
- * tw-animate-css registers the `animate-in` / `animate-out` utilities that
- * components use for enter and exit. A swap changes this import and the
- * class names the components use.
- */
-@import "tw-animate-css";

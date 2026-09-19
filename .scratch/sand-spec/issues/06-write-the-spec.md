@@ -22,3 +22,6 @@ changed, and `notes/journal.md`.
   request). Its seam check was asked and not yet answered; proposed seams
   were the page registry (sidebar, routes, TODO stub, Previews exemption)
   and the rules sync check. The lint-boundary seam is gone with ticket 07.
+- 2026-09-19: ticket 08 is resolved; the module boundary is out of the code
+  and the docs section is Mechanics. The spec can drop stories 34, 35, 36 and
+  describe the Mechanics page skeleton as role, choice, dependents.

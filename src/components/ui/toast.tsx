@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Toast as ToastPrimitive } from "@/modules/primitives";
+import { Toast as ToastPrimitive } from "@base-ui/react/toast";
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import {
   IconAlertTriangle,
   IconAlertOctagon,
   IconLoader,
-} from "@/modules/icons";
+} from "@tabler/icons-react";
 
 const toast = ToastPrimitive.createToastManager();
 

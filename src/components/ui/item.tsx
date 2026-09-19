@@ -1,6 +1,6 @@
 import * as React from "react";
-import { mergeProps } from "@/modules/primitives";
-import { useRender } from "@/modules/primitives";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "cn";
 

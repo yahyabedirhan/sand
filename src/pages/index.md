@@ -5,4 +5,4 @@ Documentation pages, one folder per sidebar section. A page is registered in [do
 - [overview/](overview/) - `overview.tsx`
 - [foundations/](foundations/) - `typography.tsx`
 - `guidelines/` - empty
-- [modules/](modules/) - `module-page.tsx` (shared layout), one file per module
+- [mechanics/](mechanics/) - `mechanic-page.tsx` (shared layout), one file per mechanic

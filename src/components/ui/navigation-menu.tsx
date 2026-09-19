@@ -1,7 +1,7 @@
-import { NavigationMenu as NavigationMenuPrimitive } from "@/modules/primitives";
+import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu";
 import { cva } from "class-variance-authority";
 import { cn } from "cn";
-import { IconChevronDown } from "@/modules/icons";
+import { IconChevronDown } from "@tabler/icons-react";
 
 function NavigationMenu({
   align = "start",

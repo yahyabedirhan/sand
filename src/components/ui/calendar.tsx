@@ -14,7 +14,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconChevronDown,
-} from "@/modules/icons";
+} from "@tabler/icons-react";
 
 function Calendar({
   className,

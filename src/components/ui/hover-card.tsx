@@ -1,6 +1,6 @@
 "use client";
 
-import { PreviewCard as PreviewCardPrimitive } from "@/modules/primitives";
+import { PreviewCard as PreviewCardPrimitive } from "@base-ui/react/preview-card";
 import { cn } from "cn";
 
 function HoverCard({ ...props }: PreviewCardPrimitive.Root.Props) {

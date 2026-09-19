@@ -8,7 +8,7 @@ import {
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
-import { IconArrowDown } from "@/modules/icons";
+import { IconArrowDown } from "@tabler/icons-react";
 
 function MessageScrollerProvider(
   props: React.ComponentProps<typeof MessageScrollerPrimitive.Provider>,

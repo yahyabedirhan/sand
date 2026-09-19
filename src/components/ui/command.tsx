@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
-import { IconSearch, IconCheck } from "@/modules/icons";
+import { IconSearch, IconCheck } from "@tabler/icons-react";
 
 function Command({
   className,

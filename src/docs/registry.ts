@@ -1,11 +1,11 @@
 import type { ComponentType } from "react";
 
 import { TypographyPage } from "@/pages/foundations/typography";
-import { AnimationPage } from "@/pages/modules/animation";
-import { ChartsPage } from "@/pages/modules/charts";
-import { FontsPage } from "@/pages/modules/fonts";
-import { IconsPage } from "@/pages/modules/icons";
-import { PrimitivesPage } from "@/pages/modules/primitives";
+import { AnimationPage } from "@/pages/mechanics/animation";
+import { ChartsPage } from "@/pages/mechanics/charts";
+import { FontsPage } from "@/pages/mechanics/fonts";
+import { IconsPage } from "@/pages/mechanics/icons";
+import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
 
 // One registry drives the sidebar, the routes, and the Overview status list.
@@ -17,7 +17,7 @@ export const sections = [
   "Foundations",
   "Components",
   "Guidelines",
-  "Modules",
+  "Mechanics",
 ] as const;
 export type Section = (typeof sections)[number];
 
@@ -146,21 +146,21 @@ export const pages: Page[] = [
   todo("Guidelines", "color-pairing"),
   todo("Guidelines", "opacity"),
   {
-    section: "Modules",
+    section: "Mechanics",
     slug: "primitives",
     title: "Primitives",
     component: PrimitivesPage,
   },
-  { section: "Modules", slug: "icons", title: "Icons", component: IconsPage },
+  { section: "Mechanics", slug: "icons", title: "Icons", component: IconsPage },
   {
-    section: "Modules",
+    section: "Mechanics",
     slug: "charts",
     title: "Charts",
     component: ChartsPage,
   },
-  { section: "Modules", slug: "fonts", title: "Fonts", component: FontsPage },
+  { section: "Mechanics", slug: "fonts", title: "Fonts", component: FontsPage },
   {
-    section: "Modules",
+    section: "Mechanics",
     slug: "animation",
     title: "Animation",
     component: AnimationPage,

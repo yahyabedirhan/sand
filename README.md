@@ -21,7 +21,7 @@ pnpm build        # production build into dist/
 ## Layout
 
 - `src/` - the app: tokens in `styles.css`, components in `components/ui`,
-  module entry points in `modules/`, documentation pages in `pages/`
+  documentation pages in `pages/`
 - `.specs/` - product specs, numbered
 - `notes/` - maintainer notes: journal, decision notes, concept notes
 - `.handoff/` - session handoffs

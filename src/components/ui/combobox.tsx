@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Combobox as ComboboxPrimitive } from "@/modules/primitives";
+import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { IconChevronDown, IconX, IconCheck } from "@/modules/icons";
+import { IconChevronDown, IconX, IconCheck } from "@tabler/icons-react";
 
 const Combobox = ComboboxPrimitive.Root;
 

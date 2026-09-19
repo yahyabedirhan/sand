@@ -59,6 +59,7 @@ foundation and component pages are written.
 - [The form of agent-readable rules](issues/03-agent-readable-rules.md): markdown source of truth under `rules/` (one file per topic, `system.md` cross-cutting, `index.md`), pages synced by hand with a written check procedure, minimum rule is title plus one sentence, no generator; consumer-side reading deferred to ticket 04.
 - [The learning-notes skill](issues/05-learning-notes-skill.md): `/human-notes` skill written, user-invoked at session end before `/handoff`; writes per-concept notes and the journal section into `.notes/` (renamed from `notes/`).
 - [What a module is](issues/07-module-terminology.md): Sand is Design (raw material and rules) realised by Mechanics (React, Vite, Tailwind, shadcn, Base UI, Tabler, Recharts, fontsource, tw-animate-css); the code-level module boundary is a misunderstanding to remove (ticket 08); Modules docs become Mechanics, no swap field.
+- [Remove the module boundary from the code](issues/08-remove-module-boundary.md): `src/modules` and the lint rule are gone, components import Base UI, Tabler, and Recharts directly, fonts and animation are imported in `styles.css`, the Modules pages are the Mechanics section (role, choice, dependents); the per-library decision notes still need a rewrite with the maintainer.
 
 ## Not yet specified
 

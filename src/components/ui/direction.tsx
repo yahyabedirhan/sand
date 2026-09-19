@@ -1,1 +1,4 @@
-export { DirectionProvider, useDirection } from "@/modules/primitives";
+export {
+  DirectionProvider,
+  useDirection,
+} from "@base-ui/react/direction-provider";

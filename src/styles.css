@@ -1,7 +1,17 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
-@import "./modules/animation/index.css";
-@import "./modules/fonts/index.css";
+@import "tw-animate-css";
+
+/* The three faces, Geist (sans), Fraunces (serif), and Geist Mono (mono),
+   self-hosted through fontsource. The family names map to utilities below. */
+@import "@fontsource/geist/400.css";
+@import "@fontsource/geist/500.css";
+@import "@fontsource/geist/600.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
 
 @custom-variant dark (&:is(.dark *));
 
