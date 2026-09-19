@@ -1,9 +1,6 @@
 # Sand
 
-Sand is a design system and its documentation site, one React + Vite
-app in a pnpm workspace. The product is specified in
-`.specs/00-sand-design-system.md`. Read it before touching code; this file
-carries only what the spec does not.
+Sand is a design system with a documentation site and example projects.
 
 ## Layout
 
@@ -13,11 +10,15 @@ carries only what the spec does not.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.
+- `HANDOFF.md` - the root pointer to the current handoff document.
 - `.notes/` - the human's notes, in their words: `index.md`, `journal.md`
   (one section per session), `decisions/` (one per foundation and mechanic),
   `concepts/` (learning notes). The `human-notes` skill writes the journal and
   concepts at session end. Consumer pages carry no reasoning; it lives here.
 - `.scratch/` - agent-facing tracker files (wayfinder maps and tickets).
+- `.workflows/` - workflows that combine existing skills without overwriting
+  them. This is one layer above the skills; read the relevant workflow when it
+  is named here.
 - Every folder gets a lowercase `index.md` pointing at its files.
 
 ## Hard rules
@@ -74,5 +75,14 @@ Reach for `writing-for-agents` when editing this file or any `index.md`,
 `show-me` for a mechanics or token-layer picture, `grilling` only when a
 decision surfaces that the spec does not cover, `human-notes` then `handoff`
 at session end.
+
+## Workflows
+
+Use a workflow when the task crosses a session boundary or combines existing
+skills into a repeatable path.
+
+| Workflow | Use when | Entry points |
+| --- | --- | --- |
+| [Handoff](.workflows/handoff-workflow.md) | Work must continue in another session, or a previous session left `HANDOFF.md` | `/handoff`, `/continue` |
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`.
