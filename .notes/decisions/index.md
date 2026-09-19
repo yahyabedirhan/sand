@@ -4,9 +4,9 @@ One note per foundation and mechanic, in ADR style with context, options, decisi
 
 - [tooling.md](tooling.md) - Vite, Tailwind over plain CSS, Oxlint over ESLint
 - [adoption.md](adoption.md) - git snapshot of `sand/` into a pnpm workspace, agent-first, overwrite updates for now
-- [module-boundary.md](module-boundary.md) - superseded; one entry point per library, enforced by lint
+- [module-boundary.md](module-boundary.md) - superseded; components import libraries directly
 - [primitives.md](primitives.md) - Base UI
-- [icons.md](icons.md) - Tabler, and the curated export list
+- [icons.md](icons.md) - Tabler, and the glyphs in use
 - [charts.md](charts.md) - Recharts
 - [fonts.md](fonts.md) - Geist, Fraunces, Geist Mono through fontsource
 - [animation.md](animation.md) - tw-animate-css

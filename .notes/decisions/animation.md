@@ -17,6 +17,6 @@ Overlays and menus need enter and exit animation; the registry components use `a
 
 ## Consequences
 
-- The animation module is a CSS file, `src/modules/animation/index.css`.
+- `styles.css` imports `tw-animate-css`.
 - Reduced motion is handled globally in `styles.css` with a `prefers-reduced-motion` block that collapses durations. This is the non-negotiable rule from the spec.
-- Swapping to a JavaScript motion library changes the class names inside components, not only the module.
+- Swapping to a JavaScript motion library changes the class names inside components, not only the import.
