@@ -1,3 +1,8 @@
 # examples
 
-Example projects, one folder each, importing `sand` as a workspace package. Empty until the docs pages are written (ticket 17 in `.scratch/sand-build/`).
+In-repo apps that import `sand` as a workspace package. They demonstrate
+Sand; they do not test adoption.
+
+Run the kanban from the repository root with `pnpm kanban`.
+
+- [kanban/](kanban/) - a small board with columns and movable cards

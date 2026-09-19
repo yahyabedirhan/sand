@@ -4,6 +4,7 @@ One note per foundation and mechanic, in ADR style with context, options, decisi
 
 - [tooling.md](tooling.md) - Vite, Tailwind over plain CSS, Oxlint over ESLint
 - [adoption.md](adoption.md) - git snapshot of `sand/` into a pnpm workspace, agent-first, overwrite updates for now
+- [consumer-alias.md](consumer-alias.md) - consumers alias `@/` to the sand package source; exports keep the alias
 - [module-boundary.md](module-boundary.md) - superseded; components import libraries directly
 - [primitives.md](primitives.md) - Base UI
 - [icons.md](icons.md) - Tabler, and the glyphs in use

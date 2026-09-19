@@ -8,9 +8,10 @@ Known from ticket 01: exported `ui/*` components import `@/...` internally, so t
 
 **Blocked by:** 05 Application preview, 06 Marketing preview, 07 Dashboard preview, 08 Colors page, 09 Fonts and Icons pages, 10 Spacing, Radius, Shadow, Motion pages, 11 Component page pattern and form controls, 12 Overlay and menu component pages, 13 Layout and navigation component pages, 14 Feedback and data component pages, 15 Conversation component pages, 16 Mechanics pages settled
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] example project runs from the root with one command
-- [ ] it imports components and the stylesheet from the package, never by relative path into it
-- [ ] it follows the rules (spot-checked against the rules files)
-- [ ] `VERSION` file present; tag `v0.0.1` created by the maintainer after review
+- [x] example project runs from the root with one command
+- [x] it imports components and the stylesheet from the package, never by relative path into it
+- [x] it follows the rules (spot-checked against the rules files)
+- [x] `VERSION` file present
+- [ ] tag `v0.0.1` created by the maintainer after review
