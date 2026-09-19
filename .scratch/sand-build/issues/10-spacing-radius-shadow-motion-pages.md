@@ -4,6 +4,8 @@
 
 Follow `.scratch/sand-build/page-format.md` for the page layout, the preview container, and the rules block; open the prototype there if anything is unclear.
 
+Ticket 22 may rename the named spacing tokens; read its answer before writing the Spacing page.
+
 **Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
 
 **Status:** ready-for-agent

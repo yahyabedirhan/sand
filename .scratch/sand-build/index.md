@@ -26,7 +26,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 09 | [Fonts and Icons pages](issues/09-fonts-and-icons-pages.md) | 02, 21 | ready-for-agent |
 | 10 | [Spacing, Radius, Shadow, Motion pages](issues/10-spacing-radius-shadow-motion-pages.md) | 02, 21 | ready-for-agent |
 | 11 | [Component page pattern and form controls](issues/11-component-page-pattern-and-form-controls.md) | 01, 21 | ready-for-agent |
-| 12 | [Overlay and menu component pages](issues/12-overlay-and-menu-component-pages.md) | 11 | ready-for-agent |
+| 12 | [Overlay and menu component pages](issues/12-overlay-and-menu-component-pages.md) | 11, 22 | ready-for-agent |
 | 13 | [Layout and navigation component pages](issues/13-layout-and-navigation-component-pages.md) | 11 | ready-for-agent |
 | 14 | [Feedback and data component pages](issues/14-feedback-and-data-component-pages.md) | 11 | ready-for-agent |
 | 15 | [Conversation component pages](issues/15-conversation-component-pages.md) | 11 | ready-for-agent |
@@ -36,6 +36,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 19 | [Outside consumer test and 0.1.0](issues/19-outside-consumer-test-and-010.md) | 18 | ready-for-agent |
 | 20 | [README with visuals and Overview refresh](issues/20-readme-with-visuals-and-overview-refresh.md) | 17, 21 | ready-for-agent |
 | 21 | [Docs page skeleton and preview container](issues/21-docs-page-skeleton-and-preview-container.md) | 01 | done |
+| 22 | [Named spacing tokens shadow Tailwind sizes](issues/22-named-spacing-tokens-shadow-tailwind-sizes.md) | 21 | ready-for-agent |
 
 - [issues/](issues/) - one file per ticket
 - [page-format.md](page-format.md) - the agreed docs page format every page ticket follows

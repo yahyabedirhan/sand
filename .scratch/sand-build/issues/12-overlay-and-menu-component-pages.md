@@ -2,7 +2,7 @@
 
 **What to build:** Demo-first pages for dialog, alert-dialog, sheet, drawer, popover, hover-card, tooltip, dropdown-menu, context-menu, menubar, navigation-menu, command, combobox.
 
-**Blocked by:** 11 Component page pattern and form controls
+**Blocked by:** 11 Component page pattern and form controls, 22 Named spacing tokens shadow Tailwind sizes
 
 **Status:** ready-for-agent
 
