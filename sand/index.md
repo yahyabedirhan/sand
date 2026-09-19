@@ -6,5 +6,6 @@ Sibling workspace packages import it as `sand` through the `exports` map in `pac
 
 - [package.json](package.json) - name, dependencies, scripts, and the exports map
 - [src/](src/index.md) - the app: tokens, components, hooks, docs shell, pages
+- [rules/](rules/index.md) - usage constraints, one markdown file per topic
 - [components.json](components.json) - shadcn CLI config; `pnpm dlx shadcn add` runs from this folder
 - [.oxlintrc.json](.oxlintrc.json) - lint rules
