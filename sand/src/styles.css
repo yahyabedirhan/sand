@@ -208,13 +208,17 @@
   --text-code: 0.875rem;
   --text-code--line-height: 1.5;
 
-  /* Spacing: named steps over the numeric scale. See the Spacing page. */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
+  /* Named spacing steps live in --space-*, not --spacing-*.
+     --spacing-xs through --spacing-2xl share a namespace with Tailwind
+     container sizes, so max-w-xs computed to 4px instead of 20rem.
+     Matching utilities below keep gap-md, p-xl, and the other named
+     spacing classes. Ticket 10 documents these names. */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
 
   /* Radii */
   --radius-sm: calc(var(--radius) - 4px);
@@ -247,6 +251,160 @@
   --ease-standard: var(--ease-standard);
   --ease-enter: var(--ease-enter);
   --ease-exit: var(--ease-exit);
+}
+
+/* Named spacing utilities. Wildcard --value(--space-*) adds the named
+   keys beside the numeric scale; it does not replace p-4 or gap-4. Width
+   and max-width stay on --container-* so overlays keep Tailwind sizes. */
+@utility p-* {
+  padding: --value(--space-*);
+}
+@utility px-* {
+  padding-inline: --value(--space-*);
+}
+@utility py-* {
+  padding-block: --value(--space-*);
+}
+@utility pt-* {
+  padding-top: --value(--space-*);
+}
+@utility pr-* {
+  padding-right: --value(--space-*);
+}
+@utility pb-* {
+  padding-bottom: --value(--space-*);
+}
+@utility pl-* {
+  padding-left: --value(--space-*);
+}
+@utility ps-* {
+  padding-inline-start: --value(--space-*);
+}
+@utility pe-* {
+  padding-inline-end: --value(--space-*);
+}
+@utility m-* {
+  margin: --value(--space-*);
+}
+@utility mx-* {
+  margin-inline: --value(--space-*);
+}
+@utility my-* {
+  margin-block: --value(--space-*);
+}
+@utility mt-* {
+  margin-top: --value(--space-*);
+}
+@utility mr-* {
+  margin-right: --value(--space-*);
+}
+@utility mb-* {
+  margin-bottom: --value(--space-*);
+}
+@utility ml-* {
+  margin-left: --value(--space-*);
+}
+@utility ms-* {
+  margin-inline-start: --value(--space-*);
+}
+@utility me-* {
+  margin-inline-end: --value(--space-*);
+}
+@utility gap-* {
+  gap: --value(--space-*);
+}
+@utility gap-x-* {
+  column-gap: --value(--space-*);
+}
+@utility gap-y-* {
+  row-gap: --value(--space-*);
+}
+@utility inset-* {
+  inset: --value(--space-*);
+}
+@utility inset-x-* {
+  inset-inline: --value(--space-*);
+}
+@utility inset-y-* {
+  inset-block: --value(--space-*);
+}
+@utility inset-s-* {
+  inset-inline-start: --value(--space-*);
+}
+@utility inset-e-* {
+  inset-inline-end: --value(--space-*);
+}
+@utility top-* {
+  top: --value(--space-*);
+}
+@utility right-* {
+  right: --value(--space-*);
+}
+@utility bottom-* {
+  bottom: --value(--space-*);
+}
+@utility left-* {
+  left: --value(--space-*);
+}
+@utility start-* {
+  inset-inline-start: --value(--space-*);
+}
+@utility end-* {
+  inset-inline-end: --value(--space-*);
+}
+@utility scroll-m-* {
+  scroll-margin: --value(--space-*);
+}
+@utility scroll-mx-* {
+  scroll-margin-inline: --value(--space-*);
+}
+@utility scroll-my-* {
+  scroll-margin-block: --value(--space-*);
+}
+@utility scroll-mt-* {
+  scroll-margin-top: --value(--space-*);
+}
+@utility scroll-mr-* {
+  scroll-margin-right: --value(--space-*);
+}
+@utility scroll-mb-* {
+  scroll-margin-bottom: --value(--space-*);
+}
+@utility scroll-ml-* {
+  scroll-margin-left: --value(--space-*);
+}
+@utility scroll-ms-* {
+  scroll-margin-inline-start: --value(--space-*);
+}
+@utility scroll-me-* {
+  scroll-margin-inline-end: --value(--space-*);
+}
+@utility scroll-p-* {
+  scroll-padding: --value(--space-*);
+}
+@utility scroll-px-* {
+  scroll-padding-inline: --value(--space-*);
+}
+@utility scroll-py-* {
+  scroll-padding-block: --value(--space-*);
+}
+@utility scroll-pt-* {
+  scroll-padding-top: --value(--space-*);
+}
+@utility scroll-pr-* {
+  scroll-padding-right: --value(--space-*);
+}
+@utility scroll-pb-* {
+  scroll-padding-bottom: --value(--space-*);
+}
+@utility scroll-pl-* {
+  scroll-padding-left: --value(--space-*);
+}
+@utility scroll-ps-* {
+  scroll-padding-inline-start: --value(--space-*);
+}
+@utility scroll-pe-* {
+  scroll-padding-inline-end: --value(--space-*);
 }
 
 @layer base {
