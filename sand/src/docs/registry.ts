@@ -12,9 +12,11 @@ import { AccordionPage } from "@/pages/components/accordion";
 import { AlertPage } from "@/pages/components/alert";
 import { AlertDialogPage } from "@/pages/components/alert-dialog";
 import { AspectRatioPage } from "@/pages/components/aspect-ratio";
+import { AttachmentPage } from "@/pages/components/attachment";
 import { AvatarPage } from "@/pages/components/avatar";
 import { BadgePage } from "@/pages/components/badge";
 import { BreadcrumbPage } from "@/pages/components/breadcrumb";
+import { BubblePage } from "@/pages/components/bubble";
 import { ButtonPage } from "@/pages/components/button";
 import { ButtonGroupPage } from "@/pages/components/button-group";
 import { CalendarPage } from "@/pages/components/calendar";
@@ -27,6 +29,7 @@ import { ComboboxPage } from "@/pages/components/combobox";
 import { CommandPage } from "@/pages/components/command";
 import { ContextMenuPage } from "@/pages/components/context-menu";
 import { DialogPage } from "@/pages/components/dialog";
+import { DirectionPage } from "@/pages/components/direction";
 import { DrawerPage } from "@/pages/components/drawer";
 import { DropdownMenuPage } from "@/pages/components/dropdown-menu";
 import { EmptyPage } from "@/pages/components/empty";
@@ -38,12 +41,16 @@ import { InputOTPPage } from "@/pages/components/input-otp";
 import { ItemPage } from "@/pages/components/item";
 import { KbdPage } from "@/pages/components/kbd";
 import { LabelPage } from "@/pages/components/label";
+import { MarkerPage } from "@/pages/components/marker";
 import { MenubarPage } from "@/pages/components/menubar";
+import { MessagePage } from "@/pages/components/message";
+import { MessageScrollerPage } from "@/pages/components/message-scroller";
 import { NativeSelectPage } from "@/pages/components/native-select";
 import { NavigationMenuPage } from "@/pages/components/navigation-menu";
 import { PaginationPage } from "@/pages/components/pagination";
 import { PopoverPage } from "@/pages/components/popover";
 import { ProgressPage } from "@/pages/components/progress";
+import { QuestionnairePage } from "@/pages/components/questionnaire";
 import { RadioGroupPage } from "@/pages/components/radio-group";
 import { ResizablePage } from "@/pages/components/resizable";
 import { ScrollAreaPage } from "@/pages/components/scroll-area";
@@ -200,9 +207,11 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   alert: AlertPage,
   "alert-dialog": AlertDialogPage,
   "aspect-ratio": AspectRatioPage,
+  attachment: AttachmentPage,
   avatar: AvatarPage,
   badge: BadgePage,
   breadcrumb: BreadcrumbPage,
+  bubble: BubblePage,
   button: ButtonPage,
   "button-group": ButtonGroupPage,
   calendar: CalendarPage,
@@ -215,6 +224,7 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   command: CommandPage,
   "context-menu": ContextMenuPage,
   dialog: DialogPage,
+  direction: DirectionPage,
   drawer: DrawerPage,
   "dropdown-menu": DropdownMenuPage,
   empty: EmptyPage,
@@ -226,12 +236,16 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   item: ItemPage,
   kbd: KbdPage,
   label: LabelPage,
+  marker: MarkerPage,
   menubar: MenubarPage,
+  message: MessagePage,
+  "message-scroller": MessageScrollerPage,
   "native-select": NativeSelectPage,
   "navigation-menu": NavigationMenuPage,
   pagination: PaginationPage,
   popover: PopoverPage,
   progress: ProgressPage,
+  questionnaire: QuestionnairePage,
   "radio-group": RadioGroupPage,
   resizable: ResizablePage,
   "scroll-area": ScrollAreaPage,

@@ -4,8 +4,8 @@
 
 **Blocked by:** 11 Component page pattern and form controls
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] seven pages registered as written with a live demo each
-- [ ] direction demo shows RTL and LTR
-- [ ] after this ticket no component slug renders the TODO stub
+- [x] seven pages registered as written with a live demo each
+- [x] direction demo shows RTL and LTR
+- [x] after this ticket no component slug renders the TODO stub
