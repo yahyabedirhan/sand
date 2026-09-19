@@ -35,7 +35,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 18 | [Installation guide, update script, consumer AGENTS.md](issues/18-installation-guide-update-script-consumer-agentsmd.md) | 17 | ready-for-agent |
 | 19 | [Outside consumer test and 0.1.0](issues/19-outside-consumer-test-and-010.md) | 18 | ready-for-agent |
 | 20 | [README with visuals and Overview refresh](issues/20-readme-with-visuals-and-overview-refresh.md) | 17, 21 | ready-for-agent |
-| 21 | [Docs page skeleton and preview container](issues/21-docs-page-skeleton-and-preview-container.md) | 01 | ready-for-agent |
+| 21 | [Docs page skeleton and preview container](issues/21-docs-page-skeleton-and-preview-container.md) | 01 | done |
 
 - [issues/](issues/) - one file per ticket
 - [page-format.md](page-format.md) - the agreed docs page format every page ticket follows

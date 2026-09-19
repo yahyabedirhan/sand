@@ -13,7 +13,11 @@
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
-@custom-variant dark (&:is(.dark *));
+/* A theme class scopes the variables to its subtree, so a `.light` or `.dark`
+   box can sit inside a page of the other theme (the docs preview container
+   does this). `dark:` utilities stop at a `.light` scope for the same reason.
+   A scope inside the opposite scope is not supported. */
+@custom-variant dark (&:is(.dark *):not(:is(.light, .light *)));
 
 /*
  * Sand tokens. Two layers: the semantic variables below are what consumers
@@ -21,7 +25,8 @@
  * Palette: tweakcn "warm sand" (shadcn semantic set + shadows + tracking).
  */
 
-:root {
+:root,
+.light {
   color-scheme: light;
 
   --background: oklch(0.9755 0.0067 97.351);

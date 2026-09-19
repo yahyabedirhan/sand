@@ -4,12 +4,12 @@
 
 **Blocked by:** 01 Workspace restructure
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] preview container with tabs, Code pane, container-scoped theme toggle, and split view, matching `page-format.md`
-- [ ] page layout with the sticky rail of section links; preview pages can opt out
-- [ ] rules checklist piece with optional do/don't disclosure; `DoDont` removed
-- [ ] Typography page rebuilt on the pieces (header, tokens in the container, roles table, rules)
-- [ ] Overview page rebuilt: realistic sample screen in the container, two equal-height layer panels, four section cards; no status list
-- [ ] light and dark both correct, including the container toggled against the page theme
-- [ ] `check` and `build` pass
+- [x] preview container with tabs, Code pane, container-scoped theme toggle, and split view, matching `page-format.md`
+- [x] page layout with the sticky rail of section links; preview pages can opt out
+- [x] rules checklist piece with optional do/don't disclosure; `DoDont` removed
+- [x] Typography page rebuilt on the pieces (header, tokens in the container, roles table, rules)
+- [x] Overview page rebuilt: realistic sample screen in the container, two equal-height layer panels, four section cards; no status list
+- [x] light and dark both correct, including the container toggled against the page theme
+- [x] `check` and `build` pass

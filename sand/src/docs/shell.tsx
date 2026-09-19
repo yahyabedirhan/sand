@@ -16,13 +16,23 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { pagePath, pagesIn, pageStatus, sections } from "@/docs/registry";
+import { PageLayout } from "@/docs/page";
+import {
+  pageAt,
+  pageLayout,
+  pagePath,
+  pagesIn,
+  pageStatus,
+  sections,
+} from "@/docs/registry";
 import { ThemeToggle } from "@/docs/theme-toggle";
 
 // The docs shell is Sand's first consumer: sidebar, layout, and toggle are
 // built from Sand components and tokens only.
 export function Shell() {
   const { pathname } = useLocation();
+  const page = pageAt(pathname);
+  const layout = page ? pageLayout(page) : "docs";
   return (
     <SidebarProvider>
       <Sidebar>
@@ -66,9 +76,21 @@ export function Shell() {
         <header className="flex h-12 items-center gap-sm border-b px-md">
           <SidebarTrigger />
         </header>
-        <main className="mx-auto w-full max-w-3xl px-md py-xl">
-          <Outlet />
-        </main>
+        {layout === "full" ? (
+          <main className="w-full">
+            <Outlet />
+          </main>
+        ) : (
+          <main className="mx-auto w-full max-w-5xl px-md py-xl">
+            {layout === "docs" ? (
+              <PageLayout>
+                <Outlet />
+              </PageLayout>
+            ) : (
+              <Outlet />
+            )}
+          </main>
+        )}
       </SidebarInset>
     </SidebarProvider>
   );

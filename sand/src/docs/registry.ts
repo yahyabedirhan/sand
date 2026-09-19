@@ -8,27 +8,35 @@ import { IconsPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
 
-// One registry drives the sidebar, the routes, and the Overview status list.
-// Adding a page is one entry here. A page without a component is a TODO and
-// renders the TODO stub until it is written.
+// One registry drives the sidebar, the routes, and the Overview section
+// cards. Adding a page is one entry here. A page without a component is a
+// TODO and renders the TODO stub until it is written.
 
+// Sidebar groups, in sidebar order. Previews is empty until its pages land.
+// TODO: ticket 04 adds the preview pages.
 export const sections = [
   "Overview",
   "Foundations",
   "Components",
-  "Guidelines",
   "Mechanics",
+  "Previews",
 ] as const;
-export type Section = (typeof sections)[number];
+export type SidebarSection = (typeof sections)[number];
 
 export type PageStatus = "done" | "todo";
 
+// How the shell frames a page. `docs` is the content column with the rail of
+// section links; `wide` is the column without the rail; `full` is the bare
+// outlet for preview pages, which take the area their content needs.
+export type PageLayout = "docs" | "wide" | "full";
+
 // A page is written when it has a component; the status is derived from that.
 export type Page = {
-  section: Section;
+  section: SidebarSection;
   slug: string;
   title: string;
   component?: ComponentType;
+  layout?: PageLayout;
 };
 
 const componentSlugs = [
@@ -111,7 +119,7 @@ function titleFromSlug(slug: string) {
 }
 
 function todo(
-  section: Section,
+  section: SidebarSection,
   slug: string,
   title = titleFromSlug(slug),
 ): Page {
@@ -128,6 +136,7 @@ export const pages: Page[] = [
     slug: "",
     title: "Overview",
     component: OverviewPage,
+    layout: "wide",
   },
   todo("Foundations", "colors"),
   {
@@ -143,8 +152,6 @@ export const pages: Page[] = [
   todo("Foundations", "motion"),
   todo("Foundations", "icons"),
   ...componentSlugs.map((slug) => todo("Components", slug)),
-  todo("Guidelines", "color-pairing"),
-  todo("Guidelines", "opacity"),
   {
     section: "Mechanics",
     slug: "primitives",
@@ -167,11 +174,30 @@ export const pages: Page[] = [
   },
 ];
 
+export function pageLayout(page: Page): PageLayout {
+  return page.layout ?? "docs";
+}
+
 export function pagePath(page: Page) {
   const section = page.section.toLowerCase();
   return page.slug === "" ? "/" : `/${section}/${page.slug}`;
 }
 
-export function pagesIn(section: Section) {
+export function pagesIn(section: SidebarSection) {
   return pages.filter((page) => page.section === section);
+}
+
+export function pageCount(section: SidebarSection) {
+  return pagesIn(section).length;
+}
+
+// The first page of a group is where a link to the group points; an empty
+// group has nowhere to point yet.
+export function sectionPath(section: SidebarSection) {
+  const first = pagesIn(section)[0];
+  return first ? pagePath(first) : null;
+}
+
+export function pageAt(pathname: string) {
+  return pages.find((page) => pagePath(page) === pathname);
 }
