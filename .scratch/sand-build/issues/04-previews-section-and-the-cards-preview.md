@@ -6,12 +6,12 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Previews section present, last in the sidebar
-- [ ] preview pages render without the standard page shell (no rail), full width, inside the preview container with toolbar only, and are exempt in the registry so the seam test can assert it
-- [ ] a switcher inside the preview page moves between registered previews
-- [ ] Cards preview with at least five blocks, each a self-contained file with sample data
-- [ ] blocks import only Sand components; nothing outside the previews folder imports a block
-- [ ] light and dark both look correct
-- [ ] the tweakcn research note under `.scratch/sand-spec/research/` consulted for block inventory
+- [x] Previews section present, last in the sidebar
+- [x] preview pages render without the standard page shell (no rail), full width, inside the preview container with toolbar only, and are exempt in the registry so the seam test can assert it
+- [x] a switcher inside the preview page moves between registered previews
+- [x] Cards preview with at least five blocks, each a self-contained file with sample data
+- [x] blocks import only Sand components; nothing outside the previews folder imports a block
+- [x] light and dark both look correct
+- [x] the tweakcn research note under `.scratch/sand-spec/research/` consulted for block inventory

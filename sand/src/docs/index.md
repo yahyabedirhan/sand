@@ -10,3 +10,4 @@ The documentation shell, Sand's first consumer.
 - [use-theme.ts](use-theme.ts) - the theme context and hook
 - [theme-toggle.tsx](theme-toggle.tsx) - the sidebar footer toggle
 - [todo-page.tsx](todo-page.tsx) - stub for registry pages without a component
+- [../pages/previews/](../pages/previews/) - full-width preview pages and their page-local blocks

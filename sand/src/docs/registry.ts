@@ -7,13 +7,13 @@ import { FontsPage } from "@/pages/mechanics/fonts";
 import { IconsPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
+import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
 
 // One registry drives the sidebar, the routes, and the Overview section
 // cards. Adding a page is one entry here. A page without a component is a
 // TODO and renders the TODO stub until it is written.
 
-// Sidebar groups, in sidebar order. Previews is empty until its pages land.
-// TODO: ticket 04 adds the preview pages.
+// Sidebar groups, in sidebar order.
 export const sections = [
   "Overview",
   "Foundations",
@@ -171,6 +171,31 @@ export const pages: Page[] = [
     slug: "animation",
     title: "Animation",
     component: AnimationPage,
+  },
+  {
+    section: "Previews",
+    slug: "cards",
+    title: "Cards",
+    component: CardsPreviewPage,
+    layout: "full",
+  },
+  {
+    section: "Previews",
+    slug: "application",
+    title: "Application",
+    layout: "full",
+  },
+  {
+    section: "Previews",
+    slug: "marketing",
+    title: "Marketing",
+    layout: "full",
+  },
+  {
+    section: "Previews",
+    slug: "dashboard",
+    title: "Dashboard",
+    layout: "full",
   },
 ];
 

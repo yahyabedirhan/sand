@@ -5,3 +5,4 @@ Documentation pages, one folder per sidebar section. A page is registered in [do
 - [overview/](overview/) - `overview.tsx`, `sample-screen.tsx` (the workspace settings sample)
 - [foundations/](foundations/) - `typography.tsx`
 - [mechanics/](mechanics/) - `mechanic-page.tsx` (shared layout), one file per mechanic
+- [previews/](previews/) - full-width compositions for seeing Sand as a whole
