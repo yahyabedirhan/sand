@@ -46,7 +46,7 @@ export function Section({
   useEffect(() => sections?.register({ id, title }), [sections, id, title]);
   return (
     <section id={id} className="mb-xl flex scroll-mt-lg flex-col gap-md">
-      <h2 className="text-heading-2">{title}</h2>
+      <h2 className="font-serif text-heading-2">{title}</h2>
       {children}
     </section>
   );

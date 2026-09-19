@@ -7,6 +7,8 @@ sentence. Examples are optional. Put constraints that span topics in
 
 - [system.md](system.md) - rules that span Sand topics
 - [typography.md](typography.md) - typography roles and usage
+- [fonts.md](fonts.md) - which face is legal where
+- [icons.md](icons.md) - icon size and text pairing
 
 ## Keep pages in sync
 
