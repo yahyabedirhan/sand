@@ -31,7 +31,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 14 | [Feedback and data component pages](issues/14-feedback-and-data-component-pages.md) | 11 | done |
 | 15 | [Conversation component pages](issues/15-conversation-component-pages.md) | 11 | done |
 | 16 | [Mechanics pages settled](issues/16-mechanics-pages-settled.md) | 01, 21 | done |
-| 17 | [Example project and 0.0.1](issues/17-example-project-and-001.md) | 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16 | ready-for-agent |
+| 17 | [Example project and 0.0.1](issues/17-example-project-and-001.md) | 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16 | done |
 | 18 | [Installation guide, update script, consumer AGENTS.md](issues/18-installation-guide-update-script-consumer-agentsmd.md) | 17 | ready-for-agent |
 | 19 | [Outside consumer test and 0.1.0](issues/19-outside-consumer-test-and-010.md) | 18 | blocked-on-human |
 | 20 | [README with visuals and Overview refresh](issues/20-readme-with-visuals-and-overview-refresh.md) | 17, 21 | ready-for-agent |

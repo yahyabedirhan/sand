@@ -33,10 +33,10 @@ Documented as what Sand is built on, not as swappable units.
 _Avoid_: module (the earlier code-boundary meaning is retired)
 
 **Example project**:
-A small generic app (a to-do list, a kanban board) kept in this repository and
-importing Sand from source, built after the docs pages are written, to
-demonstrate Sand in a real-world setting. It does not test adoption; a
-consumer outside this repository does that.
+A small generic app (the kanban board under `examples/kanban`) kept in this
+repository and importing Sand from source, to demonstrate Sand in a
+real-world setting. It does not test adoption; a consumer outside this
+repository does that.
 _Avoid_: demo (a demo is a rendered component on a docs page), consumer (it
 does not adopt a snapshot)
 

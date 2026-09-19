@@ -13,6 +13,11 @@
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
+/* Consumers import this file from node_modules, which Tailwind skips unless
+   listed. The docs site already sees these folders through the module graph. */
+@source "./components/ui";
+@source "./hooks";
+
 /* A theme class scopes the variables to its subtree, so a `.light` or `.dark`
    box can sit inside a page of the other theme (the docs preview container
    does this). `dark:` utilities stop at a `.light` scope for the same reason.
