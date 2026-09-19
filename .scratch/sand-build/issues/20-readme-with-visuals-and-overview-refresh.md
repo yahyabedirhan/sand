@@ -6,9 +6,9 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 17 Example project and 0.0.1, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] README beginner-friendly, no employer names, links to the installation guide
-- [ ] screenshots of at least the four previews and two foundation pages, produced from the running site
-- [ ] Overview page copy checked; page counts in the section cards correct
-- [ ] `no-ai-slop` pass on both
+- [x] README beginner-friendly, no employer names, links to the installation guide
+- [x] screenshots of at least the four previews and two foundation pages, produced from the running site
+- [x] Overview page copy checked; page counts in the section cards correct
+- [x] `no-ai-slop` pass on both
