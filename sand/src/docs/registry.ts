@@ -37,6 +37,7 @@ import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
 import { ApplicationPreviewPage } from "@/pages/previews/application/application-preview";
 import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
+import { MarketingPreviewPage } from "@/pages/previews/marketing/marketing-preview";
 import { PreviewPlaceholderPage } from "@/pages/previews/preview-placeholder";
 
 // One registry drives the sidebar, the routes, and the Overview section
@@ -280,7 +281,7 @@ export const pages: Page[] = [
     section: "Previews",
     slug: "marketing",
     title: "Marketing",
-    component: PreviewPlaceholderPage,
+    component: MarketingPreviewPage,
     layout: "full",
   },
   {

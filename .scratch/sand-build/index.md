@@ -20,7 +20,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 03 | [Test runner and the two seams](issues/03-test-runner-and-the-two-seams.md) | 02 | ready-for-agent |
 | 04 | [Previews section and the Cards preview](issues/04-previews-section-and-the-cards-preview.md) | 01, 21 | done |
 | 05 | [Application preview](issues/05-application-preview.md) | 04 | done |
-| 06 | [Marketing preview](issues/06-marketing-preview.md) | 04 | ready-for-agent |
+| 06 | [Marketing preview](issues/06-marketing-preview.md) | 04 | done |
 | 07 | [Dashboard preview](issues/07-dashboard-preview.md) | 04 | ready-for-agent |
 | 08 | [Colors page](issues/08-colors-page.md) | 02, 21 | done |
 | 09 | [Fonts and Icons pages](issues/09-fonts-and-icons-pages.md) | 02, 21 | done |
