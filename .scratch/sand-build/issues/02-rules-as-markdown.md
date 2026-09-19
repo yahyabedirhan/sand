@@ -6,12 +6,12 @@ Render the rules on the page through the rules checklist piece from ticket 21; d
 
 **Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] a `rules/` folder inside the package with `index.md`, `system.md`, and `typography.md`
-- [ ] the four existing typography rules exist once, in the markdown file, and the Typography page shows the same titles and sentences
-- [ ] the minimum rule shape (title plus one sentence) is stated in the rules index; examples are optional
-- [ ] the sync-check procedure is written where a maintainer will find it and is runnable by hand
-- [ ] the Guidelines section and its two placeholder pages are removed from the registry
-- [ ] sidebar order is Overview, Foundations, Components, Mechanics, Previews
-- [ ] `check` and `build` pass
+- [x] a `rules/` folder inside the package with `index.md`, `system.md`, and `typography.md`
+- [x] the four existing typography rules exist once, in the markdown file, and the Typography page shows the same titles and sentences
+- [x] the minimum rule shape (title plus one sentence) is stated in the rules index; examples are optional
+- [x] the sync-check procedure is written where a maintainer will find it and is runnable by hand
+- [x] the Guidelines section and its two placeholder pages are removed from the registry
+- [x] sidebar order is Overview, Foundations, Components, Mechanics, Previews
+- [x] `check` and `build` pass
