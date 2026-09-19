@@ -6,6 +6,7 @@ import { IconsPage } from "@/pages/foundations/icons";
 import { TypographyPage } from "@/pages/foundations/typography";
 import { AccordionPage } from "@/pages/components/accordion";
 import { AlertPage } from "@/pages/components/alert";
+import { AlertDialogPage } from "@/pages/components/alert-dialog";
 import { AspectRatioPage } from "@/pages/components/aspect-ratio";
 import { AvatarPage } from "@/pages/components/avatar";
 import { BadgePage } from "@/pages/components/badge";
@@ -18,22 +19,33 @@ import { CarouselPage } from "@/pages/components/carousel";
 import { ChartPage } from "@/pages/components/chart";
 import { CheckboxPage } from "@/pages/components/checkbox";
 import { CollapsiblePage } from "@/pages/components/collapsible";
+import { ComboboxPage } from "@/pages/components/combobox";
+import { CommandPage } from "@/pages/components/command";
+import { ContextMenuPage } from "@/pages/components/context-menu";
+import { DialogPage } from "@/pages/components/dialog";
+import { DrawerPage } from "@/pages/components/drawer";
+import { DropdownMenuPage } from "@/pages/components/dropdown-menu";
 import { EmptyPage } from "@/pages/components/empty";
 import { FieldPage } from "@/pages/components/field";
+import { HoverCardPage } from "@/pages/components/hover-card";
 import { InputPage } from "@/pages/components/input";
 import { InputGroupPage } from "@/pages/components/input-group";
 import { InputOTPPage } from "@/pages/components/input-otp";
 import { ItemPage } from "@/pages/components/item";
 import { KbdPage } from "@/pages/components/kbd";
 import { LabelPage } from "@/pages/components/label";
+import { MenubarPage } from "@/pages/components/menubar";
 import { NativeSelectPage } from "@/pages/components/native-select";
+import { NavigationMenuPage } from "@/pages/components/navigation-menu";
 import { PaginationPage } from "@/pages/components/pagination";
+import { PopoverPage } from "@/pages/components/popover";
 import { ProgressPage } from "@/pages/components/progress";
 import { RadioGroupPage } from "@/pages/components/radio-group";
 import { ResizablePage } from "@/pages/components/resizable";
 import { ScrollAreaPage } from "@/pages/components/scroll-area";
 import { SelectPage } from "@/pages/components/select";
 import { SeparatorPage } from "@/pages/components/separator";
+import { SheetPage } from "@/pages/components/sheet";
 import { SidebarPage } from "@/pages/components/sidebar";
 import { SkeletonPage } from "@/pages/components/skeleton";
 import { SliderPage } from "@/pages/components/slider";
@@ -45,6 +57,7 @@ import { TextareaPage } from "@/pages/components/textarea";
 import { ToastPage } from "@/pages/components/toast";
 import { TogglePage } from "@/pages/components/toggle";
 import { ToggleGroupPage } from "@/pages/components/toggle-group";
+import { TooltipPage } from "@/pages/components/tooltip";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
 import { FontsPage as FontsMechanicPage } from "@/pages/mechanics/fonts";
@@ -177,6 +190,7 @@ function todo(
 const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   accordion: AccordionPage,
   alert: AlertPage,
+  "alert-dialog": AlertDialogPage,
   "aspect-ratio": AspectRatioPage,
   avatar: AvatarPage,
   badge: BadgePage,
@@ -189,22 +203,33 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   chart: ChartPage,
   checkbox: CheckboxPage,
   collapsible: CollapsiblePage,
+  combobox: ComboboxPage,
+  command: CommandPage,
+  "context-menu": ContextMenuPage,
+  dialog: DialogPage,
+  drawer: DrawerPage,
+  "dropdown-menu": DropdownMenuPage,
   empty: EmptyPage,
   field: FieldPage,
+  "hover-card": HoverCardPage,
   input: InputPage,
   "input-group": InputGroupPage,
   "input-otp": InputOTPPage,
   item: ItemPage,
   kbd: KbdPage,
   label: LabelPage,
+  menubar: MenubarPage,
   "native-select": NativeSelectPage,
+  "navigation-menu": NavigationMenuPage,
   pagination: PaginationPage,
+  popover: PopoverPage,
   progress: ProgressPage,
   "radio-group": RadioGroupPage,
   resizable: ResizablePage,
   "scroll-area": ScrollAreaPage,
   select: SelectPage,
   separator: SeparatorPage,
+  sheet: SheetPage,
   sidebar: SidebarPage,
   skeleton: SkeletonPage,
   slider: SliderPage,
@@ -216,6 +241,7 @@ const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
   toast: ToastPage,
   toggle: TogglePage,
   "toggle-group": ToggleGroupPage,
+  tooltip: TooltipPage,
 };
 
 function componentPage(slug: ComponentSlug): Page {

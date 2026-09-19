@@ -4,6 +4,6 @@ Documentation pages, one folder per sidebar section. A page is registered in [do
 
 - [overview/](overview/) - `overview.tsx`, `sample-screen.tsx` (the workspace settings sample)
 - [foundations/](foundations/index.md) - `colors.tsx`, `typography.tsx`, `fonts.tsx`, `icons.tsx`
-- [components/](components/) - form-control pages; each uses the shared demo-first component page pattern
+- [components/](components/) - form-control and overlay pages; each uses the shared demo-first component page pattern
 - [mechanics/](mechanics/) - `mechanic-page.tsx` (shared layout), one file per mechanic
 - [previews/](previews/) - full-width compositions for seeing Sand as a whole
