@@ -7,3 +7,4 @@ Session handoffs, newest last. Read the newest first; it says which earlier ones
 - [2026-09-14-sand-bootstrap-3.md](2026-09-14-sand-bootstrap-3.md) - bootstrap and typography done; remaining pages, github repo pending, folder renamed to sand
 - [2026-09-14-sand-bootstrap-4.md](2026-09-14-sand-bootstrap-4.md) - modules section split into pages, overview trimmed, slop pass; overview lead and spec principles line still open
 - [2026-09-19-sand-spec-wayfinding.md](2026-09-19-sand-spec-wayfinding.md) - wayfinder map charted and worked; next is ticket 08 (remove module boundary) then 06 (write the spec with to-spec)
+- [2026-09-19-sand-build-orchestration.md](2026-09-19-sand-build-orchestration.md) - orchestrating the build tickets with sub-agents, ticket 21 in flight
