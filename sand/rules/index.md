@@ -6,6 +6,7 @@ sentence. Examples are optional. Put constraints that span topics in
 [`system.md`](system.md).
 
 - [system.md](system.md) - rules that span Sand topics
+- [colors.md](colors.md) - pairing, stacking, and opacity
 - [typography.md](typography.md) - typography roles and usage
 
 ## Keep pages in sync

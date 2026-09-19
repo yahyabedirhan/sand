@@ -6,9 +6,9 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] every semantic color token rendered with its foreground pair in both themes
-- [ ] `rules/colors.md` holds pairing, stacking, and opacity rules; the page shows the same text
-- [ ] chart and sidebar sets documented
-- [ ] the sync check passes for colors
+- [x] every semantic color token rendered with its foreground pair in both themes
+- [x] `rules/colors.md` holds pairing, stacking, and opacity rules; the page shows the same text
+- [x] chart and sidebar sets documented
+- [x] the sync check passes for colors

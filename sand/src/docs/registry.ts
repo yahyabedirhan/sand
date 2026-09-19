@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import { ColorsPage } from "@/pages/foundations/colors";
 import { TypographyPage } from "@/pages/foundations/typography";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
@@ -138,7 +139,12 @@ export const pages: Page[] = [
     component: OverviewPage,
     layout: "wide",
   },
-  todo("Foundations", "colors"),
+  {
+    section: "Foundations",
+    slug: "colors",
+    title: "Colors",
+    component: ColorsPage,
+  },
   {
     section: "Foundations",
     slug: "typography",
