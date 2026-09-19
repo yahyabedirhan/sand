@@ -10,7 +10,7 @@ and glossary are unchanged except the Mechanics list (nine pages).
 
 ## Current state
 
-- `main` is at `ad833dd` (`docs: record mechanics pages, kanban, and deferred 19`).
+- `main` includes ticket 03 (`feat: merge test runner and the two seams`). `pnpm check` and `pnpm build` passed. Registry tests still treat the seven conversation slugs as TODO stubs; ticket 15 must retarget those assertions when the pages are written.
 - Do not put absolute home paths in committed files. Gitleaks rejects them.
 - Do not create git tags. The maintainer tags `v0.0.1`.
 
@@ -29,9 +29,7 @@ Maintainer decisions recorded 2026-09-19:
 Worktrees under `/private/tmp/sand-ticket-NN`. Recreate from current `main`
 if a tree is empty or stuck.
 
-- Ticket 03 (`codex/ticket-03-seams`). Uncommitted Vitest and seam tests on
-  an older base (`a479092`). Merge after one commit. Registry tests must
-  survive later conversation pages from 15.
+- Ticket 03 is on main.
 - Ticket 15 (`codex/ticket-15-conversation`). Implement agent running. Seven
   conversation component pages. Browser on port 5187. Register via
   `writtenComponentPages`.
