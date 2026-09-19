@@ -4,8 +4,8 @@
 
 **Blocked by:** 11 Component page pattern and form controls
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] sixteen pages registered as written with a live demo each
-- [ ] resizable panels' library noted on its page
-- [ ] the sidebar demo does not fight the docs shell's own sidebar
+- [x] sixteen pages registered as written with a live demo each
+- [x] resizable panels' library noted on its page
+- [x] the sidebar demo does not fight the docs shell's own sidebar

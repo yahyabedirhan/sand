@@ -27,7 +27,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 10 | [Spacing, Radius, Shadow, Motion pages](issues/10-spacing-radius-shadow-motion-pages.md) | 02, 21 | ready-for-agent |
 | 11 | [Component page pattern and form controls](issues/11-component-page-pattern-and-form-controls.md) | 01, 21 | done |
 | 12 | [Overlay and menu component pages](issues/12-overlay-and-menu-component-pages.md) | 11, 22 | ready-for-agent |
-| 13 | [Layout and navigation component pages](issues/13-layout-and-navigation-component-pages.md) | 11 | ready-for-agent |
+| 13 | [Layout and navigation component pages](issues/13-layout-and-navigation-component-pages.md) | 11 | done |
 | 14 | [Feedback and data component pages](issues/14-feedback-and-data-component-pages.md) | 11 | ready-for-agent |
 | 15 | [Conversation component pages](issues/15-conversation-component-pages.md) | 11 | ready-for-agent |
 | 16 | [Mechanics pages settled](issues/16-mechanics-pages-settled.md) | 01, 21 | ready-for-agent |

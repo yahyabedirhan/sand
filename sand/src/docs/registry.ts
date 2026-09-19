@@ -1,18 +1,34 @@
 import type { ComponentType } from "react";
 
 import { TypographyPage } from "@/pages/foundations/typography";
+import { AccordionPage } from "@/pages/components/accordion";
+import { AspectRatioPage } from "@/pages/components/aspect-ratio";
+import { BreadcrumbPage } from "@/pages/components/breadcrumb";
 import { ButtonPage } from "@/pages/components/button";
+import { CardPage } from "@/pages/components/card";
 import { CheckboxPage } from "@/pages/components/checkbox";
+import { CollapsiblePage } from "@/pages/components/collapsible";
+import { EmptyPage } from "@/pages/components/empty";
 import { FieldPage } from "@/pages/components/field";
 import { InputPage } from "@/pages/components/input";
 import { InputGroupPage } from "@/pages/components/input-group";
 import { InputOTPPage } from "@/pages/components/input-otp";
+import { ItemPage } from "@/pages/components/item";
+import { KbdPage } from "@/pages/components/kbd";
 import { LabelPage } from "@/pages/components/label";
 import { NativeSelectPage } from "@/pages/components/native-select";
+import { PaginationPage } from "@/pages/components/pagination";
 import { RadioGroupPage } from "@/pages/components/radio-group";
+import { ResizablePage } from "@/pages/components/resizable";
+import { ScrollAreaPage } from "@/pages/components/scroll-area";
 import { SelectPage } from "@/pages/components/select";
+import { SeparatorPage } from "@/pages/components/separator";
+import { SidebarPage } from "@/pages/components/sidebar";
+import { SkeletonPage } from "@/pages/components/skeleton";
 import { SliderPage } from "@/pages/components/slider";
 import { SwitchPage } from "@/pages/components/switch";
+import { TablePage } from "@/pages/components/table";
+import { TabsPage } from "@/pages/components/tabs";
 import { TextareaPage } from "@/pages/components/textarea";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
@@ -141,18 +157,34 @@ function todo(
 }
 
 const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
+  accordion: AccordionPage,
+  "aspect-ratio": AspectRatioPage,
+  breadcrumb: BreadcrumbPage,
   button: ButtonPage,
+  card: CardPage,
   checkbox: CheckboxPage,
+  collapsible: CollapsiblePage,
+  empty: EmptyPage,
   field: FieldPage,
   input: InputPage,
   "input-group": InputGroupPage,
   "input-otp": InputOTPPage,
+  item: ItemPage,
+  kbd: KbdPage,
   label: LabelPage,
   "native-select": NativeSelectPage,
+  pagination: PaginationPage,
   "radio-group": RadioGroupPage,
+  resizable: ResizablePage,
+  "scroll-area": ScrollAreaPage,
   select: SelectPage,
+  separator: SeparatorPage,
+  sidebar: SidebarPage,
+  skeleton: SkeletonPage,
   slider: SliderPage,
   switch: SwitchPage,
+  table: TablePage,
+  tabs: TabsPage,
   textarea: TextareaPage,
 };
 
