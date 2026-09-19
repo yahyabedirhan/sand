@@ -1,3 +1,5 @@
+import { Bar, BarChart, XAxis } from "recharts";
+
 import {
   Card,
   CardContent,
@@ -5,6 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 import {
   Progress,
   ProgressLabel,
@@ -19,7 +27,14 @@ const activity = [
   { day: "Fri", minutes: 44 },
   { day: "Sat", minutes: 63 },
   { day: "Sun", minutes: 48 },
-] as const;
+];
+
+const chartConfig = {
+  minutes: {
+    label: "Minutes",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig;
 
 export function ActivityCard() {
   return (
@@ -29,26 +44,24 @@ export function ActivityCard() {
         <CardDescription>Daily movement this week</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-md">
-        <div
-          className="flex h-32 items-end justify-between gap-xs"
-          role="img"
-          aria-label="Exercise minutes peak on Saturday"
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-32 w-full"
         >
-          {activity.map((entry) => (
-            <div
-              key={entry.day}
-              className="flex h-full flex-1 flex-col items-center justify-end gap-xs"
-            >
-              <span
-                className="w-full rounded-t-sm bg-chart-2"
-                style={{ height: `${(entry.minutes / 70) * 100}%` }}
-              />
-              <span className="text-[0.625rem] text-muted-foreground">
-                {entry.day}
-              </span>
-            </div>
-          ))}
-        </div>
+          <BarChart data={activity} accessibilityLayer>
+            <XAxis
+              dataKey="day"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+            />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Bar dataKey="minutes" fill="var(--color-minutes)" radius={4} />
+          </BarChart>
+        </ChartContainer>
         <Progress value={62}>
           <ProgressLabel>Weekly goal</ProgressLabel>
           <ProgressValue>{() => "62%"}</ProgressValue>

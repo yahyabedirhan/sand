@@ -8,6 +8,7 @@ import { IconsPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
 import { OverviewPage } from "@/pages/overview/overview";
 import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
+import { PreviewPlaceholderPage } from "@/pages/previews/preview-placeholder";
 
 // One registry drives the sidebar, the routes, and the Overview section
 // cards. Adding a page is one entry here. A page without a component is a
@@ -183,18 +184,21 @@ export const pages: Page[] = [
     section: "Previews",
     slug: "application",
     title: "Application",
+    component: PreviewPlaceholderPage,
     layout: "full",
   },
   {
     section: "Previews",
     slug: "marketing",
     title: "Marketing",
+    component: PreviewPlaceholderPage,
     layout: "full",
   },
   {
     section: "Previews",
     slug: "dashboard",
     title: "Dashboard",
+    component: PreviewPlaceholderPage,
     layout: "full",
   },
 ];

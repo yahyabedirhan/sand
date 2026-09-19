@@ -1,3 +1,5 @@
+import { Area, AreaChart } from "recharts";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -7,8 +9,32 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 
-const revenue = [38, 52, 43, 66, 58, 82, 74, 91, 78, 96];
+const revenue = [
+  { period: "1", amount: 38 },
+  { period: "2", amount: 52 },
+  { period: "3", amount: 43 },
+  { period: "4", amount: 66 },
+  { period: "5", amount: 58 },
+  { period: "6", amount: 82 },
+  { period: "7", amount: 74 },
+  { period: "8", amount: 91 },
+  { period: "9", amount: 78 },
+  { period: "10", amount: 96 },
+];
+
+const chartConfig = {
+  amount: {
+    label: "Revenue",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig;
 
 export function RevenueCard() {
   return (
@@ -29,19 +55,24 @@ export function RevenueCard() {
             $2,349 more than last month
           </p>
         </div>
-        <div
-          className="flex h-20 items-end gap-xs"
-          role="img"
-          aria-label="Revenue rises across ten periods"
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-20 w-full"
         >
-          {revenue.map((value, index) => (
-            <span
-              key={`${value}-${index}`}
-              className="min-h-px flex-1 rounded-t-sm bg-chart-1"
-              style={{ height: `${value}%` }}
+          <AreaChart data={revenue} accessibilityLayer>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
             />
-          ))}
-        </div>
+            <Area
+              dataKey="amount"
+              type="natural"
+              fill="var(--color-amount)"
+              fillOpacity={0.3}
+              stroke="var(--color-amount)"
+            />
+          </AreaChart>
+        </ChartContainer>
       </CardContent>
     </Card>
   );

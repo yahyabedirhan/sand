@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { pagePath, pagesIn } from "@/docs/registry";
 
 export function PreviewSwitcher() {
@@ -13,17 +13,17 @@ export function PreviewSwitcher() {
         const active = pathname === path;
 
         return (
-          <Link
+          <Button
             key={path}
-            to={path}
+            variant={active ? "default" : "outline"}
+            size="sm"
+            className="rounded-full"
+            nativeButton={false}
+            render={<Link to={path} />}
             aria-current={active ? "page" : undefined}
-            className={buttonVariants({
-              variant: active ? "default" : "outline",
-              size: "sm",
-            })}
           >
             {page.title}
-          </Link>
+          </Button>
         );
       })}
     </nav>
