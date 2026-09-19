@@ -4,8 +4,8 @@
 
 **Blocked by:** 11 Component page pattern and form controls, 22 Named spacing tokens shadow Tailwind sizes
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] thirteen pages registered as written with a live, openable demo each
-- [ ] keyboard open and close works in each demo
-- [ ] command palette's library noted on its page
+- [x] thirteen pages registered as written with a live, openable demo each
+- [x] keyboard open and close works in each demo
+- [x] command palette's library noted on its page

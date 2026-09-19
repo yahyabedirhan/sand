@@ -4,19 +4,32 @@ import { ColorsPage } from "@/pages/foundations/colors";
 import { FontsPage } from "@/pages/foundations/fonts";
 import { IconsPage } from "@/pages/foundations/icons";
 import { TypographyPage } from "@/pages/foundations/typography";
+import { AlertDialogPage } from "@/pages/components/alert-dialog";
 import { ButtonPage } from "@/pages/components/button";
 import { CheckboxPage } from "@/pages/components/checkbox";
+import { ComboboxPage } from "@/pages/components/combobox";
+import { CommandPage } from "@/pages/components/command";
+import { ContextMenuPage } from "@/pages/components/context-menu";
+import { DialogPage } from "@/pages/components/dialog";
+import { DrawerPage } from "@/pages/components/drawer";
+import { DropdownMenuPage } from "@/pages/components/dropdown-menu";
 import { FieldPage } from "@/pages/components/field";
+import { HoverCardPage } from "@/pages/components/hover-card";
 import { InputPage } from "@/pages/components/input";
 import { InputGroupPage } from "@/pages/components/input-group";
 import { InputOTPPage } from "@/pages/components/input-otp";
 import { LabelPage } from "@/pages/components/label";
+import { MenubarPage } from "@/pages/components/menubar";
 import { NativeSelectPage } from "@/pages/components/native-select";
+import { NavigationMenuPage } from "@/pages/components/navigation-menu";
+import { PopoverPage } from "@/pages/components/popover";
 import { RadioGroupPage } from "@/pages/components/radio-group";
 import { SelectPage } from "@/pages/components/select";
+import { SheetPage } from "@/pages/components/sheet";
 import { SliderPage } from "@/pages/components/slider";
 import { SwitchPage } from "@/pages/components/switch";
 import { TextareaPage } from "@/pages/components/textarea";
+import { TooltipPage } from "@/pages/components/tooltip";
 import { AnimationPage } from "@/pages/mechanics/animation";
 import { ChartsPage } from "@/pages/mechanics/charts";
 import { FontsPage as FontsMechanicPage } from "@/pages/mechanics/fonts";
@@ -145,19 +158,32 @@ function todo(
 }
 
 const writtenComponentPages: Partial<Record<ComponentSlug, ComponentType>> = {
+  "alert-dialog": AlertDialogPage,
   button: ButtonPage,
   checkbox: CheckboxPage,
+  combobox: ComboboxPage,
+  command: CommandPage,
+  "context-menu": ContextMenuPage,
+  dialog: DialogPage,
+  drawer: DrawerPage,
+  "dropdown-menu": DropdownMenuPage,
   field: FieldPage,
+  "hover-card": HoverCardPage,
   input: InputPage,
   "input-group": InputGroupPage,
   "input-otp": InputOTPPage,
   label: LabelPage,
+  menubar: MenubarPage,
   "native-select": NativeSelectPage,
+  "navigation-menu": NavigationMenuPage,
+  popover: PopoverPage,
   "radio-group": RadioGroupPage,
   select: SelectPage,
+  sheet: SheetPage,
   slider: SliderPage,
   switch: SwitchPage,
   textarea: TextareaPage,
+  tooltip: TooltipPage,
 };
 
 function componentPage(slug: ComponentSlug): Page {
