@@ -4,9 +4,9 @@ import { PreviewContainer } from "@/docs/preview-container";
 import { PreviewSwitcher } from "@/pages/previews/preview-switcher";
 
 // Shared chrome for every preview route: the in-page switcher and a
-// full-width container with toolbar only. Cards, Application, and
-// Marketing fill the container; Dashboard renders a placeholder until
-// that ticket adds blocks.
+// Shared chrome for every preview route: the in-page switcher and a
+// full-width container with toolbar only. Cards, Application, Marketing,
+// and Dashboard fill the container.
 
 export function PreviewPage({ children }: { children: ReactNode }) {
   return (

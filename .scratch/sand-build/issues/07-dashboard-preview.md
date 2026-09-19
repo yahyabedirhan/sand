@@ -4,9 +4,9 @@
 
 **Blocked by:** 04 Previews section and the Cards preview
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Dashboard preview registered and reachable
-- [ ] uses the sidebar component, the chart component, and the table component
-- [ ] usable at a wide viewport; a narrow viewport degrades without errors
-- [ ] light and dark both correct
+- [x] Dashboard preview registered and reachable
+- [x] uses the sidebar component, the chart component, and the table component
+- [x] usable at a wide viewport; a narrow viewport degrades without errors
+- [x] light and dark both correct
