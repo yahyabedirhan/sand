@@ -4,9 +4,9 @@
 
 **Blocked by:** 04 Previews section and the Cards preview
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Application preview registered and reachable from the sidebar and the switcher
-- [ ] at least four blocks with sample data, self-contained files
-- [ ] reflows to a reasonable minimum width without breaking
-- [ ] light and dark both correct
+- [x] Application preview registered and reachable from the sidebar and the switcher
+- [x] at least four blocks with sample data, self-contained files
+- [x] reflows to a reasonable minimum width without breaking
+- [x] light and dark both correct
