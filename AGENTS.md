@@ -10,7 +10,6 @@ Sand is a design system with a documentation site and example projects.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.
-- `HANDOFF.md` - the root pointer to the current handoff document.
 - `.notes/` - the human's notes, in their words: `index.md`, `journal.md`
   (one section per session), `decisions/` (one per foundation and mechanic),
   `concepts/` (learning notes). The `human-notes` skill writes the journal and
@@ -19,6 +18,7 @@ Sand is a design system with a documentation site and example projects.
 - `.workflows/` - workflows that combine existing skills without overwriting
   them. This is one layer above the skills; read the relevant workflow when it
   is named here.
+- `HANDOFF.md` - the root pointer to the current handoff document.
 - Every folder gets a lowercase `index.md` pointing at its files.
 
 ## Hard rules

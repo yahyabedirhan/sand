@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter sand dev",
-    "kanban": "pnpm --filter kanban dev",
+    "example:kanban": "pnpm --filter kanban dev",
     "build": "pnpm --filter sand --filter './examples/*' build",
     "preview": "pnpm --filter sand preview",
     "typecheck": "pnpm --filter sand --filter './examples/*' typecheck",

@@ -1,6 +1,6 @@
 # kanban
 
-Run this board from the repository root with `pnpm kanban`.
+Run this board from the repository root with `pnpm example:kanban`.
 
 Import components from `sand/ui/...` and the stylesheet from `sand/styles.css`.
 Point `@/` at the sand package source in Vite and TypeScript; exported
