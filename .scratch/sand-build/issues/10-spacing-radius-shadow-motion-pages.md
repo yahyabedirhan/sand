@@ -10,9 +10,9 @@ Ticket 22 settled the names as `--space-xs` `--space-sm` `--space-md` `--space-l
 
 **Blocked by:** 02 Rules as markdown, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] each page renders its tokens from the real theme values, not hard-coded copies
-- [ ] Motion page demonstrates enter and exit and respects reduced motion
-- [ ] rule files exist for any page that has a rule; the sync check passes
-- [ ] all four registered as written
+- [x] each page renders its tokens from the real theme values, not hard-coded copies
+- [x] Motion page demonstrates enter and exit and respects reduced motion
+- [x] rule files exist for any page that has a rule; the sync check passes
+- [x] all four registered as written

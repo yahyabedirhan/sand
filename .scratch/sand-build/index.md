@@ -24,7 +24,7 @@ Implementation tickets for `.specs/00-sand-design-system.md`, written 2026-09-19
 | 07 | [Dashboard preview](issues/07-dashboard-preview.md) | 04 | ready-for-agent |
 | 08 | [Colors page](issues/08-colors-page.md) | 02, 21 | done |
 | 09 | [Fonts and Icons pages](issues/09-fonts-and-icons-pages.md) | 02, 21 | done |
-| 10 | [Spacing, Radius, Shadow, Motion pages](issues/10-spacing-radius-shadow-motion-pages.md) | 02, 21 | ready-for-agent |
+| 10 | [Spacing, Radius, Shadow, Motion pages](issues/10-spacing-radius-shadow-motion-pages.md) | 02, 21 | done |
 | 11 | [Component page pattern and form controls](issues/11-component-page-pattern-and-form-controls.md) | 01, 21 | done |
 | 12 | [Overlay and menu component pages](issues/12-overlay-and-menu-component-pages.md) | 11, 22 | ready-for-agent |
 | 13 | [Layout and navigation component pages](issues/13-layout-and-navigation-component-pages.md) | 11 | ready-for-agent |
