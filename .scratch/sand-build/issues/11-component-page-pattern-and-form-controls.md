@@ -6,9 +6,9 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] a shared component-page piece: demo first, optional sections after
-- [ ] thirteen pages registered as written, each with at least one live demo
-- [ ] single-component libraries (OTP input) noted on their page as a mechanic of that component
-- [ ] `check` and `build` pass
+- [x] a shared component-page piece: demo first, optional sections after
+- [x] thirteen pages registered as written, each with at least one live demo
+- [x] single-component libraries (OTP input) noted on their page as a mechanic of that component
+- [x] `check` and `build` pass
