@@ -3,7 +3,7 @@
 The documentation shell, Sand's first consumer.
 
 - [registry.ts](registry.ts) - the page list; drives routes, sidebar, the Overview section cards, and each page's layout (`docs`, `wide`, `full`)
-- [registry.test.tsx](registry.test.tsx) - registry seam: sidebar order, routes, the TODO stub, preview layout
+- [registry.test.tsx](registry.test.tsx) - registry seam: sidebar order, routes, written conversation pages, preview layout
 - [shell.tsx](shell.tsx) - sidebar, header, and the layout switch per page
 - [page.tsx](page.tsx) - page skeleton pieces: PageHeader, PageLayout (content column and the "On this page" rail), Section (registers itself in the rail), Prose, InlineCode, RuleList, Rule
 - [component-page.tsx](component-page.tsx) - the demo-first component page pattern; header and live Demo are required, later sections are optional

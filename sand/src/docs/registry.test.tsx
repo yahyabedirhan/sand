@@ -10,9 +10,9 @@ import {
   sections,
 } from "@/docs/registry";
 
-// The seven conversation pages still without a component. They are the
-// fixtures for the TODO stub until those pages are written.
-const conversationTodos = [
+// Conversation component pages. After they are registered, no component
+// slug is a TODO stub.
+const conversationPages = [
   "attachment",
   "bubble",
   "direction",
@@ -91,19 +91,22 @@ test("each registered page renders under its route", () => {
   }
 });
 
-test("a page without a component renders the TODO stub", () => {
-  for (const slug of conversationTodos) {
+test("conversation pages render as written component pages", () => {
+  expect(
+    pages.filter((page) => page.section === "Components" && !page.component),
+  ).toEqual([]);
+  for (const slug of conversationPages) {
     const page = pages.find((entry) => entry.slug === slug);
     if (!page) throw new Error(`missing registry page ${slug}`);
-    expect(page.component, slug).toBeUndefined();
+    expect(page.component, slug).toBeDefined();
     const { unmount } = visit(`/components/${slug}`);
     try {
       expect(
         screen.getByRole("heading", { name: page.title }),
       ).toBeInTheDocument();
       expect(
-        screen.getByText("TODO: this page is not written yet."),
-      ).toBeInTheDocument();
+        screen.queryByText("TODO: this page is not written yet."),
+      ).not.toBeInTheDocument();
     } finally {
       unmount();
     }
