@@ -20,6 +20,5 @@ Weights loaded: Geist 400, 500, 600; Fraunces 400, 500, 600; Geist Mono 400, 500
 
 ## Consequences
 
-- The fonts module is a CSS file, `src/modules/fonts/index.css`, imported by `styles.css`.
-- Family names are mapped once in `@theme inline`; a swap of hosting method leaves the names alone.
+- `styles.css` imports the fontsource packages. Family names are mapped once in `@theme inline`; a swap of hosting method leaves the names alone.
 - Fraunces on `heading-1` and `heading-2` is applied by the page skeleton components, not by the text tokens, so the serif rule stays a decision of the page layer.

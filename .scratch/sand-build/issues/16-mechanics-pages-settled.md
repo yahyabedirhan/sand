@@ -6,7 +6,7 @@ Follow `.scratch/sand-build/page-format.md` for the page layout, the preview con
 
 **Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
-**Status:** ready-for-agent
+**Status:** done
 
 Maintainer decision, 2026-09-19, recorded in
 `.notes/decisions/mechanics-pages.md`. The nine pages are Primitives, Icons,
@@ -16,7 +16,7 @@ Mechanics page up to `.scratch/sand-build/page-format.md` (Primitives is the
 reference). No setup guides.
 
 - [x] decision recorded and the spec's TODO line removed
-- [ ] every mechanic decided on has a page with role, choice, dependents
-- [ ] each page has the showcase in the container, the parts chip row with the expandable linked list, external links, and alternatives with links
-- [ ] no setup guides on the pages
-- [ ] the per-library decision notes under `.notes/decisions/` no longer describe the removed module folders (rewrite with the maintainer or mark the stale lines)
+- [x] every mechanic decided on has a page with role, choice, dependents
+- [x] each page has the showcase in the container, the parts chip row with the expandable linked list, external links, and alternatives with links
+- [x] no setup guides on the pages
+- [x] the per-library decision notes under `.notes/decisions/` no longer describe the removed module folders (rewrite with the maintainer or mark the stale lines)

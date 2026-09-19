@@ -67,6 +67,10 @@ import { ChartsPage } from "@/pages/mechanics/charts";
 import { FontsPage as FontsMechanicPage } from "@/pages/mechanics/fonts";
 import { IconsPage as IconsMechanicPage } from "@/pages/mechanics/icons";
 import { PrimitivesPage } from "@/pages/mechanics/primitives";
+import { ReactPage } from "@/pages/mechanics/react";
+import { ShadcnPage } from "@/pages/mechanics/shadcn";
+import { TailwindPage } from "@/pages/mechanics/tailwind";
+import { VitePage } from "@/pages/mechanics/vite";
 import { OverviewPage } from "@/pages/overview/overview";
 import { ApplicationPreviewPage } from "@/pages/previews/application/application-preview";
 import { CardsPreviewPage } from "@/pages/previews/cards/cards-preview";
@@ -344,6 +348,30 @@ export const pages: Page[] = [
     slug: "animation",
     title: "Animation",
     component: AnimationPage,
+  },
+  {
+    section: "Mechanics",
+    slug: "react",
+    title: "React",
+    component: ReactPage,
+  },
+  {
+    section: "Mechanics",
+    slug: "vite",
+    title: "Vite",
+    component: VitePage,
+  },
+  {
+    section: "Mechanics",
+    slug: "tailwind",
+    title: "Tailwind",
+    component: TailwindPage,
+  },
+  {
+    section: "Mechanics",
+    slug: "shadcn",
+    title: "shadcn",
+    component: ShadcnPage,
   },
   {
     section: "Previews",

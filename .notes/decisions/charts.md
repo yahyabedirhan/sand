@@ -13,8 +13,8 @@ The registry's Chart component wraps a chart library.
 
 ## Decision
 
-Recharts, inherited. The module is `export * from "recharts"` because `chart.tsx` uses the library's own API surface.
+Recharts, inherited. `chart.tsx` uses the library's own API surface and imports Recharts directly.
 
 ## Consequences
 
-- A swap changes `src/modules/charts` and `components/ui/chart.tsx` together. This is the one module where "one folder" is not literally true; the Modules page says so.
+- A swap changes `components/ui/chart.tsx` together with every Recharts import in the docs.

@@ -18,4 +18,4 @@ Base UI, inherited from a previous project so its components could be copied fre
 ## Consequences
 
 - Composition uses Base UI's `render` prop rather than Radix's `asChild`.
-- The primitives module re-exports one namespace per Base UI subpath; components alias them as `XPrimitive`.
+- Components import Base UI directly. There is no primitives re-export folder.
