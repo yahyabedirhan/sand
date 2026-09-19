@@ -10,7 +10,8 @@ and glossary are unchanged except the Mechanics list (nine pages).
 
 ## Current state
 
-- `main` includes ticket 03 (`feat: merge test runner and the two seams`). `pnpm check` and `pnpm build` passed. Registry tests still treat the seven conversation slugs as TODO stubs; ticket 15 must retarget those assertions when the pages are written.
+- `main` includes tickets 03 and 16 (`d12fbbd`, `feat: merge the nine mechanics pages`). `pnpm check` and `pnpm build` passed after both merges.
+- Registry tests still treat the seven conversation slugs as TODO stubs. Ticket 15 must retarget those assertions when the pages are written.
 - Do not put absolute home paths in committed files. Gitleaks rejects them.
 - Do not create git tags. The maintainer tags `v0.0.1`.
 
@@ -29,19 +30,17 @@ Maintainer decisions recorded 2026-09-19:
 Worktrees under `/private/tmp/sand-ticket-NN`. Recreate from current `main`
 if a tree is empty or stuck.
 
-- Ticket 03 is on main.
-- Ticket 15 (`codex/ticket-15-conversation`). Implement agent running. Seven
-  conversation component pages. Browser on port 5187. Register via
-  `writtenComponentPages`.
-- Ticket 16 (`codex/ticket-16-mechanics`). Recreated at `ad833dd`. Nine pages
-  at full page-format (Primitives is the reference). Browser on port 5188.
-  Mark or rewrite stale `src/modules/` lines in `.notes/decisions/`.
+- Tickets 03 and 16 are on main.
+- Ticket 15 (`codex/ticket-15-conversation`). Worktree recreated from current
+  `main` after a stalled empty tree. Seven conversation component pages.
+  Browser on port 5187. Register via `writtenComponentPages`. Update
+  `sand/src/docs/registry.test.tsx` so those slugs are no longer stub fixtures.
 
 Ports already used by earlier tickets. Pick a free 518x.
 
-## After those three merge
+## After 15 merges
 
-- 17 simple kanban under `examples/`. Wait for 15 and 16 on main.
+- 17 simple kanban under `examples/`. Wait for 15 on main.
 - 18 after 17.
 - 20 after 17. Skip 19.
 
