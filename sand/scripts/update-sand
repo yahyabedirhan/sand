@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Overwrite this Sand snapshot with sand/ from a git tag, then write that
+# tag into VERSION.
+set -euo pipefail
+
+usage() {
+  echo "usage: update-sand <tag> <remote>" >&2
+  echo "  tag     git tag to install, for example v0.1.0" >&2
+  echo "  remote  git remote URL of the Sand repository" >&2
+  exit 2
+}
+
+version_from_tag() {
+  local tag="$1"
+  if [[ "$tag" == v* ]]; then
+    echo "${tag#v}"
+  else
+    echo "$tag"
+  fi
+}
+
+workdir=
+cleanup() {
+  if [[ -n "$workdir" ]]; then
+    rm -rf "$workdir"
+  fi
+}
+trap cleanup EXIT
+
+main() {
+  if [[ $# -lt 2 ]]; then
+    usage
+  fi
+
+  local tag="$1"
+  local remote="$2"
+  local script_dir sand_root src entry base
+
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  sand_root="$(cd "$script_dir/.." && pwd)"
+
+  if [[ "$remote" == /* ]]; then
+    remote="file://${remote}"
+  fi
+
+  workdir="$(mktemp -d)"
+
+  git -c advice.detachedHead=false clone --depth 1 --branch "$tag" --single-branch "$remote" "$workdir/repo"
+
+  src="$workdir/repo/sand"
+  if [[ ! -d "$src" ]]; then
+    echo "update-sand: $tag has no sand/ directory" >&2
+    exit 1
+  fi
+
+  shopt -s dotglob nullglob
+  for entry in "$sand_root"/*; do
+    base="$(basename "$entry")"
+    case "$base" in
+      node_modules | dist) continue ;;
+    esac
+    rm -rf "$entry"
+  done
+  shopt -u dotglob nullglob
+
+  cp -R "$src"/. "$sand_root"/
+
+  version_from_tag "$tag" >"$sand_root/VERSION"
+
+  echo "updated $sand_root to $tag"
+}
+
+main "$@"

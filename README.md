@@ -11,6 +11,11 @@ pnpm install
 pnpm dev
 ```
 
+## Install
+
+A consumer copies `sand/` into a pnpm workspace. The agent-facing steps are
+in [`sand/installation.md`](sand/installation.md).
+
 ## Usage
 
 ```bash
