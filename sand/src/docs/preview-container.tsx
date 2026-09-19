@@ -22,7 +22,7 @@ export type PreviewPane =
 
 type PaneOptions = {
   align?: "center" | "left";
-  padding?: "default" | "tight";
+  padding?: "default" | "tight" | "none";
   // Preview pages: content fills the box, no centering, no minimum height.
   fullWidth?: boolean;
 };
@@ -133,7 +133,7 @@ function PaneBody({
   children,
 }: PaneOptions & { split: boolean; children: ReactNode }) {
   const inner = cn(
-    padding === "tight" ? "p-md" : "p-xl",
+    padding === "none" ? null : padding === "tight" ? "p-md" : "p-xl",
     !fullWidth && "flex min-h-32 flex-col",
     !fullWidth && (align === "left" ? "items-stretch" : "items-center"),
     !fullWidth && "justify-center",
