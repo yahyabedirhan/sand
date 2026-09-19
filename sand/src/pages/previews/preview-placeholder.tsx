@@ -1,6 +1,6 @@
 import { PreviewPage } from "@/pages/previews/preview-page";
 
-// TODO: tickets 05, 06, and 07 replace this page with their own preview
+// TODO: tickets 05 and 07 replace this page with their own preview
 // components and blocks. Until then the route still carries preview chrome.
 
 export function PreviewPlaceholderPage() {

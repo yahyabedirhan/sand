@@ -4,9 +4,9 @@
 
 **Blocked by:** 04 Previews section and the Cards preview
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Marketing preview registered and reachable
-- [ ] at least five sections as blocks
-- [ ] the serif face appears only where the typography rules allow
-- [ ] light and dark both correct
+- [x] Marketing preview registered and reachable
+- [x] at least five sections as blocks
+- [x] the serif face appears only where the typography rules allow
+- [x] light and dark both correct
