@@ -9,6 +9,10 @@ sentence. Examples are optional. Put constraints that span topics in
 - [colors.md](colors.md) - pairing, stacking, and opacity
 - [typography.md](typography.md) - typography roles and usage
 - [fonts.md](fonts.md) - which face is legal where
+- [spacing.md](spacing.md) - named steps over the numeric scale
+- [radius.md](radius.md) - named radius steps
+- [shadow.md](shadow.md) - named shadow steps
+- [motion.md](motion.md) - reduced motion and motion tokens
 - [icons.md](icons.md) - icon size and text pairing
 
 ## Keep pages in sync

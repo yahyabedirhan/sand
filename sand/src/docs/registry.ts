@@ -3,6 +3,10 @@ import type { ComponentType } from "react";
 import { ColorsPage } from "@/pages/foundations/colors";
 import { FontsPage } from "@/pages/foundations/fonts";
 import { IconsPage } from "@/pages/foundations/icons";
+import { MotionPage } from "@/pages/foundations/motion";
+import { RadiusPage } from "@/pages/foundations/radius";
+import { ShadowPage } from "@/pages/foundations/shadow";
+import { SpacingPage } from "@/pages/foundations/spacing";
 import { TypographyPage } from "@/pages/foundations/typography";
 import { AccordionPage } from "@/pages/components/accordion";
 import { AlertPage } from "@/pages/components/alert";
@@ -280,10 +284,30 @@ export const pages: Page[] = [
     title: "Fonts",
     component: FontsPage,
   },
-  todo("Foundations", "spacing"),
-  todo("Foundations", "radius"),
-  todo("Foundations", "shadow"),
-  todo("Foundations", "motion"),
+  {
+    section: "Foundations",
+    slug: "spacing",
+    title: "Spacing",
+    component: SpacingPage,
+  },
+  {
+    section: "Foundations",
+    slug: "radius",
+    title: "Radius",
+    component: RadiusPage,
+  },
+  {
+    section: "Foundations",
+    slug: "shadow",
+    title: "Shadow",
+    component: ShadowPage,
+  },
+  {
+    section: "Foundations",
+    slug: "motion",
+    title: "Motion",
+    component: MotionPage,
+  },
   {
     section: "Foundations",
     slug: "icons",
