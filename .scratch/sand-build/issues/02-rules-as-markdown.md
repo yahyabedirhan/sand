@@ -2,7 +2,9 @@
 
 **What to build:** Rules live as markdown inside the package, one file per topic, `system.md` for cross-cutting rules, an index listing them. The four typography rules that exist today as JSX move into the typography rule file, and the Typography page renders the same text, so an agent reading the file and a human reading the page see one source of truth. A written maintainer procedure checks that files and pages agree. The Guidelines sidebar section goes away and the sidebar order becomes Overview, Foundations, Components, Mechanics, Previews (Previews may be empty until its ticket lands).
 
-**Blocked by:** 01 Workspace restructure
+Render the rules on the page through the rules checklist piece from ticket 21; do not build a second rules renderer.
+
+**Blocked by:** 01 Workspace restructure, 21 Docs page skeleton and preview container
 
 **Status:** ready-for-agent
 

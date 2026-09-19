@@ -2,6 +2,8 @@
 
 **What to build:** An agent in another repository can adopt Sand from the package's README and installation guide alone. The guide covers a new project (packages, files, workspace entry, stylesheet import, Tailwind source line) and an existing project (list the changes, get confirmation, then act). One script updates the package to a newer tag by overwriting it. A short consumer-facing agent rules file inside the package points at the guide, the rules index, and the guides folder.
 
+Known from ticket 01: a consumer workspace needs `publicHoistPattern` for `@types/react` and `@types/react-dom` (see the comment in `pnpm-workspace.yaml`), and the `@/` alias decision from ticket 17. Both go in the guide.
+
 **Blocked by:** 17 Example project and 0.0.1
 
 **Status:** ready-for-agent
