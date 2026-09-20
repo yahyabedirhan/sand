@@ -1,3 +1,8 @@
+/// <reference types="node" />
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
 
@@ -160,5 +165,29 @@ test.each(["light", "dark"] satisfies Theme[])(
     expect(lightPreview).toHaveClass("light", "w-full");
     expect(darkPreview).toHaveClass("dark", "w-full", "border-t");
     expect(darkPreview).not.toHaveClass("border-l");
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Show light and dark stacked" }),
+    );
+
+    const restored = screen.getByText("Example content").parentElement;
+    expect(screen.getAllByText("Example content")).toHaveLength(1);
+    expect(restored).toHaveClass(otherTheme);
+    expect(restored?.parentElement).not.toHaveClass("flex-col");
+    expect(document.documentElement).not.toHaveClass("overflow-hidden");
+    expect(document.body).not.toHaveClass("overflow-hidden");
   },
 );
+
+test("the document stylesheet reserves a stable scrollbar gutter", () => {
+  const css = readFileSync(
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../styles.css"),
+    "utf8",
+  );
+  const htmlRule = css.match(/\bhtml \{([^}]+)\}/)?.[1] ?? "";
+  const bodyRule = css.match(/\bbody \{([^}]+)\}/)?.[1] ?? "";
+
+  expect(htmlRule).toContain("overflow-y-scroll");
+  expect(htmlRule).toContain("scrollbar-gutter-stable");
+  expect(bodyRule).toContain("scrollbar-gutter-stable");
+});
