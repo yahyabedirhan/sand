@@ -137,6 +137,7 @@ const mechanic: Mechanic = {
     "ui": "@/components/ui"
   }
 }`,
+  language: "json",
   parts: [
     shadcnPart("Accordion", "accordion"),
     shadcnPart("Alert", "alert"),

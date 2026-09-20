@@ -136,6 +136,7 @@ export default defineConfig({
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "src") } },
   plugins: [react(), tailwindcss()],
 });`,
+  language: "typescript",
   parts: [
     { name: "Dev server", href: "https://vite.dev/guide/" },
     { name: "Build", href: "https://vite.dev/guide/build" },

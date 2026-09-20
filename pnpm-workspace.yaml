@@ -1,5 +1,6 @@
 packages:
   - sand
+  - prototype
   - "examples/*"
 
 # Libraries that take react as a peer without naming @types/react (input-otp)

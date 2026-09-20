@@ -83,6 +83,7 @@ const mechanic: Mechanic = {
 @import "@fontsource/fraunces/600.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";`,
+  language: "css",
   parts: [
     { name: "Geist 400", href: "https://fontsource.org/fonts/geist" },
     { name: "Geist 500", href: "https://fontsource.org/fonts/geist" },

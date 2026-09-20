@@ -17,3 +17,6 @@ secrets/
 # vite
 *.local
 *.log
+
+# local browser inspection
+.playwright-mcp/

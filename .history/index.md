@@ -1,6 +1,7 @@
 # history
 
-Historical records of completed working days. Read the record for the date in
-question when the handoff documents for that day have been retired.
+Compact records of completed work, reconstructed from handoffs, specs, the
+worktree, and git history.
 
-- [2026-09-14-sand-foundation-bootstrap.md](2026-09-14-sand-foundation-bootstrap.md) - repository bootstrap, first docs shell, typography, maintainer notes, and module-section refactor
+- [2026-09-14-sand-foundation-bootstrap.md](2026-09-14-sand-foundation-bootstrap.md) - Sand foundation bootstrap from specification through a working docs application
+- [2026-09-20-prototype-gallery-and-code-previews.md](2026-09-20-prototype-gallery-and-code-previews.md) - prototype gallery created and its first decision implemented as syntax-highlighted code previews

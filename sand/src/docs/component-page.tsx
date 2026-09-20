@@ -14,6 +14,7 @@ type ComponentPageProps = {
   lead: string;
   demo: ReactNode;
   code: string;
+  codeLanguage?: string;
   sections?: readonly ComponentPageSection[];
 };
 
@@ -24,13 +25,16 @@ export function ComponentPage({
   lead,
   demo,
   code,
+  codeLanguage,
   sections = [],
 }: ComponentPageProps) {
   return (
     <>
       <PageHeader title={title} lead={lead} />
       <Section id="demo" title="Demo">
-        <PreviewContainer code={code}>{demo}</PreviewContainer>
+        <PreviewContainer code={code} codeLanguage={codeLanguage}>
+          {demo}
+        </PreviewContainer>
       </Section>
       {sections.map((section) => (
         <Section key={section.id} id={section.id} title={section.title}>

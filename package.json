@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter sand dev",
+    "prototype": "pnpm --filter sand-prototypes dev",
     "example:kanban": "pnpm --filter kanban dev",
-    "build": "pnpm --filter sand --filter './examples/*' build",
+    "build": "pnpm --filter sand --filter sand-prototypes --filter './examples/*' build",
     "preview": "pnpm --filter sand preview",
-    "typecheck": "pnpm --filter sand --filter './examples/*' typecheck",
+    "typecheck": "pnpm --filter sand --filter sand-prototypes --filter './examples/*' typecheck",
     "lint": "pnpm --filter sand lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

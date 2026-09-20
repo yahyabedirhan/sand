@@ -167,6 +167,7 @@ const mechanic: Mechanic = {
   ),
   code: `// Overlays compose enter and exit from tw-animate-css
 className="data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"`,
+  language: "jsx",
   parts: [
     animatePart("animate-in"),
     animatePart("animate-out"),

@@ -102,6 +102,7 @@ const mechanic: Mechanic = {
   --color-background: var(--background);
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
 }`,
+  language: "css",
   parts: [
     { name: "@theme", href: "https://tailwindcss.com/docs/theme" },
     { name: "dark", href: "https://tailwindcss.com/docs/dark-mode" },

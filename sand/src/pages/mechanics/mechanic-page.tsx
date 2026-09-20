@@ -39,6 +39,7 @@ export type Mechanic = {
   owns: string;
   showcase: ReactNode;
   code: string;
+  language?: string;
   parts: MechanicPart[];
   links: MechanicLink[];
   alternatives: MechanicAlternative[];
@@ -57,7 +58,11 @@ export function MechanicPage({ mechanic }: { mechanic: Mechanic }) {
         <p className="text-body">{mechanic.owns}</p>
       </Section>
       <Section id="preview" title="Preview">
-        <PreviewContainer code={mechanic.code} align="left">
+        <PreviewContainer
+          code={mechanic.code}
+          codeLanguage={mechanic.language}
+          align="left"
+        >
           <div className="grid w-full gap-lg sm:grid-cols-2 lg:grid-cols-3">
             {mechanic.showcase}
           </div>

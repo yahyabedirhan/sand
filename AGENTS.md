@@ -7,6 +7,8 @@ Sand is a design system with a documentation site and example projects.
 - `sand/` - the package a consumer copies. Everything under `sand/` travels
   to a consumer, nothing else does. Run shadcn and oxlint from inside it.
 - `examples/` - example projects importing `sand` as a workspace package.
+- `prototype/` - local prototype gallery. Entries persist design alternatives
+  and consume `sand` as a workspace package.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.
@@ -84,5 +86,6 @@ skills into a repeatable path.
 | Workflow | Use when | Entry points |
 | --- | --- | --- |
 | [Handoff](.workflows/handoff-workflow.md) | Work must continue in another session, or a previous session left `HANDOFF.md` | `/handoff`, `/continue` |
+| [Prototype](.workflows/prototype-workflow.md) | The `/prototype` skill is used, or an interactive design study must persist in the gallery | `/prototype`, prototype requests |
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`.
