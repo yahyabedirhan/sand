@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -160,6 +161,43 @@ function defaultPanes(
   return [preview ?? { name: "Preview", children }];
 }
 
+function usePrefersReducedMotion() {
+  const [prefers, setPrefers] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefers(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  return prefers;
+}
+
+function themeDuration(): number {
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--duration-base")
+    .trim();
+  if (raw.endsWith("ms")) return Number.parseFloat(raw) / 1000;
+  if (raw.endsWith("s")) return Number.parseFloat(raw);
+  return 0.2;
+}
+
+function themeEase(kind: "enter" | "exit"): [number, number, number, number] {
+  const fallback: [number, number, number, number] =
+    kind === "enter" ? [0, 0, 0.2, 1] : [0.4, 0, 1, 1];
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue(`--ease-${kind}`)
+    .trim();
+  const values = raw.match(/-?\d*\.?\d+/g)?.map(Number);
+  if (values?.length === 4) {
+    return [values[0], values[1], values[2], values[3]];
+  }
+  return fallback;
+}
+
 function PaneBody({
   align = "center",
   padding = "default",
@@ -168,33 +206,74 @@ function PaneBody({
   theme,
   children,
 }: PaneOptions & { split: boolean; theme: Theme; children: ReactNode }) {
+  const reducedMotion = usePrefersReducedMotion();
+  const [closing, setClosing] = useState(false);
+  if (split && !closing) {
+    setClosing(true);
+  }
+  const stacked = split || (!reducedMotion && closing);
+
   const inner = cn(
     padding === "none" ? null : padding === "tight" ? "p-md" : "p-xl",
     !fullWidth && "flex min-h-32 flex-col",
     !fullWidth && (align === "left" ? "items-stretch" : "items-center"),
     !fullWidth && "justify-center",
   );
-  if (!split)
+  const lightPreview = (
+    <div className={cn("light w-full bg-card text-card-foreground", inner)}>
+      {children}
+    </div>
+  );
+  const darkPreview = (
+    <div
+      className={cn("dark w-full border-t bg-card text-card-foreground", inner)}
+    >
+      {children}
+    </div>
+  );
+
+  if (!stacked) {
     return (
       <div className={cn(theme, "bg-card text-card-foreground", inner)}>
         {children}
       </div>
     );
+  }
+
   // Each preview carries its own theme class and renders as if the page were
-  // that theme.
+  // that theme. The dark pane is clipped so height animation cannot shift
+  // the docs layout sideways.
   return (
     <div className="flex flex-col">
-      <div className={cn("light w-full bg-card text-card-foreground", inner)}>
-        {children}
-      </div>
-      <div
-        className={cn(
-          "dark w-full border-t bg-card text-card-foreground",
-          inner,
-        )}
-      >
-        {children}
-      </div>
+      {lightPreview}
+      {reducedMotion ? (
+        darkPreview
+      ) : (
+        <AnimatePresence onExitComplete={() => setClosing(false)}>
+          {split ? (
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{
+                height: "auto",
+                transition: {
+                  duration: themeDuration(),
+                  ease: themeEase("enter"),
+                },
+              }}
+              exit={{
+                height: 0,
+                transition: {
+                  duration: themeDuration(),
+                  ease: themeEase("exit"),
+                },
+              }}
+              className="w-full overflow-hidden"
+            >
+              {darkPreview}
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      )}
     </div>
   );
 }

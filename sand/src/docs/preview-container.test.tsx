@@ -3,13 +3,34 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { expect, test, vi } from "vitest";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PreviewContainer } from "@/docs/preview-container";
 import { ThemeProvider } from "@/docs/theme";
 import { ThemeContext, type Theme } from "@/docs/use-theme";
+
+function stubPrefersReducedMotion(matches: boolean) {
+  window.matchMedia = (query) => ({
+    matches: query.includes("prefers-reduced-motion") ? matches : false,
+    media: query,
+    onchange: null,
+    addListener() {},
+    removeListener() {},
+    addEventListener() {},
+    removeEventListener() {},
+    dispatchEvent() {
+      return false;
+    },
+  });
+}
 
 function renderPreview(pageTheme: Theme) {
   render(
@@ -133,7 +154,7 @@ test("describes the stacked theme comparison", async () => {
 
 test.each(["light", "dark"] satisfies Theme[])(
   "keeps %s page chrome while changing the example theme",
-  (pageTheme) => {
+  async (pageTheme) => {
     const { body, chrome } = renderPreview(pageTheme);
     const otherTheme = pageTheme === "light" ? "dark" : "light";
 
@@ -170,14 +191,68 @@ test.each(["light", "dark"] satisfies Theme[])(
       screen.getByRole("button", { name: "Show light and dark stacked" }),
     );
 
+    await waitFor(() => {
+      expect(screen.getAllByText("Example content")).toHaveLength(1);
+    });
     const restored = screen.getByText("Example content").parentElement;
-    expect(screen.getAllByText("Example content")).toHaveLength(1);
     expect(restored).toHaveClass(otherTheme);
     expect(restored?.parentElement).not.toHaveClass("flex-col");
     expect(document.documentElement).not.toHaveClass("overflow-hidden");
     expect(document.body).not.toHaveClass("overflow-hidden");
   },
 );
+
+test("opens stacked comparison with a Motion height clip around the second theme", () => {
+  const source = readFileSync(
+    path.resolve(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "preview-container.tsx",
+    ),
+    "utf8",
+  );
+
+  expect(source).toMatch(/from ["']motion\/react["']/);
+  expect(source).toContain("motion.div");
+
+  renderPreview("light");
+  fireEvent.click(
+    screen.getByRole("button", { name: "Show light and dark stacked" }),
+  );
+
+  const [, darkContent] = screen.getAllByText("Example content");
+  const darkPreview = darkContent.parentElement;
+  const clip = darkPreview?.parentElement;
+
+  expect(clip).toHaveClass("overflow-hidden");
+  expect(darkPreview).toHaveClass("dark", "w-full", "border-t");
+  expect(darkPreview).not.toHaveClass("border-l");
+
+  fireEvent.click(
+    screen.getByRole("button", { name: "Show light and dark stacked" }),
+  );
+
+  expect(clip).toHaveStyle({ height: "0px" });
+});
+
+test("toggles stacked comparison instantly when reduced motion is preferred", () => {
+  const originalMatchMedia = window.matchMedia;
+  stubPrefersReducedMotion(true);
+
+  try {
+    renderPreview("light");
+    const comparison = screen.getByRole("button", {
+      name: "Show light and dark stacked",
+    });
+
+    fireEvent.click(comparison);
+    expect(screen.getAllByText("Example content")).toHaveLength(2);
+
+    fireEvent.click(comparison);
+    expect(screen.getAllByText("Example content")).toHaveLength(1);
+  } finally {
+    window.matchMedia = originalMatchMedia;
+  }
+});
 
 test("the document stylesheet reserves a stable scrollbar gutter", () => {
   const css = readFileSync(
