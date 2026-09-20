@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { afterEach, expect, test } from "vitest";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/docs/theme";
@@ -21,15 +21,47 @@ const catalog = [
   },
 ];
 
-function renderGallery() {
+function renderGallery(icons = catalog) {
   return render(
     <ThemeProvider>
       <TooltipProvider>
-        <IconGallery icons={catalog} />
+        <IconGallery icons={icons} />
       </TooltipProvider>
     </ThemeProvider>,
   );
 }
+
+const clientWidthDescriptor = Object.getOwnPropertyDescriptor(
+  HTMLElement.prototype,
+  "clientWidth",
+);
+
+afterEach(() => {
+  if (clientWidthDescriptor) {
+    Object.defineProperty(
+      HTMLElement.prototype,
+      "clientWidth",
+      clientWidthDescriptor,
+    );
+  } else {
+    delete (HTMLElement.prototype as { clientWidth?: number }).clientWidth;
+  }
+});
+
+function renderGalleryAtWidth(width: number, icons = catalog) {
+  Object.defineProperty(HTMLElement.prototype, "clientWidth", {
+    configurable: true,
+    get() {
+      return width;
+    },
+  });
+  return renderGallery(icons);
+}
+
+const sixIcons = Array.from({ length: 6 }, (_, index) => ({
+  name: `Glyph${index + 1}`,
+  Icon: () => <svg />,
+}));
 
 test("gallery lists every catalog icon by name", () => {
   renderGallery();
@@ -109,6 +141,22 @@ test("catalog lists Tabler glyphs without a hand-maintained set", () => {
   expect(names).toContain("Search");
   expect(names).toContain("AlertOctagon");
   expect(names.length).toBeGreaterThan(5000);
+});
+
+test("a desktop gallery row shows five icons", () => {
+  renderGalleryAtWidth(720, sixIcons);
+
+  expect(screen.getByRole("list")).toHaveStyle({
+    gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+  });
+});
+
+test("a narrow gallery stays on two columns", () => {
+  renderGalleryAtWidth(500, sixIcons);
+
+  expect(screen.getByRole("list")).toHaveStyle({
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+  });
 });
 
 test("Icons page gallery searches the Tabler catalog", () => {

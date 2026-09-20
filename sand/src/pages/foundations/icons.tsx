@@ -125,7 +125,7 @@ const iconsRuleExamples: Record<string, IconRuleExamples> = {
 };
 
 function columnCount(width: number) {
-  if (width >= 1024) return 6;
+  if (width >= 700) return 5;
   if (width >= 640) return 4;
   return 2;
 }
@@ -239,7 +239,7 @@ export function IconsPage() {
       />
 
       <Section id="tokens" title="Tokens">
-        <PreviewContainer align="left">
+        <PreviewContainer align="left" padding="tight">
           <IconGallery icons={catalog} />
         </PreviewContainer>
       </Section>
