@@ -1,6 +1,14 @@
-import type { ComponentType } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -19,74 +27,15 @@ import {
 } from "@/docs/page";
 import { parseRules, ruleKey } from "@/docs/parse-rules";
 import { PreviewContainer } from "@/docs/preview-container";
-import iconsRulesMarkdown from "../../../rules/icons.md?raw";
 import {
-  IconAlertOctagon,
-  IconAlertTriangle,
-  IconArrowDown,
-  IconArrowRight,
-  IconCheck,
-  IconChevronDown,
-  IconChevronLeft,
-  IconChevronRight,
-  IconChevronUp,
-  IconCircleCheck,
-  IconColumns2,
-  IconComponents,
-  IconDots,
-  IconInfoCircle,
-  IconLayoutGrid,
-  IconLayoutSidebar,
-  IconLoader,
-  IconMinus,
-  IconMoon,
-  IconPalette,
-  IconSearch,
-  IconSelector,
-  IconSettings,
-  IconSun,
-  IconX,
-} from "@tabler/icons-react";
+  tablerIconCatalog,
+  type IconEntry,
+} from "@/pages/foundations/icon-catalog";
+import iconsRulesMarkdown from "../../../rules/icons.md?raw";
+import { IconCheck, IconInfoCircle, IconSearch } from "@tabler/icons-react";
 
-type IconEntry = {
-  name: string;
-  Icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-};
-
-// TODO: keep these lists in sync when a component or the docs shell adds a glyph.
-const componentIcons: IconEntry[] = [
-  { name: "AlertOctagon", Icon: IconAlertOctagon },
-  { name: "AlertTriangle", Icon: IconAlertTriangle },
-  { name: "ArrowDown", Icon: IconArrowDown },
-  { name: "Check", Icon: IconCheck },
-  { name: "ChevronDown", Icon: IconChevronDown },
-  { name: "ChevronLeft", Icon: IconChevronLeft },
-  { name: "ChevronRight", Icon: IconChevronRight },
-  { name: "ChevronUp", Icon: IconChevronUp },
-  { name: "CircleCheck", Icon: IconCircleCheck },
-  { name: "Dots", Icon: IconDots },
-  { name: "InfoCircle", Icon: IconInfoCircle },
-  { name: "LayoutSidebar", Icon: IconLayoutSidebar },
-  { name: "Loader", Icon: IconLoader },
-  { name: "Minus", Icon: IconMinus },
-  { name: "Search", Icon: IconSearch },
-  { name: "Selector", Icon: IconSelector },
-  { name: "X", Icon: IconX },
-];
-
-const docsShellIcons: IconEntry[] = [
-  { name: "Columns2", Icon: IconColumns2 },
-  { name: "Moon", Icon: IconMoon },
-  { name: "Sun", Icon: IconSun },
-];
-
-const overviewIcons: IconEntry[] = [
-  { name: "ArrowRight", Icon: IconArrowRight },
-  { name: "Components", Icon: IconComponents },
-  { name: "LayoutGrid", Icon: IconLayoutGrid },
-  { name: "Palette", Icon: IconPalette },
-  { name: "Settings", Icon: IconSettings },
-];
+const catalog = tablerIconCatalog();
+const rowHeight = 100;
 
 type SizeStep = {
   name: string;
@@ -172,19 +121,105 @@ const iconsRuleExamples: Record<string, IconRuleExamples> = {
   },
 };
 
+function columnCount(width: number) {
+  if (width >= 1024) return 6;
+  if (width >= 640) return 4;
+  return 2;
+}
+
 function IconGrid({ icons }: { icons: IconEntry[] }) {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [viewport, setViewport] = useState({ width: 640, height: 384 });
+
+  useLayoutEffect(() => {
+    const node = scrollerRef.current;
+    if (!node) return;
+    const measure = () => {
+      setViewport({
+        width: node.clientWidth || 640,
+        height: node.clientHeight || 384,
+      });
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const columns = columnCount(viewport.width);
+  const rows = Math.ceil(icons.length / columns);
+  const startRow = Math.max(0, Math.floor(scrollTop / rowHeight) - 2);
+  const visibleRows = Math.ceil(viewport.height / rowHeight) + 4;
+  const endRow = Math.min(rows, startRow + visibleRows);
+  const visible = icons.slice(startRow * columns, endRow * columns);
+
   return (
-    <ul className="grid grid-cols-2 gap-sm sm:grid-cols-4">
-      {icons.map(({ name, Icon }) => (
-        <li
-          key={name}
-          className="flex flex-col items-center gap-xs rounded-md px-sm py-md"
+    <div
+      ref={scrollerRef}
+      className="max-h-[min(36rem,70vh)] overflow-y-auto overscroll-contain"
+      onScroll={(event) => setScrollTop(event.currentTarget.scrollTop)}
+    >
+      <div className="relative" style={{ height: rows * rowHeight }}>
+        <ul
+          className="absolute right-0 left-0 grid gap-sm"
+          style={{
+            top: startRow * rowHeight,
+            gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+          }}
         >
-          <Icon aria-hidden className="size-6" />
-          <span className="text-caption text-muted-foreground">{name}</span>
-        </li>
-      ))}
-    </ul>
+          {visible.map(({ name, Icon }) => (
+            <li
+              key={name}
+              aria-label={name}
+              className="flex min-h-11 flex-col items-center gap-xs rounded-md px-sm py-md"
+            >
+              <Icon aria-hidden className="size-6" />
+              <span className="text-center text-caption text-muted-foreground">
+                {name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export function IconGallery({ icons }: { icons: IconEntry[] }) {
+  const [query, setQuery] = useState("");
+  const matches = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    if (needle === "") return icons;
+    return icons.filter((entry) => entry.name.toLowerCase().includes(needle));
+  }, [icons, query]);
+
+  return (
+    <div className="flex w-full min-w-0 flex-col gap-md">
+      <div className="flex flex-col gap-xs">
+        <Label htmlFor="icon-catalog-search">Search icons</Label>
+        <Input
+          id="icon-catalog-search"
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          autoComplete="off"
+          spellCheck={false}
+        />
+      </div>
+      {matches.length === 0 ? (
+        <Empty>
+          <EmptyHeader>
+            <EmptyTitle>No icons match</EmptyTitle>
+            <EmptyDescription>
+              Try a different name, or clear the search to browse the catalog.
+            </EmptyDescription>
+          </EmptyHeader>
+        </Empty>
+      ) : (
+        <IconGrid icons={matches} />
+      )}
+    </div>
   );
 }
 
@@ -193,31 +228,12 @@ export function IconsPage() {
     <>
       <PageHeader
         title="Icons"
-        lead="The Tabler glyphs Sand uses today, sized to the control they sit in and paired with text on the same line."
+        lead="Browse the Tabler glyphs available to Sand, sized to the control they sit in and paired with text on the same line."
       />
 
       <Section id="tokens" title="Tokens">
         <PreviewContainer align="left">
-          <div className="flex flex-col gap-lg">
-            <div className="flex flex-col gap-sm">
-              <p className="text-caption font-medium text-muted-foreground">
-                Components
-              </p>
-              <IconGrid icons={componentIcons} />
-            </div>
-            <div className="flex flex-col gap-sm">
-              <p className="text-caption font-medium text-muted-foreground">
-                Docs shell
-              </p>
-              <IconGrid icons={docsShellIcons} />
-            </div>
-            <div className="flex flex-col gap-sm">
-              <p className="text-caption font-medium text-muted-foreground">
-                Overview
-              </p>
-              <IconGrid icons={overviewIcons} />
-            </div>
-          </div>
+          <IconGallery icons={catalog} />
         </PreviewContainer>
       </Section>
 
