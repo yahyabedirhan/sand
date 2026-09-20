@@ -97,7 +97,6 @@ export function PreviewContainer({
                       variant="ghost"
                       size="icon-sm"
                       onClick={() => setOverride(next)}
-                      disabled={split}
                       aria-label={`Show the example in ${next}`}
                     />
                   }
@@ -219,18 +218,21 @@ function PaneBody({
     !fullWidth && (align === "left" ? "items-stretch" : "items-center"),
     !fullWidth && "justify-center",
   );
-  const lightPreview = (
-    <div className={cn("light w-full bg-card text-card-foreground", inner)}>
-      {children}
-    </div>
-  );
-  const darkPreview = (
+  const other: Theme = theme === "dark" ? "light" : "dark";
+  const themedPreview = (paneTheme: Theme, divider: boolean) => (
     <div
-      className={cn("dark w-full border-t bg-card text-card-foreground", inner)}
+      className={cn(
+        paneTheme,
+        "w-full bg-card text-card-foreground",
+        divider && "border-t",
+        inner,
+      )}
     >
       {children}
     </div>
   );
+  const topPreview = themedPreview(theme, false);
+  const bottomPreview = themedPreview(other, true);
 
   if (!stacked) {
     return (
@@ -241,13 +243,13 @@ function PaneBody({
   }
 
   // Each preview carries its own theme class and renders as if the page were
-  // that theme. The dark pane is clipped so height animation cannot shift
-  // the docs layout sideways.
+  // that theme. The incoming bottom pane is clipped so height animation cannot
+  // shift the docs layout sideways.
   return (
     <div className="flex flex-col">
-      {lightPreview}
+      {topPreview}
       {reducedMotion ? (
-        darkPreview
+        bottomPreview
       ) : (
         <AnimatePresence onExitComplete={() => setClosing(false)}>
           {split ? (
@@ -269,7 +271,7 @@ function PaneBody({
               }}
               className="w-full overflow-hidden"
             >
-              {darkPreview}
+              {bottomPreview}
             </motion.div>
           ) : null}
         </AnimatePresence>

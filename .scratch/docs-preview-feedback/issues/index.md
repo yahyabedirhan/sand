@@ -8,3 +8,4 @@
 - [06: Show more named animations on the mechanics Animation page](06-show-more-named-animations.md)
 - [07: Put icon search in the field](07-put-icon-search-in-the-field.md)
 - [08: Fit five icons across the gallery row](08-fit-five-icons-across-the-gallery.md)
+- [09: Stack comparison from the current example theme](09-stack-comparison-from-current-example-theme.md)

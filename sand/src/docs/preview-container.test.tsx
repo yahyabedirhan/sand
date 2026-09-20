@@ -178,14 +178,15 @@ test.each(["light", "dark"] satisfies Theme[])(
 
     expect(chrome).not.toHaveClass("light");
     expect(chrome).not.toHaveClass("dark");
-    const [lightContent, darkContent] = screen.getAllByText("Example content");
-    const lightPreview = lightContent.parentElement;
-    const darkPreview = darkContent.parentElement;
+    const [topContent, bottomContent] = screen.getAllByText("Example content");
+    const topPreview = topContent.parentElement;
+    const bottomPreview = bottomContent.parentElement;
 
-    expect(lightPreview?.parentElement).toHaveClass("flex", "flex-col");
-    expect(lightPreview).toHaveClass("light", "w-full");
-    expect(darkPreview).toHaveClass("dark", "w-full", "border-t");
-    expect(darkPreview).not.toHaveClass("border-l");
+    expect(topPreview?.parentElement).toHaveClass("flex", "flex-col");
+    expect(topPreview).toHaveClass(otherTheme, "w-full");
+    expect(topPreview).not.toHaveClass("border-t");
+    expect(bottomPreview).toHaveClass(pageTheme, "w-full", "border-t");
+    expect(bottomPreview).not.toHaveClass("border-l");
 
     fireEvent.click(
       screen.getByRole("button", { name: "Show light and dark stacked" }),
@@ -202,36 +203,78 @@ test.each(["light", "dark"] satisfies Theme[])(
   },
 );
 
-test("opens stacked comparison with a Motion height clip around the second theme", () => {
-  const source = readFileSync(
-    path.resolve(
-      path.dirname(fileURLToPath(import.meta.url)),
-      "preview-container.tsx",
-    ),
-    "utf8",
-  );
+test.each(["light", "dark"] satisfies Theme[])(
+  "opens stacked comparison from a %s example with a Motion height clip around the other theme",
+  (exampleTheme) => {
+    const source = readFileSync(
+      path.resolve(
+        path.dirname(fileURLToPath(import.meta.url)),
+        "preview-container.tsx",
+      ),
+      "utf8",
+    );
 
-  expect(source).toMatch(/from ["']motion\/react["']/);
-  expect(source).toContain("motion.div");
+    expect(source).toMatch(/from ["']motion\/react["']/);
+    expect(source).toContain("motion.div");
 
-  renderPreview("light");
+    const otherTheme = exampleTheme === "light" ? "dark" : "light";
+    renderPreview(exampleTheme);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Show light and dark stacked" }),
+    );
+
+    const [topContent, bottomContent] = screen.getAllByText("Example content");
+    const topPreview = topContent.parentElement;
+    const bottomPreview = bottomContent.parentElement;
+    const clip = bottomPreview?.parentElement;
+
+    expect(topPreview).toHaveClass(exampleTheme, "w-full");
+    expect(topPreview).not.toHaveClass("border-t");
+    expect(clip).toHaveClass("overflow-hidden");
+    expect(bottomPreview).toHaveClass(otherTheme, "w-full", "border-t");
+    expect(bottomPreview).not.toHaveClass("border-l");
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Show light and dark stacked" }),
+    );
+
+    expect(clip).toHaveStyle({ height: "0px" });
+  },
+);
+
+test("swaps stacked panes instantly and collapse keeps the new top theme", async () => {
+  renderPreview("dark");
   fireEvent.click(
     screen.getByRole("button", { name: "Show light and dark stacked" }),
   );
 
-  const [, darkContent] = screen.getAllByText("Example content");
-  const darkPreview = darkContent.parentElement;
-  const clip = darkPreview?.parentElement;
+  const swap = screen.getByRole("button", {
+    name: "Show the example in light",
+  });
+  expect(swap).toBeEnabled();
 
+  const [, bottomBefore] = screen.getAllByText("Example content");
+  const clip = bottomBefore.parentElement?.parentElement;
   expect(clip).toHaveClass("overflow-hidden");
-  expect(darkPreview).toHaveClass("dark", "w-full", "border-t");
-  expect(darkPreview).not.toHaveClass("border-l");
+
+  fireEvent.click(swap);
+
+  const [topAfter, bottomAfter] = screen.getAllByText("Example content");
+  expect(topAfter.parentElement).toHaveClass("light");
+  expect(bottomAfter.parentElement).toHaveClass("dark", "border-t");
+  expect(bottomAfter.parentElement?.parentElement).toBe(clip);
+  expect(screen.getAllByText("Example content")).toHaveLength(2);
 
   fireEvent.click(
     screen.getByRole("button", { name: "Show light and dark stacked" }),
   );
 
-  expect(clip).toHaveStyle({ height: "0px" });
+  await waitFor(() => {
+    expect(screen.getAllByText("Example content")).toHaveLength(1);
+  });
+  expect(screen.getByText("Example content").parentElement).toHaveClass(
+    "light",
+  );
 });
 
 test("toggles stacked comparison instantly when reduced motion is preferred", () => {
