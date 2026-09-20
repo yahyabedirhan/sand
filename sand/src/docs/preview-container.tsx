@@ -26,7 +26,7 @@ import { Highlight, type PrismTheme } from "prism-react-renderer";
 
 export type PreviewPane =
   | { name: string; children: ReactNode }
-  | { name: string; code: string; language?: string };
+  | { name: string; code: string; language?: string; sourcePath?: string };
 
 type PaneOptions = {
   align?: "center" | "left";
@@ -39,8 +39,10 @@ type PreviewContainerProps = PaneOptions & {
   // The single pane, or the first pane named "Preview" when `code` is given.
   children?: ReactNode;
   // Shorthand for a Preview and a Code pane. Ignored when `panes` is given.
+  // Omit `children` to render code only, with no empty Preview pane.
   code?: string;
   codeLanguage?: string;
+  sourcePath?: string;
   // Named panes rendered as a tab strip. One pane renders no strip.
   panes?: [PreviewPane, ...PreviewPane[]];
   showThemeControls?: boolean;
@@ -50,16 +52,13 @@ export function PreviewContainer({
   children,
   code,
   codeLanguage = "tsx",
+  sourcePath,
   panes: givenPanes,
   showThemeControls = true,
   ...options
 }: PreviewContainerProps) {
-  const panes: [PreviewPane, ...PreviewPane[]] = givenPanes ?? [
-    { name: "Preview", children },
-    ...(code === undefined
-      ? []
-      : [{ name: "Code", code, language: codeLanguage }]),
-  ];
+  const panes: [PreviewPane, ...PreviewPane[]] =
+    givenPanes ?? defaultPanes(children, code, codeLanguage, sourcePath);
   const { theme: pageTheme } = useTheme();
   // `null` follows the page; a value pins the rendered example to that theme.
   const [override, setOverride] = useState<Theme | null>(null);
@@ -128,7 +127,11 @@ export function PreviewContainer({
       {panes.map((pane) => (
         <TabsContent key={pane.name} value={pane.name} className="text-body">
           {"code" in pane ? (
-            <CodeBlock code={pane.code} language={pane.language ?? "tsx"} />
+            <CodeBlock
+              code={pane.code}
+              language={pane.language ?? "tsx"}
+              sourcePath={pane.sourcePath}
+            />
           ) : (
             <PaneBody {...options} split={split} theme={theme}>
               {pane.children}
@@ -138,6 +141,23 @@ export function PreviewContainer({
       ))}
     </Tabs>
   );
+}
+
+function defaultPanes(
+  children: ReactNode | undefined,
+  code: string | undefined,
+  codeLanguage: string,
+  sourcePath: string | undefined,
+): [PreviewPane, ...PreviewPane[]] {
+  const preview: PreviewPane | undefined =
+    children == null ? undefined : { name: "Preview", children };
+  const codePane: PreviewPane | undefined =
+    code === undefined
+      ? undefined
+      : { name: "Code", code, language: codeLanguage, sourcePath };
+  if (preview && codePane) return [preview, codePane];
+  if (codePane) return [codePane];
+  return [preview ?? { name: "Preview", children }];
 }
 
 function PaneBody({
@@ -227,7 +247,15 @@ const sandCodeTheme: PrismTheme = {
   ],
 };
 
-function CodeBlock({ code, language }: { code: string; language: string }) {
+function CodeBlock({
+  code,
+  language,
+  sourcePath,
+}: {
+  code: string;
+  language: string;
+  sourcePath?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const resetTimer = useRef<number | null>(null);
   const supported = supportedLanguages.has(language);
@@ -279,6 +307,11 @@ function CodeBlock({ code, language }: { code: string; language: string }) {
       <div className="flex items-center justify-between border-t border-[#3c372f] bg-[#201e1a] px-sm py-xs">
         <div>
           <span className="font-mono text-caption text-[#d8a657]">{label}</span>
+          {sourcePath ? (
+            <span className="ml-sm font-mono text-caption text-[#aaa295]">
+              {sourcePath}
+            </span>
+          ) : null}
           <span className="ml-sm text-caption text-[#7f786d]">
             {lineCount} {lineCount === 1 ? "line" : "lines"}
           </span>

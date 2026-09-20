@@ -37,9 +37,10 @@ export type Mechanic = {
   name: string;
   role: string;
   owns: string;
-  showcase: ReactNode;
+  showcase?: ReactNode;
   code: string;
   language?: string;
+  sourcePath?: string;
   parts: MechanicPart[];
   links: MechanicLink[];
   alternatives: MechanicAlternative[];
@@ -57,15 +58,22 @@ export function MechanicPage({ mechanic }: { mechanic: Mechanic }) {
       <Section id="owns" title="What it owns">
         <p className="text-body">{mechanic.owns}</p>
       </Section>
-      <Section id="preview" title="Preview">
+      <Section
+        id={mechanic.showcase ? "preview" : "code"}
+        title={mechanic.showcase ? "Preview" : "Code"}
+      >
         <PreviewContainer
           code={mechanic.code}
           codeLanguage={mechanic.language}
+          sourcePath={mechanic.sourcePath}
           align="left"
+          showThemeControls={mechanic.showcase !== undefined}
         >
-          <div className="grid w-full gap-lg sm:grid-cols-2 lg:grid-cols-3">
-            {mechanic.showcase}
-          </div>
+          {mechanic.showcase ? (
+            <div className="grid w-full gap-lg sm:grid-cols-2 lg:grid-cols-3">
+              {mechanic.showcase}
+            </div>
+          ) : undefined}
         </PreviewContainer>
         <PartsRow parts={mechanic.parts} />
       </Section>

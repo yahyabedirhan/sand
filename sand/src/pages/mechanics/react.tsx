@@ -1,98 +1,9 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import {
-  MechanicPage,
-  ShowcasePiece,
-  type Mechanic,
-} from "@/pages/mechanics/mechanic-page";
+import { MechanicPage, type Mechanic } from "@/pages/mechanics/mechanic-page";
 
 const mechanic: Mechanic = {
   name: "React",
   role: "The component model Sand is written in.",
   owns: "React owns composition, state, and the component tree. Every file under components/ui is a React component. The docs site is a React app with React Router. Base UI's render prop is a React pattern Sand uses throughout.",
-  showcase: (
-    <>
-      <ShowcasePiece caption="Tabs">
-        <Tabs defaultValue="general" className="w-full">
-          <TabsList>
-            <TabsTrigger value="general">General</TabsTrigger>
-            <TabsTrigger value="members">Members</TabsTrigger>
-          </TabsList>
-          <TabsContent value="general">
-            Workspace name, plan, and billing.
-          </TabsContent>
-          <TabsContent value="members">
-            Invite people to this workspace.
-          </TabsContent>
-        </Tabs>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Switch">
-        <Label>
-          <Switch defaultChecked />
-          Weekly digest
-        </Label>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Accordion">
-        <Accordion defaultValue={["billing"]}>
-          <AccordionItem value="billing">
-            <AccordionTrigger>Billing</AccordionTrigger>
-            <AccordionContent>
-              Invoices are sent on the first of each month.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="members">
-            <AccordionTrigger>Members</AccordionTrigger>
-            <AccordionContent>
-              Anyone with a workspace invite can join.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Collapsible">
-        <Collapsible defaultOpen className="flex flex-col gap-sm">
-          <CollapsibleTrigger render={<Button variant="ghost" />}>
-            Shipping details
-          </CollapsibleTrigger>
-          <CollapsibleContent className="text-body-sm text-muted-foreground">
-            Arrives in 3 to 5 days. Signature required.
-          </CollapsibleContent>
-        </Collapsible>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Toggle group">
-        <ToggleGroup defaultValue={["list"]} aria-label="View">
-          <ToggleGroupItem value="list">List</ToggleGroupItem>
-          <ToggleGroupItem value="board">Board</ToggleGroupItem>
-        </ToggleGroup>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Field">
-        <Field>
-          <FieldLabel className="flex-col items-start">
-            Workspace name
-            <Input defaultValue="Dune Studio" />
-          </FieldLabel>
-          <FieldDescription>
-            Shown to everyone in the workspace.
-          </FieldDescription>
-        </Field>
-      </ShowcasePiece>
-    </>
-  ),
   code: `import { useState } from "react";
 import { Switch } from "sand/ui/switch";
 

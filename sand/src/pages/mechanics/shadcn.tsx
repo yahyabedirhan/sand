@@ -138,6 +138,7 @@ const mechanic: Mechanic = {
   }
 }`,
   language: "json",
+  sourcePath: "sand/components.json",
   parts: [
     shadcnPart("Accordion", "accordion"),
     shadcnPart("Alert", "alert"),

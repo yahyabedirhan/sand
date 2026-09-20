@@ -41,6 +41,40 @@ function renderCode(code: string, codeLanguage?: string) {
   return document.querySelector("code");
 }
 
+test("renders code without a Preview pane when children are omitted", () => {
+  render(
+    <ThemeProvider>
+      <TooltipProvider>
+        <PreviewContainer code="const sand = true;" />
+      </TooltipProvider>
+    </ThemeProvider>,
+  );
+
+  expect(
+    screen.queryByRole("tab", { name: "Preview" }),
+  ).not.toBeInTheDocument();
+  expect(screen.queryByRole("tab", { name: "Code" })).not.toBeInTheDocument();
+  expect(document.querySelector("code")).toHaveTextContent(
+    "const sand = true;",
+  );
+});
+
+test("shows the source path of displayed code", () => {
+  render(
+    <ThemeProvider>
+      <TooltipProvider>
+        <PreviewContainer
+          code='{ "style": "base-mira" }'
+          codeLanguage="json"
+          sourcePath="sand/components.json"
+        />
+      </TooltipProvider>
+    </ThemeProvider>,
+  );
+
+  expect(screen.getByText("sand/components.json")).toBeInTheDocument();
+});
+
 test("highlights code as TSX by default", () => {
   const code = renderCode("const label = <span>Sand</span>;");
 

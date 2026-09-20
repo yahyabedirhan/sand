@@ -2,66 +2,51 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Toaster, toast } from "@/components/ui/toast";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import {
   MechanicPage,
-  ShowcasePiece,
   type Mechanic,
   type MechanicPart,
 } from "@/pages/mechanics/mechanic-page";
 
-function MotionBox({
-  caption,
-  className,
-}: {
-  caption: string;
-  className: string;
-}) {
-  const [key, setKey] = useState(0);
+const demonstrations = [
+  { name: "Fade in", className: "animate-in fade-in" },
+  { name: "Zoom in", className: "animate-in zoom-in-95" },
+  { name: "Slide from top", className: "animate-in slide-in-from-top-4" },
+  { name: "Fade out", className: "animate-out fade-out fill-mode-forwards" },
+];
+
+function MotionRow({ name, className }: { name: string; className: string }) {
+  const [play, setPlay] = useState(0);
   return (
-    <ShowcasePiece caption={caption}>
-      <div
-        key={key}
-        className={`rounded-md border bg-secondary px-md py-sm text-body-sm ${className}`}
-      >
-        {caption}
-      </div>
-      <Button size="sm" variant="ghost" onClick={() => setKey((n) => n + 1)}>
-        Replay
-      </Button>
-    </ShowcasePiece>
+    <TableRow>
+      <TableCell className="w-[11rem] font-medium">{name}</TableCell>
+      <TableCell>
+        <div
+          key={play}
+          role="img"
+          aria-label={`${name} animation`}
+          className={`h-10 w-24 rounded-md border bg-secondary ${className}`}
+          style={{ animationDuration: "1s" }}
+        />
+      </TableCell>
+      <TableCell className="w-[7rem] text-right">
+        <Button
+          size="sm"
+          variant="ghost"
+          aria-label={`Replay ${name}`}
+          onClick={() => setPlay((n) => n + 1)}
+        >
+          Replay
+        </Button>
+      </TableCell>
+    </TableRow>
   );
 }
 
@@ -77,96 +62,26 @@ const mechanic: Mechanic = {
   role: "tw-animate-css supplies the enter and exit utilities overlays use.",
   owns: "tw-animate-css owns the animate-in and animate-out utilities on dialogs, sheets, menus, popovers, tooltips, and toasts. Duration and easing tokens live in styles.css, so a later library would still read the same values. Reduced motion is collapsed globally.",
   showcase: (
-    <>
-      <MotionBox
-        caption="Fade in"
-        className="animate-in fade-in duration-base"
-      />
-      <MotionBox
-        caption="Zoom in"
-        className="animate-in zoom-in-95 duration-base"
-      />
-      <MotionBox
-        caption="Slide from top"
-        className="animate-in slide-in-from-top-4 duration-base"
-      />
-      <ShowcasePiece caption="Dialog">
-        <Dialog>
-          <DialogTrigger render={<Button />}>Rename workspace</DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Rename workspace</DialogTitle>
-              <DialogDescription>
-                This name is shown to everyone in the workspace.
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter>
-              <DialogClose render={<Button variant="outline" />}>
-                Cancel
-              </DialogClose>
-              <DialogClose render={<Button />}>Save</DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Sheet, Popover, Tooltip">
-        <div className="flex flex-wrap gap-sm">
-          <Sheet>
-            <SheetTrigger render={<Button variant="outline" />}>
-              Filters
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Filters</SheetTitle>
-                <SheetDescription>
-                  Narrow the list by status and owner.
-                </SheetDescription>
-              </SheetHeader>
-              <SheetFooter>
-                <SheetClose render={<Button />}>Apply</SheetClose>
-              </SheetFooter>
-            </SheetContent>
-          </Sheet>
-          <Popover>
-            <PopoverTrigger render={<Button variant="outline" />}>
-              Share
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverHeader>
-                <PopoverTitle>Share this page</PopoverTitle>
-                <PopoverDescription>
-                  Anyone with the link can view it.
-                </PopoverDescription>
-              </PopoverHeader>
-            </PopoverContent>
-          </Popover>
-          <Tooltip>
-            <TooltipTrigger render={<Button variant="outline" />}>
-              Copy
-            </TooltipTrigger>
-            <TooltipContent>Copy to clipboard</TooltipContent>
-          </Tooltip>
-        </div>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Toast">
-        <Toaster>
-          <Button
-            variant="secondary"
-            onClick={() =>
-              toast.add({
-                title: "Draft saved",
-                description: "Stored on this device.",
-              })
-            }
-          >
-            Show toast
-          </Button>
-        </Toaster>
-      </ShowcasePiece>
-    </>
+    <div className="col-span-full">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Animation</TableHead>
+            <TableHead>Preview</TableHead>
+            <TableHead>
+              <span className="sr-only">Replay</span>
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {demonstrations.map((demonstration) => (
+            <MotionRow key={demonstration.name} {...demonstration} />
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   ),
-  code: `// Overlays compose enter and exit from tw-animate-css
-className="data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"`,
+  code: `className="data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"`,
   language: "jsx",
   parts: [
     animatePart("animate-in"),

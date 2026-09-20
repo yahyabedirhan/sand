@@ -10,7 +10,7 @@ The documentation shell, Sand's first consumer.
 - [parse-rules.ts](parse-rules.ts) - splits a topic rule file into title-and-sentence rules for the checklist
 - [rules-sync.test.tsx](rules-sync.test.tsx) - rules sync seam: every topic file title appears on that topic's page, and vice versa
 - [vitest.setup.ts](vitest.setup.ts) - jsdom shims so the docs tests can render pages
-- [preview-container.tsx](preview-container.tsx) - PreviewContainer, the box around every rendered example: named panes, Code pane, container-only theme toggle, light/dark split
+- [preview-container.tsx](preview-container.tsx) - PreviewContainer around examples: named panes, code-only panes, source paths, container-only theme toggle, light/dark split
 - [theme.tsx](theme.tsx) - ThemeProvider, system default, local-storage persistence
 - [use-theme.ts](use-theme.ts) - the theme context and hook
 - [theme-toggle.tsx](theme-toggle.tsx) - the sidebar footer toggle

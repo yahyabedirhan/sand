@@ -1,80 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { InlineCode } from "@/docs/page";
-import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  MechanicPage,
-  ShowcasePiece,
-  type Mechanic,
-} from "@/pages/mechanics/mechanic-page";
+import { MechanicPage, type Mechanic } from "@/pages/mechanics/mechanic-page";
 
 const mechanic: Mechanic = {
   name: "Fonts",
   role: "fontsource self-hosts Geist, Fraunces, and Geist Mono.",
   owns: "fontsource loads the three faces. styles.css imports the weight files and maps the family names onto font-sans, font-serif, and font-mono. The type roles and the page skeleton pick which face to use. Geist is UI and body, Fraunces is the top two titles, Geist Mono is code, keys, and tabular numbers.",
-  showcase: (
-    <>
-      <ShowcasePiece caption="Geist, body">
-        <p className="font-sans text-body">
-          Refunds arrive within five business days.
-        </p>
-        <p className="font-sans text-body-sm text-muted-foreground">
-          The default face for UI and copy.
-        </p>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Geist, UI">
-        <div className="flex flex-wrap items-center gap-sm">
-          <Button>Publish</Button>
-          <Button variant="ghost">Save draft</Button>
-          <Badge variant="outline">Pro</Badge>
-        </div>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Fraunces, heading-1">
-        <p className="font-serif text-heading-1">Invoices</p>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Fraunces, heading-2">
-        <p className="font-serif text-heading-2">Unpaid</p>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Geist Mono, code">
-        <p className="text-body">
-          Import <InlineCode>Button</InlineCode> from{" "}
-          <InlineCode>sand/ui/button</InlineCode>.
-        </p>
-      </ShowcasePiece>
-      <ShowcasePiece caption="Geist Mono, keys and figures">
-        <KbdGroup>
-          <Kbd>⌘</Kbd>
-          <Kbd>K</Kbd>
-        </KbdGroup>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Invoice</TableHead>
-              <TableHead>Amount</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell className="font-mono">INV-0421</TableCell>
-              <TableCell className="font-mono">$48.00</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-mono">INV-0397</TableCell>
-              <TableCell className="font-mono">$48.00</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </ShowcasePiece>
-    </>
-  ),
   code: `@import "@fontsource/geist/400.css";
 @import "@fontsource/geist/500.css";
 @import "@fontsource/geist/600.css";
@@ -82,8 +11,19 @@ const mechanic: Mechanic = {
 @import "@fontsource/fraunces/500.css";
 @import "@fontsource/fraunces/600.css";
 @import "@fontsource/geist-mono/400.css";
-@import "@fontsource/geist-mono/500.css";`,
+@import "@fontsource/geist-mono/500.css";
+
+@theme inline {
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  font-family: var(--font-sans);
+}`,
   language: "css",
+  sourcePath: "sand/src/styles.css",
   parts: [
     { name: "Geist 400", href: "https://fontsource.org/fonts/geist" },
     { name: "Geist 500", href: "https://fontsource.org/fonts/geist" },
