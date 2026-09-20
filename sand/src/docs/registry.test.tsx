@@ -128,7 +128,7 @@ test.each(["colors", "shadow"])(
     ).not.toBeInTheDocument();
     expect(
       within(main).queryByRole("button", {
-        name: "Show light and dark side by side",
+        name: "Show light and dark stacked",
       }),
     ).not.toBeInTheDocument();
     expect(main.querySelector(".light")).toBeInTheDocument();

@@ -79,6 +79,19 @@ test("confirms a copy for five seconds", async () => {
   vi.useRealTimers();
 });
 
+test("describes the stacked theme comparison", async () => {
+  renderPreview("light");
+  const comparison = screen.getByRole("button", {
+    name: "Show light and dark stacked",
+  });
+
+  fireEvent.focus(comparison);
+
+  expect(
+    await screen.findByText("Show light and dark stacked"),
+  ).toHaveAttribute("data-slot", "tooltip-content");
+});
+
 test.each(["light", "dark"] satisfies Theme[])(
   "keeps %s page chrome while changing the example theme",
   (pageTheme) => {
@@ -88,6 +101,8 @@ test.each(["light", "dark"] satisfies Theme[])(
     expect(chrome).not.toHaveClass("light");
     expect(chrome).not.toHaveClass("dark");
     expect(body).toHaveClass(pageTheme);
+    expect(screen.getAllByText("Example content")).toHaveLength(1);
+    expect(body.parentElement).not.toHaveClass("flex-col");
 
     fireEvent.click(
       screen.getByRole("button", { name: `Show the example in ${otherTheme}` }),
@@ -98,16 +113,18 @@ test.each(["light", "dark"] satisfies Theme[])(
     expect(body).toHaveClass(otherTheme);
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Show light and dark side by side" }),
+      screen.getByRole("button", { name: "Show light and dark stacked" }),
     );
 
     expect(chrome).not.toHaveClass("light");
     expect(chrome).not.toHaveClass("dark");
-    expect(screen.getAllByText("Example content")[0].parentElement).toHaveClass(
-      "light",
-    );
-    expect(screen.getAllByText("Example content")[1].parentElement).toHaveClass(
-      "dark",
-    );
+    const [lightContent, darkContent] = screen.getAllByText("Example content");
+    const lightPreview = lightContent.parentElement;
+    const darkPreview = darkContent.parentElement;
+
+    expect(lightPreview?.parentElement).toHaveClass("flex", "flex-col");
+    expect(lightPreview).toHaveClass("light", "w-full");
+    expect(darkPreview).toHaveClass("dark", "w-full", "border-t");
+    expect(darkPreview).not.toHaveClass("border-l");
   },
 );

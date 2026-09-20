@@ -12,8 +12,8 @@ import { useTheme, type Theme } from "@/docs/use-theme";
 import { cn } from "cn";
 import {
   IconCheck,
-  IconColumns2,
   IconCopy,
+  IconLayoutRows,
   IconMoon,
   IconSun,
 } from "@tabler/icons-react";
@@ -22,7 +22,7 @@ import { Highlight, type PrismTheme } from "prism-react-renderer";
 // One container wraps every rendered example on the site. It is the visual
 // line between documentation and example content: a card-colored box on the
 // page background, with an optional tab strip of named panes and a toolbar
-// that themes the container alone or shows both themes side by side.
+// that themes the container alone or shows both themes stacked.
 
 export type PreviewPane =
   | { name: string; children: ReactNode }
@@ -113,13 +113,13 @@ export function PreviewContainer({
                       size="sm"
                       pressed={split}
                       onPressedChange={setSplit}
-                      aria-label="Show light and dark side by side"
+                      aria-label="Show light and dark stacked"
                     />
                   }
                 >
-                  <IconColumns2 />
+                  <IconLayoutRows />
                 </TooltipTrigger>
-                <TooltipContent>Light and dark side by side</TooltipContent>
+                <TooltipContent>Show light and dark stacked</TooltipContent>
               </Tooltip>
             </div>
           ) : null}
@@ -160,14 +160,19 @@ function PaneBody({
         {children}
       </div>
     );
-  // Each half carries its own theme class and renders as if the page were
+  // Each preview carries its own theme class and renders as if the page were
   // that theme.
   return (
-    <div className="grid grid-cols-2">
-      <div className={cn("light bg-card text-card-foreground", inner)}>
+    <div className="flex flex-col">
+      <div className={cn("light w-full bg-card text-card-foreground", inner)}>
         {children}
       </div>
-      <div className={cn("dark border-l bg-card text-card-foreground", inner)}>
+      <div
+        className={cn(
+          "dark w-full border-t bg-card text-card-foreground",
+          inner,
+        )}
+      >
         {children}
       </div>
     </div>
