@@ -18,15 +18,19 @@ import {
 const demonstrations = [
   { name: "Fade in", className: "animate-in fade-in" },
   { name: "Zoom in", className: "animate-in zoom-in-95" },
-  { name: "Slide from top", className: "animate-in slide-in-from-top-4" },
+  { name: "Slide from top", className: "animate-in slide-in-from-top-2" },
+  { name: "Slide from bottom", className: "animate-in slide-in-from-bottom-2" },
+  { name: "Slide from left", className: "animate-in slide-in-from-left-2" },
+  { name: "Slide from right", className: "animate-in slide-in-from-right-2" },
   { name: "Fade out", className: "animate-out fade-out fill-mode-forwards" },
+  { name: "Zoom out", className: "animate-out zoom-out-95 fill-mode-forwards" },
 ];
 
 function MotionRow({ name, className }: { name: string; className: string }) {
   const [play, setPlay] = useState(0);
   return (
     <TableRow>
-      <TableCell className="w-[11rem] font-medium">{name}</TableCell>
+      <TableCell className="w-[13rem] font-medium">{name}</TableCell>
       <TableCell>
         <div
           key={play}
