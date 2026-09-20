@@ -59,7 +59,7 @@ export function PreviewContainer({
       : [{ name: "Code", code, language: codeLanguage }]),
   ];
   const { theme: pageTheme } = useTheme();
-  // `null` follows the page; a value pins the container to that theme.
+  // `null` follows the page; a value pins the rendered example to that theme.
   const [override, setOverride] = useState<Theme | null>(null);
   const [split, setSplit] = useState(false);
   const theme = override ?? pageTheme;
@@ -69,9 +69,6 @@ export function PreviewContainer({
     <Tabs
       defaultValue={panes[0].name}
       className={cn(
-        // Split halves scope themselves; the root then follows the page so
-        // neither half sits inside the opposite scope.
-        split ? null : theme,
         "gap-0 overflow-hidden rounded-lg border bg-card text-card-foreground",
         options.fullWidth && "w-full",
       )}
@@ -127,7 +124,7 @@ export function PreviewContainer({
           {"code" in pane ? (
             <CodeBlock code={pane.code} language={pane.language ?? "tsx"} />
           ) : (
-            <PaneBody {...options} split={split}>
+            <PaneBody {...options} split={split} theme={theme}>
               {pane.children}
             </PaneBody>
           )}
@@ -142,15 +139,21 @@ function PaneBody({
   padding = "default",
   fullWidth = false,
   split,
+  theme,
   children,
-}: PaneOptions & { split: boolean; children: ReactNode }) {
+}: PaneOptions & { split: boolean; theme: Theme; children: ReactNode }) {
   const inner = cn(
     padding === "none" ? null : padding === "tight" ? "p-md" : "p-xl",
     !fullWidth && "flex min-h-32 flex-col",
     !fullWidth && (align === "left" ? "items-stretch" : "items-center"),
     !fullWidth && "justify-center",
   );
-  if (!split) return <div className={inner}>{children}</div>;
+  if (!split)
+    return (
+      <div className={cn(theme, "bg-card text-card-foreground", inner)}>
+        {children}
+      </div>
+    );
   // Each half carries its own theme class and renders as if the page were
   // that theme.
   return (
