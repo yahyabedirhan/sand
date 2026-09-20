@@ -7,8 +7,11 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import {
   Table,
   TableBody,
@@ -196,17 +199,21 @@ export function IconGallery({ icons }: { icons: IconEntry[] }) {
 
   return (
     <div className="flex w-full min-w-0 flex-col gap-md">
-      <div className="flex flex-col gap-xs">
-        <Label htmlFor="icon-catalog-search">Search icons</Label>
-        <Input
+      <InputGroup>
+        <InputGroupAddon>
+          <IconSearch aria-hidden className="size-3.5 shrink-0 opacity-50" />
+        </InputGroupAddon>
+        <InputGroupInput
           id="icon-catalog-search"
           type="search"
+          placeholder="Search icons"
+          aria-label="Search icons"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           autoComplete="off"
           spellCheck={false}
         />
-      </div>
+      </InputGroup>
       {matches.length === 0 ? (
         <Empty>
           <EmptyHeader>

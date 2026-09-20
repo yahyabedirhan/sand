@@ -41,6 +41,20 @@ test("gallery lists every catalog icon by name", () => {
   expect(screen.getByRole("listitem", { name: "Inbox" })).toBeInTheDocument();
 });
 
+test("search field uses an in-field icon, placeholder, and accessible name", () => {
+  renderGallery();
+
+  const search = screen.getByRole("searchbox", { name: "Search icons" });
+
+  expect(search).toHaveAttribute("placeholder", "Search icons");
+  expect(
+    screen.queryByRole("label", { name: "Search icons" }),
+  ).not.toBeInTheDocument();
+
+  const field = search.closest('[role="group"]');
+  expect(field?.querySelector("svg")).not.toBeNull();
+});
+
 test("search filters icons by name without case sensitivity", () => {
   renderGallery();
 
