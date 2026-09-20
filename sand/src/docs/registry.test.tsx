@@ -113,6 +113,29 @@ test("conversation pages render as written component pages", () => {
   }
 });
 
+test.each(["colors", "shadow"])(
+  "%s token preview shows both themes without theme controls",
+  (slug) => {
+    visit(`/foundations/${slug}`);
+    const main = contentMain();
+
+    if (!(main instanceof HTMLElement)) throw new Error("main not rendered");
+
+    expect(
+      within(main).queryByRole("button", {
+        name: /Show the example in (light|dark)/,
+      }),
+    ).not.toBeInTheDocument();
+    expect(
+      within(main).queryByRole("button", {
+        name: "Show light and dark side by side",
+      }),
+    ).not.toBeInTheDocument();
+    expect(main.querySelector(".light")).toBeInTheDocument();
+    expect(main.querySelector(".dark")).toBeInTheDocument();
+  },
+);
+
 test("preview pages render outside the standard layout", () => {
   const { unmount: unmountDocs } = visit("/foundations/typography");
   try {

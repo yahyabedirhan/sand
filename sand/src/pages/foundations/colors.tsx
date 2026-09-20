@@ -366,7 +366,7 @@ export function ColorsPage() {
       />
 
       <Section id="tokens" title="Tokens">
-        <PreviewContainer align="left" padding="none">
+        <PreviewContainer align="left" padding="none" showThemeControls={false}>
           <div className="w-full">
             <ThemePanel theme="light" />
             <ThemePanel theme="dark" />

@@ -43,6 +43,7 @@ type PreviewContainerProps = PaneOptions & {
   codeLanguage?: string;
   // Named panes rendered as a tab strip. One pane renders no strip.
   panes?: [PreviewPane, ...PreviewPane[]];
+  showThemeControls?: boolean;
 };
 
 export function PreviewContainer({
@@ -50,6 +51,7 @@ export function PreviewContainer({
   code,
   codeLanguage = "tsx",
   panes: givenPanes,
+  showThemeControls = true,
   ...options
 }: PreviewContainerProps) {
   const panes: [PreviewPane, ...PreviewPane[]] = givenPanes ?? [
@@ -73,52 +75,56 @@ export function PreviewContainer({
         options.fullWidth && "w-full",
       )}
     >
-      <div className="flex items-center justify-between gap-sm border-b bg-muted/50 px-sm py-xs">
-        {panes.length > 1 ? (
-          <TabsList variant="line">
-            {panes.map((pane) => (
-              <TabsTrigger key={pane.name} value={pane.name}>
-                {pane.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        ) : (
-          <span />
-        )}
-        <div className="flex items-center gap-xs">
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon-sm"
-                  onClick={() => setOverride(next)}
-                  disabled={split}
-                  aria-label={`Show the example in ${next}`}
-                />
-              }
-            >
-              {next === "light" ? <IconSun /> : <IconMoon />}
-            </TooltipTrigger>
-            <TooltipContent>Show in {next}</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Toggle
-                  size="sm"
-                  pressed={split}
-                  onPressedChange={setSplit}
-                  aria-label="Show light and dark side by side"
-                />
-              }
-            >
-              <IconColumns2 />
-            </TooltipTrigger>
-            <TooltipContent>Light and dark side by side</TooltipContent>
-          </Tooltip>
+      {panes.length > 1 || showThemeControls ? (
+        <div className="flex items-center justify-between gap-sm border-b bg-muted/50 px-sm py-xs">
+          {panes.length > 1 ? (
+            <TabsList variant="line">
+              {panes.map((pane) => (
+                <TabsTrigger key={pane.name} value={pane.name}>
+                  {pane.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          ) : (
+            <span />
+          )}
+          {showThemeControls ? (
+            <div className="flex items-center gap-xs">
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      variant="ghost"
+                      size="icon-sm"
+                      onClick={() => setOverride(next)}
+                      disabled={split}
+                      aria-label={`Show the example in ${next}`}
+                    />
+                  }
+                >
+                  {next === "light" ? <IconSun /> : <IconMoon />}
+                </TooltipTrigger>
+                <TooltipContent>Show in {next}</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Toggle
+                      size="sm"
+                      pressed={split}
+                      onPressedChange={setSplit}
+                      aria-label="Show light and dark side by side"
+                    />
+                  }
+                >
+                  <IconColumns2 />
+                </TooltipTrigger>
+                <TooltipContent>Light and dark side by side</TooltipContent>
+              </Tooltip>
+            </div>
+          ) : null}
         </div>
-      </div>
+      ) : null}
       {panes.map((pane) => (
         <TabsContent key={pane.name} value={pane.name} className="text-body">
           {"code" in pane ? (
