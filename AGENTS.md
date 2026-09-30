@@ -16,7 +16,8 @@ Sand is a design system with a documentation site and example projects.
   (one section per session), `decisions/` (one per foundation and mechanic),
   `concepts/` (learning notes). The `human-notes` skill writes the journal and
   concepts at session end. Consumer pages carry no reasoning; it lives here.
-- `.scratch/` - agent-facing tracker files (wayfinder maps and tickets).
+- `.scratch/` - gitignored throwaway space for agents: drafts, dumps, one-off
+  scripts. Tickets live in GitHub issues (see Agent skills).
 - `.workflows/` - workflows that combine existing skills without overwriting
   them. This is one layer above the skills; read the relevant workflow when it
   is named here.
@@ -72,6 +73,18 @@ ln -s ../../.agents/skills/<name> .claude/skills/<name>
 ```
 
 Stage the symlink itself, not the file inside it.
+
+### Issue tracker
+
+Issues, specs and tickets live in this repo's GitHub issues (`yahyabedirhan/sand`), through the `gh` CLI. See `docs/agents/issue-tracker.md`. The finished local tickets that used to sit in `.scratch/` stay in git history.
+
+### Triage labels
+
+The five default triage labels, each named after its role (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` is the glossary, and decisions live in `.notes/decisions/`. See `docs/agents/domain.md`.
 
 Reach for `writing-for-agents` when editing this file or any `index.md`,
 `show-me` for a mechanics or token-layer picture, `grilling` only when a
