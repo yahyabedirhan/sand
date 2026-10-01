@@ -20,3 +20,7 @@ secrets/
 
 # local browser inspection
 .playwright-mcp/
+
+# agent scratch space and worktrees
+.scratch/
+.claude/worktrees/
