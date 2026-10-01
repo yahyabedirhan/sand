@@ -14,7 +14,7 @@ export default defineConfig({
   },
   plugins: [react(), tailwindcss()],
   server: {
-    port: 5198,
+    port: 47263,
     fs: { allow: [path.resolve(import.meta.dirname, "..")] },
   },
 });
