@@ -6,7 +6,7 @@ Last updated: 2026-09-19
 Sand is a design system the maintainer builds their own projects with, and a
 docs site that documents it. Both live in one React + Vite application. The
 words used below (Sand, Docs site, Consumer, Design, Mechanics, Rule, Demo,
-Preview, Block, Example project) are defined in `CONTEXT.md`.
+Preview, Block, Example project) are defined in `GLOSSARY.md`.
 
 ## Problem Statement
 
@@ -146,7 +146,7 @@ later.
   and holds everything a consumer receives. `examples/` holds in-repo example
   projects that import `sand` as a workspace package. Maintainer material
   (`.notes/`, `.handoff/`, `.scratch/`, `.specs/`, the skills, the root
-  `AGENTS.md`, `CONTEXT.md`, `examples/`) stays at the root and never
+  `AGENTS.md`, `GLOSSARY.md`, `examples/`) stays at the root and never
   travels. The restructure happens before the docs pages are written.
 - `sand/` is one React 19 + Vite + TypeScript (strict) application: tokens,
   components, hooks, the docs shell, pages, previews, `rules/`, `guides/`,
