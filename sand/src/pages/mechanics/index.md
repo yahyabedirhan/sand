@@ -1,6 +1,6 @@
 # mechanics
 
-Write each mechanic page with [mechanic-page.tsx](mechanic-page.tsx) and register it in [docs/registry.ts](../../docs/registry.ts). Follow `.scratch/sand-build/page-format.md`. Primitives is the reference. No setup guides.
+Write each mechanic page with [mechanic-page.tsx](mechanic-page.tsx) and register it in [docs/registry.ts](../../docs/registry.ts). Follow [page-format.md](../page-format.md). Primitives is the reference. No setup guides.
 
 - [mechanic-page.tsx](mechanic-page.tsx) - header, owns, preview or code-only pane, parts chip row, links, alternatives
 - [primitives.tsx](primitives.tsx) - Base UI

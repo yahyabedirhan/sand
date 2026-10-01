@@ -1,6 +1,6 @@
 # Issue tracker: GitHub
 
-Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations.
+Issues and specs for this repo live as GitHub issues in `yahyabedirhan/sand`, so the repo has no `.efforts/` folder. Use the `gh` CLI for all operations.
 
 ## Conventions
 
@@ -10,6 +10,8 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Comment on an issue**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`
+- **Efforts**: every issue of an effort carries the label `effort:<effort>`; list an effort's tickets with `gh issue list --label effort:<effort>`.
+- Refer to an issue by its title, never by its number alone.
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
 
@@ -27,7 +29,7 @@ GitHub shares one number space across issues and PRs, so a bare `#42` may be eit
 
 ## When a skill says "publish to the issue tracker"
 
-Create a GitHub issue.
+Create a GitHub issue, labelled `effort:<effort>` when it belongs to an effort.
 
 ## When a skill says "fetch the relevant ticket"
 
