@@ -12,10 +12,10 @@ Sand is a design system with a documentation site and example projects.
 - `.specs/` - numbered specs, `NN-<kebab-topic>.md`, written before the work.
 - `.handoff/` - session handoffs, `YYYY-MM-DD-<kebab-topic>.md`. The `handoff`
   skill writes here. Keep them committed. Read the newest one at session start.
-- `.notes/` - the human's notes, in their words: `index.md`, `journal.md`
-  (one section per session), `decisions/` (one per foundation and mechanic),
-  `concepts/` (learning notes). The `human-notes` skill writes the journal and
-  concepts at session end. Consumer pages carry no reasoning; it lives here.
+- `.notes/` - durable notes. `journal.md`, `decisions/`, and `concepts/` preserve
+  the human's reasoning in their words and are written through `human-notes`.
+  `research/` holds agent-authored findings from primary-source research.
+  Consumer pages carry no reasoning; it lives here.
 - `.scratch/` - agent-facing tracker files (wayfinder maps and tickets).
 - `.workflows/` - workflows that combine existing skills without overwriting
   them. This is one layer above the skills; read the relevant workflow when it
