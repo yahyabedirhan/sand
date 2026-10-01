@@ -1,6 +1,6 @@
 # Docs page format
 
-Agreed 2026-09-19 from the prototype in [prototypes/docs-pages.html](prototypes/docs-pages.html), variant A. Open that file in a browser and switch pages with the bottom bar to see each format. Every batch ticket follows this document. B and C in the prototype are rejected alternatives; ignore them.
+Agreed 2026-09-19 from the prototype in [the docs-pages prototype](https://github.com/yahyabedirhan/sand/blob/9be33705282613119d654c10e751de98205a22ab/.scratch/sand-build/prototypes/docs-pages.html), variant A. Open that file in a browser and switch pages with the bottom bar to see each format. Every batch ticket follows this document. B and C in the prototype are rejected alternatives; ignore them.
 
 ## Shared pieces
 
