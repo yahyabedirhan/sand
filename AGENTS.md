@@ -29,6 +29,9 @@ Sand is a design system with a documentation site and example projects.
 - Name no employer, company, or hiring process anywhere in this repository:
   code, notes, specs, handoffs, this file, commit messages. Describe such
   context generically ("a previous project", "a dashboard in my vault").
+- Present Sand as a production design system. Never call it an "example"
+  design system in docs, pages, or notes; the examples are the projects under
+  `examples/`.
 
 ## Communication and writing style
 
@@ -43,6 +46,7 @@ Applies to code comments, docs, specs, notes, and commit messages.
 - Agent-facing docs are action-first: what to do, then why, and only when the
   why is not obvious.
 - Match the comment density and idiom of the surrounding code.
+- Prettier ignores `*.md`, so Markdown keeps the formatting you write.
 
 ## Git
 
@@ -61,6 +65,9 @@ feat: short imperative summary
 
 Prefixes in use: `feat`, `fix`, `refactor`, `docs`, `chore`.
 
+Run `scripts/install-hooks.sh` once per clone. It installs a gitleaks
+pre-commit hook, so gitleaks output appears on every commit.
+
 ## Agent skills
 
 Skills live in `.agents/skills/`, symlinked into `.claude/skills/`, pinned in
@@ -74,6 +81,11 @@ ln -s ../../.agents/skills/<name> .claude/skills/<name>
 
 Stage the symlink itself, not the file inside it.
 
+Reach for `writing-for-agents` when editing this file or any `index.md`,
+`show-me` for a mechanics or token-layer picture, `grilling` only when a
+decision surfaces that the spec does not cover, `human-notes` then `handoff`
+at session end.
+
 ### Issue tracker
 
 Issues, specs and tickets live in this repo's GitHub issues (`yahyabedirhan/sand`), through the `gh` CLI. See `docs/agents/issue-tracker.md`. The finished local tickets that used to sit in `.scratch/` stay in git history.
@@ -85,11 +97,6 @@ The five default triage labels, each named after its role (`needs-triage`, `need
 ### Domain docs
 
 Single-context: `CONTEXT.md` is the glossary, and decisions live in `.notes/decisions/`. See `docs/agents/domain.md`.
-
-Reach for `writing-for-agents` when editing this file or any `index.md`,
-`show-me` for a mechanics or token-layer picture, `grilling` only when a
-decision surfaces that the spec does not cover, `human-notes` then `handoff`
-at session end.
 
 ## Workflows
 
