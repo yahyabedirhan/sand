@@ -96,7 +96,7 @@ The five default triage labels, each named after its role (`needs-triage`, `need
 
 ### Domain docs
 
-Single-context: `CONTEXT.md` is the glossary, and decisions live in `.notes/decisions/`. See `docs/agents/domain.md`.
+Single-context: `GLOSSARY.md` is the glossary, and decisions live in `.notes/decisions/`. See `docs/agents/domain.md`.
 
 ## Workflows
 
