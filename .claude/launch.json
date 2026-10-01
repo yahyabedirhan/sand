@@ -4,8 +4,8 @@
     {
       "name": "sand",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev", "--port", "5173", "--strictPort"],
-      "port": 5173
+      "runtimeArgs": ["dev", "--port", "41629", "--strictPort"],
+      "port": 41629
     }
   ]
 }
