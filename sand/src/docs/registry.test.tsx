@@ -65,9 +65,10 @@ test("sidebar lists every section and page in order", () => {
   }
 });
 
-test("each registered page renders under its route", () => {
-  for (const page of pages) {
-    const path = pagePath(page);
+// One test per page, so each gets its own timeout and a failure names the page.
+test.each(pages.map((page) => ({ path: pagePath(page), page })))(
+  "registered page $path renders under its route",
+  ({ path, page }) => {
     const { unmount } = visit(path);
     try {
       const link = [
@@ -88,8 +89,8 @@ test("each registered page renders under its route", () => {
     } finally {
       unmount();
     }
-  }
-});
+  },
+);
 
 test("conversation pages render as written component pages", () => {
   expect(
